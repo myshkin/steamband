@@ -101,10 +101,10 @@
 # Changes.
 # 'e' for equipment
 # 'B' for Beast-men (was birds) (replaces 'k' 'H')
-# 'A' is for automata
+# 'a' is for automata
 # 'C' is for construct
 # 'M' is for monkey
-# 'a' is for alien
+# 'A' is for alien
 
 # There are still too many "p" monsters, perhaps they should be broken up.
 
@@ -166,7 +166,7 @@
 
 # Version stamp (required)
 
-V:0.2.1
+V:0.2.2
 
 
 ##### Non-race (contains the "player" picture) #####
@@ -174,9 +174,9 @@ V:0.2.1
 N:0:<player>
 G:@:w
 
-#########################
-##### Town monsters #####
-#########################
+#################################
+##### Town monsters (¥MAX¥) #####
+#################################
 
 N:1:Filthy urchin
 G:t:D
@@ -529,7 +529,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 D:As you appoach you see a strange alien spore is growing here. 
 D:Your light falls on it and it begins to grow towards you.
 
-N:31:Maintance automata - Type I
+N:31:Maintance automaton - Type I
 G:a:w
 I:120:1d3:3:7:10
 W:1:2:0:1
@@ -549,7 +549,19 @@ B:BITE:HURT:1d1
 F:FRIENDS | RAND_50 | HOSTILE | EMPTY_MIND | ANIMAL 
 D:Oh, God. Chickens. 
 
-### 32-35 Unused ###
+N:33:The White Rabbit
+G:r:w
+I:140:10d50:40:45:0
+W:1:10:0:150
+B:SPEAK
+F:UNIQUE | FORCE_MAXHP | DROP_3D2 | DROP_GOOD | DROP_GREAT |
+F:SMART | REGENERATE | OPEN_DOOR | ANIMAL | NO_STUN | NO_CONF | NO_SLEEP | 
+S:1_IN_3 |
+S:HASTE | HEAL | BLINK | TPORT | 
+D:A small white rabbit, wearing a waistcoat and vest runs in front of you carrying a 
+D:pocket watch. He seems to be in a hurry.
+
+### 34-35 Unused ###
 ##########################
 ##### Level 2 (100') #####
 ##########################
@@ -684,7 +696,7 @@ F:ALIEN
 D:More strange alien flora lies ahead. Weird purple flowers are springing 
 D:up from the ground, weird painful purple flowers.
 
-N:47:Anicent fire lizard
+N:47:Ancient fire lizard
 G:R:o
 I:110:4d6:8:20:80
 W:2:1:0:10
@@ -707,7 +719,7 @@ F:RAND_50 | BASH_DOOR |
 F:BEASTMAN | EVIL
 D:A flying, screeching bird with a woman's face.
 
-N:49:Maintenance automata - Type II
+N:49:Maintenance automaton - Type II
 G:a:w
 I:120:3d4:5:8:10
 W:2:2:0:2
@@ -1008,7 +1020,7 @@ S:DRAIN_MANA
 D:A strange terminal glowing red. It appears to be emmitting a strange energy. It could 
 D:have been tampered with, and may contain an object.
 
-N:76:Maintenance automata - Type III
+N:76:Maintenance automaton - Type III
 G:a:w
 I:120:4d8:5:14:10
 W:3:2:0:3
@@ -1273,7 +1285,7 @@ F:BASH_DOOR |
 F:ANIMAL | IM_POIS
 D:It has a copper head and sharp venomous fangs.
 
-N:112:Maintenance automata - Type IV
+N:112:Maintenance automaton - Type IV
 G:a:w
 I:120:8d10:5:18:10
 W:5:2:0:6
@@ -1426,7 +1438,7 @@ D:to frighten its prey.
 
 #129 Not used
 
-N:130:Patrol Automata Type I
+N:130:Patrol Automaton Type I
 G:a:R
 I:110:5d5:30:25:40
 W:6:1:0:10
@@ -1523,7 +1535,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 D:It is an animated corpse of a Dog-man.  Flesh falls off in large chunks as it 
 D:shambles forward.
 
-N:148:Automata - Type I
+N:148:Automaton - Type I
 G:a:D
 I:110:12d10:20:16:20
 W:7:2:0:25
@@ -1637,7 +1649,7 @@ F:BASH_DOOR | NO_FEAR | NO_STUN | WEIRD_MIND |
 F:EVIL | NO_CONF | NO_SLEEP | COLD_BLOOD | UNDEAD | DEMON |
 F:IM_ELEC | IM_COLD | IM_POIS | REGENERATE
 D:This is the mummy of Edward Bellingham from Sir Arthur Conan Doyle's story Lot 
-D:No. 249.  Mr. Bellignham, a olive-skinned evil man uses the mummy to kill people 
+D:No. 249.  Mr. Bellingham, a olive-skinned evil man uses the mummy to kill people 
 D:he's in disagreement with. The Mummy has inhuman speed and strength and a 
 D:very malicious and bloodthirsty nature.
 
@@ -1725,7 +1737,7 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 F:EVIL
 D:He is after your cash!
 
-N:168:Patrol Automata Type II
+N:168:Patrol Automaton Type II
 G:a:R
 I:120:10d12:30:25:40
 W:8:1:0:20
@@ -1883,7 +1895,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 D:It is an animated corpse of a Man-bat.  Flesh falls off in large chunks as it 
 D:shambles forward.
 
-N:190:Automata - Type II
+N:190:Automaton - Type II
 G:a:D
 I:110:12d20:20:36:20
 W:9:2:0:40
@@ -1898,7 +1910,7 @@ S:HASTE | ARROW_2 | BO_ELEC
 D:A large bizzare clockwork man has blood dripping from his 
 D:claw-like hands. He looks extermely dangerous.
 
-N:191:Seeker Automata - Type II
+N:191:Seeker Automaton - Type II
 G:a:b
 I:120:10d6:4:14:4
 W:9:2:0:50
@@ -1943,7 +1955,7 @@ I:120:12d10:5:18:10
 W:9:3:0:130
 B:HIT:HURT:5d5
 F:NEVER_MOVE | UNIQUE | FORCE_MAXHP |
-F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP |  EMPTY_MIND
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
 S:1_IN_3 |
 S:S_KIN | SHRIEK
 D:A giant machine in the center of the room is producing large numbers 
@@ -2076,7 +2088,7 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 F:EVIL
 D:He is eyeing your backpack.
 
-N:209:Patrol Automata Type III
+N:209:Patrol Automaton Type III
 G:a:R
 I:120:11d15:30:30:40
 W:10:1:0:25
@@ -2089,7 +2101,7 @@ D:The words covert assertation device are painted in black along
 D:the side. A bolt of electricty arcs out of the device. This design 
 D:seems more effective.
 
-N:210:Intrusion Preventative Automata - Type I
+N:210:Intrusion Preventative Automaton - Type I
 G:a:v
 I:130:20d20:50:70:30
 W:10:4:0:70
@@ -2117,10 +2129,10 @@ D:soul can contain- You must get away before you are consumed!
 N:212:Alien Plasomorph
 G:A:g
 I:110:8d3:8:8:8
-W:10:1:0:8
+W:10:2:0:20
 B:HIT:HURT:1d2
 F:ALIEN | WEIRD_MIND | REGENERATE
-S:1_IN_2 |
+S:1_IN_3 |
 S:CONF | SLOW | BLINK | S_KIN
 D:A strange globular being marches towards you, 
 D:flailing it's many limbs.
@@ -2168,7 +2180,7 @@ S:1_IN_7 |
 S:DRAIN_MANA | SCARE
 D:A metallic mound with many flailing extensions stands here. 
 
-N:229:Automata - Type III
+N:229:Automaton - Type III
 G:a:D
 I:110:15d20:20:36:20
 W:11:2:0:55
@@ -2185,7 +2197,7 @@ D:It's arms are covered with sharp spikes, covered in
 D:dried blood. You begin preperations to keep your blood 
 D:being used as paint.
 
-N:230:Seeker Automata - Type III
+N:230:Seeker Automaton - Type III
 G:a:b
 I:120:12d8:12:34:20
 W:11:3:0:90
@@ -2222,6 +2234,17 @@ B:BUTT:HURT:2d6
 F:FRIEND | ANIMAL | OPEN_DOOR | TAKE_ITEM
 D:An Orangutan stands in the hall in front of you. It looks 
 D:violent and hungry, but what else is new?
+
+N:233:Gremlin
+G:E:b
+I:120:5d5:30:4:40
+W:11:1:0:20
+B:HIT:BLIND:2d2
+B:HIT:CONFUSE:2d2
+F:RAND_25 | DROP_60 | WEIRD_MIND | SMART | 
+F:HOSTILE | NO_CONF | NO_FEAR | NO_STUN | NO_SLEEP |
+S:1_IN_2 |
+S:BO_NETH | BLIND | CONF | S_KIN | TPORT | BLINK | HEAL | HASTE
 
 ## 233-250 Unused
 
@@ -2413,7 +2436,7 @@ F:IM_ACID | IM_POIS | HURT_LITE |
 F:NO_CONF | NO_SLEEP | NO_FEAR
 D:A jelly thing.
 
-N:265:Patrol Automata Type IV
+N:265:Patrol Automaton Type IV
 G:a:R
 I:120:14d15:30:30:40
 W:12:1:0:45
@@ -2427,7 +2450,7 @@ D:covert assertation device are painted in black along
 D:the side. A bolt of electricty arcs out of the device. This design 
 D:seems more effective than the previous models you've encountered.
 
-N:266:Intrusion Preventative Automata - Type II
+N:266:Intrusion Preventative Automaton - Type II
 G:a:v
 I:130:20d20:50:70:30
 W:12:4:0:90
@@ -2534,7 +2557,7 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 D:A fast moving highly acidic jelly thing, that is eating away the floor it 
 D:rests on.
 
-N:277:Automata - Type IV
+N:277:Automaton - Type IV
 G:a:D
 I:110:17d20:20:36:20
 W:13:2:0:75
@@ -2550,7 +2573,7 @@ D:A clockwork structure strides towards you. This one is beyond the shape
 D:of a man. It's many limbs and gears gnaw and thrash as it moves towards 
 D:you. 
 
-N:278:Seeker Automata - Type IV
+N:278:Seeker Automaton - Type IV
 G:a:b
 I:120:14d10:12:34:20
 W:13:3:0:110
@@ -2564,6 +2587,8 @@ D:This device acomplishes it's task with errie efficency. Namely
 D:seeking out anything which goes outside the bounds of acceptable 
 D:presence. This, near as you can figure out, includes everything that 
 D:isn't it.
+
+
 
 # 279-280
 ############################
@@ -2665,7 +2690,7 @@ F:WEIRD_MIND | MULTIPLY |
 F:ANIMAL
 D:It makes you itch just to look at it.
 
-N:288:Patrol Automata Type V
+N:288:Patrol Automaton - Type V
 G:a:R
 I:120:18d15:30:30:40
 W:14:1:0:75
@@ -2678,7 +2703,7 @@ D:The devilishness of how effective they are makes you very afraid.
 D:This hovering torus floats down the hallway blasting randomly 
 D:with bolts of electric power.
 
-N:289:Intrusion Preventative Automata - Type III
+N:289:Intrusion Preventative Automaton - Type III
 G:a:v
 I:130:22d20:50:70:30
 W:14:4:0:120
@@ -2802,7 +2827,7 @@ F:HURT_ROCK |
 F:NO_CONF | NO_SLEEP | NO_FEAR
 D:It is a massive animated statue made out of hardened clay.
 
-N:301:Automata - Type V
+N:301:Automaton - Type V
 G:a:D
 I:110:19d20:20:36:20
 W:15:2:0:85
@@ -2818,7 +2843,7 @@ D:A clockwork giant strides towards you. Steam blasts out from various
 D:openings. It's many limbs and gears gnaw and thrash as it moves towards 
 D:you. 
 
-N:302:Seeker Automata - Type V
+N:302:Seeker Automaton - Type V
 G:a:b
 I:120:14d10:12:34:20
 W:15:3:0:130
@@ -2867,7 +2892,18 @@ S:1_IN_3 |
 S:HEAL | SCARE | CAUSE_2 | S_MONSTER
 D:A dedicated robed Quabalist.
 
-#306-310
+N:306:Gremlin
+G:E:b
+I:120:5d5:30:4:40
+W:11:1:0:20
+B:HIT:BLIND:2d2
+B:HIT:CONFUSE:2d2
+F:RAND_25 | DROP_60 | WEIRD_MIND | SMART | FRIENDS | 
+F:HOSTILE | NO_CONF | NO_FEAR | NO_STUN | NO_SLEEP |
+S:1_IN_2 |
+S:BO_NETH | BLIND | CONF | S_KIN | TPORT | BLINK | HEAL | HASTE
+
+#307-310
 ############################
 ##### Level 16 (800') ######
 ############################
@@ -2929,7 +2965,7 @@ D:He is a scientific minded criminal. So good at it, not only
 D:has he has never been caught, he's never even been suspected.
 D:Careful, he never loses an engagement.
 
-N:315:Automata - Type V
+N:315:Automaton - Type VI
 G:a:D
 I:110:19d20:20:36:20
 W:16:2:0:95
@@ -2944,7 +2980,7 @@ S:HASTE | ARROW_2 | BO_ELEC
 D:This is a giant steam powered clockwork man. A devilish red 
 D:glow and bursts of steam spring from it's innards.
 
-N:316:Seeker Automata - Type V
+N:316:Seeker Automaton - Type VI
 G:a:b
 I:120:16d10:12:34:20
 W:16:3:0:110
@@ -3049,7 +3085,19 @@ F:DROP_90 | EVIL | BEASTMAN | BASH_DOOR
 D:A anthropamorphic cheeta springs towards you. He does not appear 
 D:to want to talk.
 
-# 327-328
+## Monster Suggested by  Giants - (Janne Keskinarkaus) ##
+N:327:Lynch Mob Member
+G:t:v
+I:110:10d8:60:14:10
+W:17:1:0:40
+B:HIT:HURT:2d4
+B:HIT:HURT:2d8
+F:DROP_60 | HOSTILE | OPEN_DOOR | FRIENDS | RAND_25 | 
+D:This group of angry villagers have mobilized themselves to hunt down and 
+D:lynch a local scientist. They are armed with torches, hayforks, shovels and 
+D:haypoles. They see no scientist, but you will do!
+
+# 328
 ############################
 ###### Level 18 (900') #####
 ############################
@@ -3122,10 +3170,10 @@ D:white-haired companion, in jacket and trousers of blue serge.
 D:As we came still nearer, this individual began to run to and 
 D:fro on the beach, making the most grotesque movements. 
 D:The man had pointed ears, covered with a fine brown fur!"
-D:The Island of Dr. Moreau by H. G. Wells 1896
+D:The Island of Dr Moreau by H. G. Wells 1896
 
 #add beasts as escorts
-N:333:Montgomery, Dr. Moreau's assistant 
+N:333:Montgomery, Dr Moreau's assistant
 G:p:g
 I:110:40d10:20:60:20
 W:18:3:0:400
@@ -3216,7 +3264,7 @@ S:BR_SOUN
 D:Large beating wings support this dazzling insect.  A loud buzzing noise 
 D:pervades the air.
 
-N:342:Hulking Automata - Type I
+N:342:Hulking Automaton - Type I
 G:a:W
 I:100:50d12:20:36:20
 W:19:2:0:115
@@ -3492,15 +3540,31 @@ D:It is a giant scorpion with a sharp stinger.
 
 N:367:Giant Croc-Man
 G:B:g
-I:100:50d20:5:60:4
-W:21:1:0:120
+I:100:50d20:85:60:4
+W:22:1:0:120
 B:HIT:HURT:10d8
 B:HIT:HURT:10d8
 F:DROP_90 | EVIL | BEASTMAN | COLD_BLOOD | BASH_DOOR | IM_POIS | FRIENDS
 D:This huge malformed being has a crocodile head, and lumbers towards you. 
 D:It looks extermely tough, and it's arms look big enough to crush rock.
 
-# 368-371
+N:368:Hulking Automaton - Type II
+G:a:W
+I:100:50d20:20:50:20
+W:22:2:0:115
+B:HIT:HURT:4d6
+B:HIT:HURT:4d6
+B:SHOCK:ELEC:8d2
+F:DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_4 | 
+S:HASTE | ARROW_3 | BO_ELEC | BO_FIRE | HEAL
+D:This is a large man-sized mound of pipes and gears. It moves like a 
+D:twitching worm towards you occasionally spouting steam, electricty, 
+D:or flame. You see smaller coin sized robots roaming over it's surface.
+
+# 369-371
 ############################
 ##### Level 23 (1150') #####
 ############################
@@ -3580,7 +3644,18 @@ D:This disgusting creature scurries towards you. He looks
 D:like a theif. A giant man sized ferret theif, but a theif
 D:nonetheless.
 
-# 377-381
+N:378:Steam Sphere
+G:C:w
+I:130:12d8:6:22:15
+W:23:1:0:72
+B:BUTT:HURT:6d2
+B:SHOCK:BLIND:1d8
+F:DROP_90 | BASH_DOOR | FRIENDS
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+D:A sphere flying though the air using bursts of steam moves
+D:towards you.
+
+# 379-381
 ############################
 ##### Level 24 (1200') #####
 ############################
@@ -3768,7 +3843,18 @@ D:This disgusting creature scurries towards you. He looks
 D:like a theif. A giant man sized ferret theif, but a theif
 D:nonetheless.
 
-# 395-400
+N:397:Lynch Mob Member
+G:t:v
+I:110:10d8:60:14:10
+W:17:1:0:40
+B:HIT:HURT:2d4
+B:HIT:HURT:2d8
+F:DROP_60 | HOSTILE | OPEN_DOOR | FRIENDS | RAND_25 | MULTIPLY 
+D:This group of angry villagers have mobilized themselves to hunt down and 
+D:lynch a local scientist. They are armed with torches, hayforks, shovels and 
+D:haypoles. They see no scientist, but you will do!
+
+# 398-400
 ############################
 ##### Level 26 (1300') #####
 ############################
@@ -3888,6 +3974,27 @@ D:The Howler Monkey is the loudest monkey and the
 D:perhaps the loudest land animal. This is par for the 
 D:course you suppose.
 
+N:410:The Marquis de la Tour
+G:p:r
+I:130:25d10:20:50:20
+W:23:4:0:350
+B:HIT:HURT:5d6
+F:UNIQUE | MALE | FORCE_MAXHP | DROP_2D2 | DROP_GOOD |
+F:SMART | WEIRD_MIND | REGENERATE | POWERFUL | OPEN_DOOR | 
+F:TAKE_ITEM | EVIL | IM_ACID | IM_FIRE | IM_ELEC | IM_COLD |
+F:IM_POIS | NO_SLEEP | NO_CONF 
+S:1_IN_2 | 
+S:ARROW_4 | HEAL | BLINK | TPORT
+D:Out of seemingly nowhere, a gentleman steps towards you.  
+D:He is wearing a fine suit covered by a dark cloak.  He 
+D:tips his top hat towards you.  "Good evening", he says 
+D:with a smile.  Suddenly, he pulls a shotgun from under 
+D:his cloak and points it towards you.  His form seems 
+D:to blur for a second and then resolidifies in the form 
+D:of a humanoid tiger: a Rakshasa!  "A good evening, 
+D:indeed" he growls, "A pity you will not live to enjoy it!".
+
+
 # 410-411
 ############################
 ##### Level 27 (1350') #####
@@ -3965,7 +4072,7 @@ D:An solider of the most exceptional skill in combat.
 N:417:Martian
 G:A:R
 I:110:20d10:10:72:30
-W:25:1:0:230
+W:27:1:0:230
 B:PUNCH:LOSE_STR:5d5
 B:PUNCH:LOSE_STR:5d5
 F:ALIEN | DROP_2D2 | DROP_GOOD | POWERFUL | REGENERATE | WEIRD_MIND |
@@ -3985,7 +4092,7 @@ D:mechanical structures according to their needs.
 N:418:Martian Walker
 G:A:r
 I:110:30d10:10:72:30
-W:25:1:0:280
+W:27:1:0:280
 B:HIT:HURT:7d5
 B:HIT:HURT:7d5
 B:GAZE:FIRE:2d3
@@ -4398,7 +4505,6 @@ S:ARROW_4
 D:A robed individual walks towards you threatening you with 
 D:his rifle. It looks like he knows hou to use it well.
 
-
 N:453:Victor Frankenstein's Monster
 G:C:g
 I:100:80d30:10:120:10
@@ -4414,7 +4520,7 @@ F:IM_ACID | IM_COLD | IM_POIS | IM_ELEC | RES_NETH |
 F:RES_WATE | RES_PLAS | RES_NEXU | RES_DISE | NO_FEAR |
 F:NO_STUN | NO_CONF | NO_SLEEP | 
 D:Mary Shelley wrote about Victor and his monster(1818). The book 
-D:Takes place on an expidition to the North Pole where Robert 
+D:takes place on an expidition to the North Pole where Robert 
 D:Walton wanted to visit "a part of the world never before visited, 
 D:and ...tread a land never before imprinted by the foot of man" 
 D:(Letters, I, 116). When he runs into Victor Frankenstein, and 
@@ -4426,10 +4532,29 @@ D:the monster approaches and demands an audience. Eloquent, and
 D:well educated, he demands tha Victor make him a bride to give 
 D:him a place in the world, or he will kill everyone that Victor 
 D:knows. Victor returns and attempts this, but is overcome with 
-D:guilt with evil that he has already commited, and cannot finish.
+D:guilt with evil that he has already commited, and cannot finish. 
 D:He destroys this new monstrosity, and flees to meet his fiance. 
 D:On his way he hears her dying scream as the monster kills her.
-# 453-457
+
+N:454:Hulking Automaton - Type III
+G:a:W
+I:100:80d20:20:60:20
+W:32:2:0:320
+B:HIT:HURT:6d10
+B:HIT:HURT:6d10
+B:SHOCK:ELEC:15d2
+F:DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_4 | 
+S:HASTE | ARROW_3 | BO_ELEC | BO_FIRE | HEAL
+D:This is a large horse-sized mound of pipes and gears. It flings itself 
+D:twitching and writhing towards you occasionally spouting steam, electricty, 
+D:or flame. You see smaller coin sized robots roaming over it's surface.
+
+
+# 455-457
+
 ############################
 ##### Level 32 (1600') #####
 ############################
@@ -4471,7 +4596,6 @@ S:HASTE | BLINK | TPORT | TELE_TO | TELE_AWAY | DARKNESS
 D:A robed individual walks towards you threatening you with the 
 D:powers of hacking the universe.
 
-
 N:461:Byakhee, the Star-Steeds
 G:u:y
 I:120:10d20:30:50:30
@@ -4487,7 +4611,28 @@ D:things. . . not altogether crows, nor moles, nor buzzards, nor ants,
 D:nor decomposed human beings, but something I cannot and must not 
 D:recall." - H.P. Lovecraft, "The Festival"
 
-# 461-467
+N:462:Enhanced Chicken
+G:k:w
+I:110:15d20:40:25:40
+W:32:1:0:50
+B:BITE:HURT:18d2
+F:FRIENDS | RAND_50 | HOSTILE | EMPTY_MIND | ANIMAL 
+D:This chicken is the size of an ostrich. The ground trembles as their 
+D:giant claws impact the ground. Their horrible clucking rings in your ears 
+D:as they mistake you for chicken feed.
+
+N:463:Bomb-Carrying Ornithopter Automaton - Type I
+G:a:D
+I:110:10d10:70:15:20
+W:32:1:0:35
+F:RAND_25 | DROP_90 | AURA_ELEC | 
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_4 |
+S:BA_FIRE 
+D:This looks like a small black bird flying towards you. Suddenly something 
+D:shoots out towards you! A bomb!
+
+# 463-467
 ############################
 ##### Level 33 (1650') #####
 ############################
@@ -4723,7 +4868,18 @@ S:1_IN_8 |
 S:BO_ELEC
 D:It is a towering tornado of winds.
 
-# 485-488
+N:486:Bomb-Carrying Ornithopter Automaton - Type II
+G:a:D
+I:110:15d10:60:20:25
+W:34:1:0:35
+F:RAND_25 | DROP_90 | AURA_ELEC | FRIENDS
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_4 |
+S:BA_FIRE 
+D:This looks like a small black bird flying towards you. Suddenly something 
+D:shoots out towards you! A bomb!
+
+# 487-488
 ############################
 ##### Level 35 (1750') #####
 ############################
@@ -4849,7 +5005,40 @@ F:BASH_DOOR |
 F:ANIMAL
 D:A massive elephantine form with eyes twisted by madness.
 
-# 497-500
+N:497:M-A Production Unit Mark XV
+G:a:v
+I:130:80d20:40:90:20
+W:35:4:0:3340
+B:SHOCK:HURT:12d6
+F:FORCE_MAXHP | UNIQUE | NEVER_MOVE 
+F:DROP_2D2 | DROP_2D2 | BASH_DOOR | KILL_WALL | KILL_BODY | MOVE_BODY | DROP_GOOD |
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_3 |
+S:S_KIN | SHRIEK
+D:A huge production unit sits in the middle of the floor. Well, it takes up most 
+D:of the floor. You see automata after automata being constructed and 
+D:rushing towards you.
+
+N:498:Dimensional Etheric Automaton - Type I
+G:a:B
+I:120:10d8:20:25:30
+W:35:1:0:150
+B:SHOCK:ELEC:2d2
+B:SHOCK:LOSE_INT
+B:SHOCK:LOSE_WIS
+B:SHOCK:TERRIFY:2d2
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+F:DROP_60 | SMART | AURA_COLD |
+S:1_IN_3 |
+S:SCARE | BR_CHAO | BR_NEXU | BO_NUKE
+D:A small spherical object floats in the air surrounded by a strange green glow. 
+D:Small luminscent wisps of green gas trail out from behind it, or less often 
+D:they trail from the direction it's about to move. Strange - It spins 
+D:and twirls randomly, and in the center you can see some kind of strange 
+D:etheric light. This automaton was built to access other dimensions. 
+D:You move forward with caution.
+
+# 499-500
 
 ############################
 ##### Level 36 (1800') #####
@@ -4923,7 +5112,6 @@ D:An enormous construct resembling a titan made from stone.  It strides
 D:purposefully towards you, swinging its slow fists with earth-shattering 
 D:power.
 
-
 N:505:Trapper
 G:.:w
 I:120:60d10:30:75:10
@@ -4972,6 +5160,21 @@ S:HASTE | TPORT | TELE_TO | BLIND | HOLD | SCARE | CAUSE_3 |
 S:BO_NETH | 
 S:S_UNDEAD
 D:A gaunt figure, clothed in black robes.
+
+N:508:Hulking Automaton - Type IV
+G:a:W
+I:100:100d20:20:60:20
+W:36:2:0:320
+B:HIT:HURT:12d10
+B:SHOCK:ELEC:15d2
+F:DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_4 | 
+S:HASTE | ARROW_3 | BO_ELEC | BO_FIRE | HEAL
+D:This is a gigantic mass mound of pipes and gears. It flings itself 
+D:twitching and writhing back and forth occasionally spouting steam, electricty, 
+D:or flame. You see smaller coin sized robots roaming over it's surface.
 
 # 508-520
 
@@ -5155,7 +5358,17 @@ S:BLIND | HOLD | SCARE | CAUSE_3 | BO_NETH
 D:A figure that seems made of void, its strangely human shape is cloaked in 
 D:shadow.  It reaches out at you.
 
-# 536-540
+N:536:Bomb-Carrying Ornithopter Automaton - Type III
+G:a:D
+I:110:20d12:50:30:30
+W:38:1:0:235
+F:RAND_25 | DROP_90 | AURA_ELEC 
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_4 |
+S:BA_FIRE 
+D:This looks like another of those damn birds, only larger than before. . . 
+
+# 537-540
 ############################
 ##### Level 39 (1950') #####
 ############################
@@ -5271,6 +5484,27 @@ F:BASH_DOOR |
 F:EVIL
 D:It is a cross between a human and a bull.
 
+N:556:Dimensional Etheric Automaton - Type II
+G:a:B
+I:120:20d10:10:45:40
+W:40:1:0:850
+B:SHOCK:ELEC:8d2
+B:SHOCK:LOSE_INT
+B:SHOCK:LOSE_WIS
+B:SHOCK:TERRIFY:8d2
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+F:DROP_60 | SMART | AURA_COLD |
+S:1_IN_3 |
+S:SCARE | BR_CHAO | BR_NEXU | BO_NUKE | S_AUTOMATA | 
+D:A spherical object floats in the air surrounded by a strange green glow. 
+D:Luminscent wisps of green gas trail out from behind it, or less often 
+D:they trail from the direction it's about to move. Strange - It spins 
+D:and twirls randomly, and in the center you can see some kind of strange 
+D:Powerful etheric light. This automaton was built to access other dimensions. 
+D:Even at this distance you can feel the power emanating from the dimensional 
+D:core. You move forward with extreme caution. 
+
+
 # 556 - 580
 ############################
 ##### Level 41 (2050') #####
@@ -5354,6 +5588,17 @@ F:BASH_DOOR |
 F:ANIMAL
 D:A massive elephantine form with eyes twisted by madness.
 
+N:602:Bomb-Carrying Ornithopter Automaton - Type IV
+G:a:D
+I:110:30d12:40:40:40
+W:43:1:0:335
+F:RAND_25 | DROP_90 | AURA_ELEC | FRIENDS |
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_4 |
+S:BA_FIRE 
+D:This looks like another of those damn birds, only larger than before and with 
+D:friends . . . 
+
 # 602-610
 ############################
 ##### Level 44 (2200') #####
@@ -5420,6 +5665,25 @@ D:little intelligence, but it has been instructed to destroy all it meets.
 ############################
 ##### Level 45 (2250') #####
 ############################
+N:621:Dimensional Etheric Automaton - Type III
+G:a:B
+I:120:40d20:5:65:50
+W:45:1:0:850
+B:SHOCK:ELEC:12d2
+B:SHOCK:LOSE_INT
+B:SHOCK:LOSE_WIS
+B:SHOCK:TERRIFY:12d2
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+F:DROP_60 | SMART | AURA_COLD |
+S:1_IN_3 |
+S:SCARE | BR_CHAO | BR_NEXU | BO_NUKE | S_AUTOMATA | S_KIN |
+D:A large spherical object floats in the air shedding a blinding green light. 
+D:Thick tendrils of green fog extend out from behind it, or less often 
+D:in the direction it's about to move. This automaton was built 
+D:to access other dimensions. The power emanating from the dimensional 
+D:core washes over you. You move forward with dread. 
+
+
 # 621-630
 ############################
 ##### Level 46 (2300') #####
@@ -5448,12 +5712,37 @@ D:evil surrounds it.  Luckily for you, it can't move.
 ############################
 ##### Level 48 (2400') #####
 ############################
-# 651-660
+N:651:Bomb-Carrying Ornithopter Automaton - Type V
+G:a:D
+I:110:40d12:20:60:50
+W:48:1:0:535
+F:RAND_25 | DROP_90 | AURA_ELEC | FRIENDS |
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_3 |
+S:BA_FIRE 
+D:This giant automaton flies towards you shooting bolts of flame. 
+# 652-660
 
 ############################
 ##### Level 49 (2450') #####
 ############################
-# 661-670
+N:661:Hulking Automaton - Type V
+G:a:W
+I:100:150d20:20:90:20
+W:49:2:0:1320
+B:HIT:HURT:48d5
+B:SHOCK:ELEC:30d2
+F:DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_4 | 
+S:HASTE | ARROW_3 | BO_ELEC | BO_FIRE | HEAL
+D:This is a mass mound of pipes and gears so large that you can't see past it. 
+D:The gears twitch and shift positions, and you can only assume the contraption 
+D:is moving towards you spouting steam, electricty, 
+D:and flame. You see smaller coin sized robots roaming over it's surface.
+
+# 662-670
 
 ############################
 ##### Level 50 (2500') #####
@@ -5713,14 +6002,14 @@ D: of the hells, capable of a terrifying berserk fury.
 N:735:Nyogtha, the Thing that Should not Be
 G:j:D
 I:130:55d99:20:120:20
-W:56:2:0:3000
+W:56:2:0:18000
 B:CRUSH:ACID:10d6
 B:CRUSH:COLD:10d6
 B:CRUSH:HURT:16d6
 F:UNIQUE |
 F:FORCE_SLEEP | FORCE_MAXHP | SMART |
 F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD | 
-F:REGENERATE | ONLY_ITEM | KILL_ITEM | DROP_2D2 | DROP_90 | DROP_60
+F:REGENERATE | ONLY_ITEM | KILL_ITEM | DROP_2D2 |
 F:BASH_DOOR | EVIL | NO_CONF | NO_SLEEP | KILL_BODY | DEMON |
 F:FORCE_MAXHP | FORCE_SLEEP | HURT_LITE | POWERFUL | RES_NETH | 
 F:IM_ACID | IM_FIRE | RES_PLAS | IM_POIS | IM_COLD | IM_ELEC 
@@ -5729,16 +6018,47 @@ S:BRAIN_SMASH | MIND_BLAST | HASTE | TPORT |
 S:S_UNDEAD | S_HI_UNDEAD | S_KIN |
 S:BR_DARK | BR_ACID | BR_POIS
 D:A nightmarish fetid, black irididescence oozing towards you.
-# 736-749
+# 736-740
 
 ############################
 ##### Level 57 (2850') #####
 ############################
-# 740-744
+N:741:Dimensional Etheric Automaton - Type IV
+G:a:B
+I:120:80d20:5:75:50
+W:57:1:0:2250
+B:SHOCK:ELEC:24d2
+B:SHOCK:LOSE_INT
+B:SHOCK:LOSE_WIS
+B:SHOCK:EXP_10:24d2
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+F:DROP_60 | SMART | AURA_COLD |
+S:1_IN_3 |
+S:SCARE | BR_CHAO | BR_NEXU | BO_NUKE | S_AUTOMATA | S_KIN | TELE_TO | S_MONSTER
+D:A huge spherical object spins causing a brilliant green light to 
+D:violently dance across the cave walls. This automaton was built 
+D:to access other dimensions. The power emanating from the dimensional 
+D:core washes over you. 
+
+# 742-744
 
 ############################
 ##### Level 58 (2900') #####
 ############################
+N:745:M-A Production Unit Mark XX
+G:a:v
+I:130:120d50:40:90:20
+W:58:4:0:22000
+B:SHOCK:HURT:24d12
+F:FORCE_MAXHP | UNIQUE | NEVER_MOVE 
+F:FRIEND | DROP_3D2 | DROP_3D2 | BASH_DOOR | KILL_WALL | KILL_BODY | MOVE_BODY | DROP_GOOD |
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+S:1_IN_3 |
+S:S_KIN | SHRIEK
+D:A huge production unit seems to grow out from the middle of the floor. 
+D:You see automata after automata comeing out of the machine in order 
+D:to protect it. You do hope these don't get much bigger.
+
 # 745-749
 
 ############################
@@ -5834,16 +6154,16 @@ B:HIT:HURT:4d12
 B:HIT:HURT:4d12
 B:HIT:POISON:6d14
 B:HIT:POISON:6d14
-F:FORCE_SLEEP | FORCE_MAXHP
-F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD
-F:SMART | BASH_DOOR | POWERFUL | NEVER_MOVE
+F:FORCE_SLEEP | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD |
+F:SMART | BASH_DOOR | POWERFUL | NEVER_MOVE | NEVER_BLOW | 
 F:EVIL | AUTOMATA | IM_POIS | NO_CONF | NO_SLEEP
-S:1_IN_4
-S:BLIND | CONF | SCARE
-S:BR_POIS
-D:A truly enormous dome with great powers.  The foul gases issuing
-D: from it nearly make you vomit; and while you may try to hold
-D: your breath as you fight it, it sees no reason to do likewise.
+S:1_IN_1 |
+S:BLIND | CONF | SCARE |
+S:BR_POIS | BR_ACID | BO_POIS | BO_WATE 
+D:A truly enormous dome with great powers.  The foul gases issuing 
+D:from it nearly make you vomit; and while you may try to hold 
+D:your breath as you fight it, it sees no reason to do likewise. 
 
 N:771:Great Dome of Perplexity
 G:C:U
@@ -5853,16 +6173,16 @@ B:HIT:HURT:4d12
 B:HIT:HURT:4d12
 B:HIT:CONFUSE:6d14
 B:HIT:CONFUSE:6d14
-F:FORCE_SLEEP | FORCE_MAXHP
-F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD
-F:SMART | BASH_DOOR | POWERFUL | NEVER_MOVE
-F:EVIL | AUTOMATA | NO_CONF | NO_SLEEP
-S:1_IN_4
-S:BLIND | CONF | SCARE
-S:BR_CONF
-D:A dragon of great size and power.  Its polished bronze scales reflect the
-D: light in strange and confusing patterns, and you find it hard to keep your
-D: mind on the job of fighting for your life.
+F:FORCE_SLEEP | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD |
+F:SMART | BASH_DOOR | POWERFUL | NEVER_MOVE | NEVER_BLOW |
+F:EVIL | AUTOMATA | NO_CONF | NO_SLEEP 
+S:1_IN_1 |
+S:BLIND | CONF | SCARE |
+S:BR_CONF | DRAIN_MANA | MIND_BLAST | BRAIN_SMASH | BR_CHAO | BR_SOUN 
+D:A dome of great size and power.  Its polished bronze scales reflect the 
+D:light in strange and confusing patterns, and you find it hard to keep your 
+D:mind on the job of fighting for your life. 
 
 # 770-774
 
@@ -5948,15 +6268,15 @@ B:HIT:HURT:4d12
 B:HIT:ACID:6d14
 B:HIT:ACID:6d14
 F:FORCE_SLEEP | FORCE_MAXHP
-F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD
-F:BASH_DOOR | POWERFUL | NEVER_MOVE
-F:EVIL | AUTOMATA | IM_ACID | NO_CONF | NO_SLEEP
-S:1_IN_4
-S:BLIND | CONF | SCARE
-S:BR_ACID
-D:A huge dome with great steaming pools of acid dripping from
-D: its form onto the ground.  You shudder when you see the acid eating away
-D: the very stones of the dungeon - what could it do to you?
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD |
+F:BASH_DOOR | POWERFUL | NEVER_MOVE |
+F:EVIL | AUTOMATA | IM_ACID | NO_CONF | NO_SLEEP |
+S:1_IN_1
+S:BLIND | CONF | SCARE |
+S:BR_ACID 
+D:A huge dome with great steaming pools of acid dripping from 
+D:its form onto the ground.  You shudder when you see the acid eating away 
+D:the very stones of the dungeon - what could it do to you? 
 
 N:791:Great Etheric Dome of Thunder
 G:C:y
@@ -5966,16 +6286,16 @@ B:HIT:HURT:4d12
 B:HIT:HURT:4d12
 B:HIT:HURT:6d14
 B:HIT:HURT:6d14
-F:FORCE_SLEEP | FORCE_MAXHP
-F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD
-F:BASH_DOOR | POWERFUL | NEVER_MOVE
-F:EVIL | AUTOMATA | NO_CONF | NO_SLEEP
-S:1_IN_4
-S:BLIND | CONF | SCARE
+F:FORCE_SLEEP | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD |
+F:BASH_DOOR | POWERFUL | NEVER_MOVE |
+F:EVIL | AUTOMATA | NO_CONF | NO_SLEEP |
+S:1_IN_1
+S:BLIND | CONF | SCARE |
 S:BR_SOUN
-D:A dome of gigantic proportions, with destructive abilities to match.  The
-D: sheer loudness of its roar leaves you stunned and unable to think clearly
-D: enough to defend yourself adequately.
+D:A dome of gigantic proportions, with destructive abilities to match.  The 
+D:sheer loudness of its roar leaves you stunned and unable to think clearly 
+D:enough to defend yourself adequately. 
 
 N:792:Volcanic Hell-Man
 G:B:r
@@ -5985,12 +6305,12 @@ B:CLAW:HURT:4d12
 B:CLAW:HURT:4d12
 B:BITE:FIRE:6d14
 B:BITE:FIRE:6d14
-F:FORCE_SLEEP | FORCE_MAXHP
-F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD
-F:SMART | BASH_DOOR | POWERFUL | MOVE_BODY
-F:EVIL | BEASTMAN | IM_FIRE | NO_CONF | NO_SLEEP
-S:1_IN_4
-S:BLIND | CONF | SCARE
+F:FORCE_SLEEP | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD |
+F:SMART | BASH_DOOR | POWERFUL | MOVE_BODY |
+F:EVIL | BEASTMAN | IM_FIRE | NO_CONF | NO_SLEEP |
+S:1_IN_4 |
+S:BLIND | CONF | SCARE |
 S:BR_FIRE
 D:This abomination has had one of the most powerful elements 
 D:fused into his system. The ultimate experiment in changing human 
@@ -6285,6 +6605,23 @@ D:Appearing as a giant, clawed and winged humanoid with a scaly red body
 D: and massive fangs dripping a foul green liquid, the Pit Fiend is a
 D: dreadful enemy from the lowest depths of the hells. They are often the
 D: commanders of vast demon armies.
+
+N:835:Dimensional Etheric Automaton - Type V
+G:a:B
+I:120:100d20:5:95:60
+W:57:1:0:8250
+B:SHOCK:ELEC:48d2
+B:SHOCK:LOSE_INT
+B:SHOCK:LOSE_WIS
+B:SHOCK:EXP_10:48d2
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+F:DROP_60 | SMART | AURA_COLD |
+S:1_IN_3 |
+S:SCARE | BR_CHAO | BR_NEXU | BO_NUKE | S_AUTOMATA | S_KIN | TELE_TO | S_MONSTERS
+D:A huge spherical object spins causing a brilliant green light to 
+D:violently dance across the cave walls. This automaton was built 
+D:to access other dimensions. The power emanating from the dimensional 
+D:core washes over you. 
 
 # 834-837
 
@@ -6642,7 +6979,7 @@ S:1_IN_2 |
 S:MIND_BLAST | BA_POIS | BR_CONF | BR_CHAO | SCARE | BLIND | CONF | SLOW |
 S:HOLD | HASTE | HEAL | TPORT | TELE_AWAY | DARKNESS | TRAPS | FORGET |
 S:S_MONSTERS
-D:The evil Dr. Moriarty, nemesis of the legendary Sherlock Holmes stands
+D:The evil Dr. Moriarty, nemesis of the legendary Sherlock Holmes stands 
 D:before you.
 # 889-890 Unused
 
@@ -6743,6 +7080,22 @@ D:exhibit. Kong escapes his captors in New York and is killed atop
 D:the Empire State Building. 1933 King Kong by Merian C. Cooper and 
 D:Ernest B. Schoedsack
 
+N:898:The Babbage Analytical Engine - Final Model
+I:140:100d130:2:130:30
+W:98:1:0:50000
+F:UNIQUE | FORCE_MAXHP | NEVER_BLOW | NEVER_MOVE | DROP_4D2 | DROP_3D2 |
+F:DROP_2D2 | DROP_GOOD | DROP_GREAT | SMART | REGENERATE | 
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
+F:POWERFUL | AURA_ELEC | IM_FIRE | IM_ELEC | IM_COLD | RES_NETH | RES_WATE |
+F:RES_NEXU | RES_DISE |
+S:1_IN_1 |
+S:SHRIEK | S_KIN | TELE_AWAY | BO_ELEC | BO_FIRE 
+D:Charles Babbage must have gone on to create this henious monster after 
+D:the creation of his useful difference engine. This must be the source of 
+D:all the automata that you have been destorying. You are sure that if 
+D:you destory this monstrocity that it will end the terrible mechanical scourge 
+D:That is much eaiser said than done as you see a steady stream of automata appearing 
+D:and moving towards you in an attempt to protect their master. 
 # 898-899 Unused
 
 ############################

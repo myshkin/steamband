@@ -113,6 +113,21 @@ static cptr desc_moan[MAX_DESC_MOAN] =
 };
 
 
+#define MAX_DESC_SPEAK 3
+
+
+/*
+ * Hack -- possible "insult" messages
+ */
+static cptr desc_speak[MAX_DESC_SPEAK] =
+{
+	"Oh dear! Oh dear! I shall be late!",
+	"Oh my ears and whiskers, how late it's getting!",
+	"I'm late, I'm late, I'm really, really late!"	
+};
+
+
+
 /*
  * Attack the player via physical attacks.
  */
@@ -425,9 +440,9 @@ bool make_attack_normal(int m_idx)
 					break;
 				}
 
-				case RBM_XXX5:
-				{
-					act = "XXX5's you.";
+				case RBM_SPEAK:
+				{	
+					act = desc_speak[rand_int(MAX_DESC_SPEAK)];
 					break;
 				}
 			}
@@ -1226,75 +1241,77 @@ bool make_attack_normal(int m_idx)
 			{
 				if (p_ptr->sh_fire && !(p_ptr->leaving))
 				{
-					if (!(r_ptr->flags3 & RF3_IM_FIRE))
+					if (m_ptr->ml)
 					{
-						if(r_ptr->flags3 & RF3_HURT_FIRE)
+						if (!(r_ptr->flags3 & RF3_IM_FIRE))
 						{
-							msg_format("%^s is suddenly extremely hot!", m_name);
-							if (mon_take_hit(m_idx, damroll(6,5), &fear,
-							    " turns into a tiny pile of ash."))
+							if(r_ptr->flags3 & RF3_HURT_FIRE)
 							{
-								blinked = FALSE;
-							}
+								msg_format("%^s is suddenly extremely hot!", m_name);
+								mon_take_hit(m_idx, damroll(6,5), &fear,
+								" turns into a tiny pile of ash.");
 								if (m_ptr->ml)
 								{
 									r_ptr->flags3 |= RF3_HURT_FIRE;
 								}
+							}
+							else
+							{
+								msg_format("%^s is suddenly very hot!", m_name);
+								mon_take_hit(m_idx, damroll(4,5), &fear,
+								" turns into a pile of ash.");
+							}
+							if (!(m_ptr->hp > 0)) break;
 						}
 						else
 						{
-							msg_format("%^s is suddenly very hot!", m_name);
-							if (mon_take_hit(m_idx, damroll(4,5), &fear,
-							    " turns into a pile of ash."))
+							if (m_ptr->ml)
 							{
-								blinked = FALSE;
+								r_ptr->flags3 |= RF3_IM_FIRE;
 							}
-						}
-					}
-					else
-					{
-						if (m_ptr->ml)
-						{
-							r_ptr->flags3 |= RF3_IM_FIRE;
 						}
 					}
 				}
 
 				if (p_ptr->sh_elec && !(p_ptr->leaving))
 				{
-					if (!(r_ptr->flags3 & RF3_IM_ELEC))
+					if (m_ptr->ml)
 					{
-						msg_format("%^s gets zapped!", m_name);
-						if (mon_take_hit(m_idx, damroll(4,5), &fear,
-						    " turns into a pile of cinder."))
+						if (!(r_ptr->flags3 & RF3_IM_ELEC))
 						{
-							blinked = FALSE;
+							msg_format("%^s gets zapped!", m_name);
+							mon_take_hit(m_idx, damroll(4,5), &fear,
+							" turns into a pile of cinder.");
+							if (!(m_ptr->hp > 0)) break;
 						}
-					}
-					else
-					{
-						if (m_ptr->ml)
+						else
 						{
-							r_ptr->flags3 |= RF3_IM_ELEC;
+							if (m_ptr->ml)
+							{
+								r_ptr->flags3 |= RF3_IM_ELEC;
+							}
 						}
 					}
 				}
 
 				if (p_ptr->sh_spine && !(p_ptr->leaving))
 				{
-					if (!(r_ptr->flags3 & RF3_NO_STUN))
+					if (m_ptr->ml)
 					{
-						msg_format("%^s is pierced!", m_name);
-						if (mon_take_hit(m_idx, damroll(4,5), &fear,
-							 " crumples lifelessly to the ground."))
+						if (!(r_ptr->flags3 & RF3_NO_STUN))
 						{
-							blinked = FALSE;
+							msg_format("%^s is pierced!", m_name);
+							mon_take_hit(m_idx, damroll(4,5), &fear,
+							" crumples lifelessly to the ground.");
+							if (!(m_ptr->hp > 0)) break;
 						}
-					}
-					else
-					{
-						if (m_ptr->ml)
-							r_ptr->flags3 |= RF3_NO_STUN;
+						else
+						{
+							if (m_ptr->ml)
+							{
+								r_ptr->flags3 |= RF3_NO_STUN;
+							}
+						}
 					}
 				}
 

@@ -2358,7 +2358,7 @@ static void cmd_racial_power_aux(s32b command)
 			
 		case RACE_RAKSHASA:
 			if (command == -1)
-				if (racial_aux(1, 2, A_WIS, 10))
+				if (racial_aux(1, 2, A_CHR, 10))
 				{
 					/* Fear + Confusion*/
 					if (!get_aim_dir(&dir)) return; 
@@ -2366,7 +2366,7 @@ static void cmd_racial_power_aux(s32b command)
 					(void)confuse_monster(dir, plev);
 				}
 			if (command == -2)
-				if (racial_aux(15, 20, A_WIS, 30))
+				if (racial_aux(15, 20, A_CON, 30))
 				{
 					/* Chaos Sphere */
 					msg_print ("A wave of dark chaotic forces blasts out from your spirit!");
@@ -2375,7 +2375,7 @@ static void cmd_racial_power_aux(s32b command)
 							  PROJECT_KILL | PROJECT_ITEM | PROJECT_GRID);
 				}
 			if (command == -3)
-				if (racial_aux(30, 40, A_WIS, 50))
+				if (racial_aux(30, 40, A_CHR, 50))
 				{
 					/* Dark Charm */
 					if (!get_aim_dir(&dir)) return; 
@@ -2467,7 +2467,6 @@ void do_cmd_racial_power(void)
 {
 	power_desc_type power_desc[36];
 	int             num, ask, i = 0;
-	int             lvl = p_ptr->lev;
 	bool            flag, redraw;
 	bool            has_racial = FALSE;
 	char            choice;
@@ -2572,7 +2571,7 @@ void do_cmd_racial_power(void)
 			power_desc[2].cost = 25;
 			power_desc[2].fail = 100 - racial_chance(20, A_STR, 35);
 			power_desc[2].number = -3;			
-			strcpy(power_desc[3].name, "High Yeild Explosive Devestation");
+			strcpy(power_desc[3].name, "High Yeild Devestation");
 			power_desc[3].level = 40;
 			power_desc[3].cost = 50;
 			power_desc[3].fail = 100 - racial_chance(40, A_CON, 50);
@@ -3266,10 +3265,10 @@ void process_mutations(void)
 	}
 
 	if ((p_ptr->muta3 & MUT3_WRAITH) && 
-	    !rand_int(3000) && !p_ptr->wraith_form)
+	    !rand_int(3000) && !p_ptr->tim_wraith)
 	{
 		if (disturb_minor) disturb(0, 0);
-		set_shadow(p_ptr->wraith_form + p_ptr->lev);
+		set_shadow(p_ptr->tim_wraith + p_ptr->lev);
 	}
 
 	if ((p_ptr->muta3 & MUT3_POLY_WOUND) && !rand_int(3000))

@@ -1760,8 +1760,8 @@ void do_cmd_alter(void)
 	if (!get_rep_dir(&dir)) return;
 
 	/* Get location */
-	y = p_ptr->py + ddy[dir];
-	x = p_ptr->px + ddx[dir];
+	y = py + ddy[dir];
+	x = px + ddx[dir];
 
 
 	/* Original feature */
@@ -1778,8 +1778,8 @@ void do_cmd_alter(void)
 	if (confuse_dir(&dir))
 	{
 		/* Get location */
-		y = p_ptr->py + ddy[dir];
-		x = p_ptr->px + ddx[dir];
+		y = py + ddy[dir];
+		x = px + ddx[dir];
 	}
 
 
@@ -2012,7 +2012,7 @@ static bool do_cmd_walk_test(int y, int x)
 	if (!(cave_info[y][x] & (CAVE_MARK))) return (TRUE);
 
 	/* Require open space */
-	if ((!cave_floor_bold(y, x)) && (!p_ptr->prace == RACE_GHOST) && (!p_ptr->wraith_form))
+	if ((!cave_floor_bold(y, x)) && (!p_ptr->tim_wraith) && (!p_ptr->wraith_form))
 	{
 		/* Rubble */
 		if (cave_feat[y][x] == FEAT_RUBBLE)

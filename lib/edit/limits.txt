@@ -11,17 +11,17 @@
 
 # Version stamp (required)
 
-V:0.2.1
+V:0.2.2
 
 
 # Maximum number of feature types
 M:F:64
 
 # Maximum number of object kinds
-M:K:600
+M:K:1024
 
 # Maximum number of artifacts
-M:A:206
+M:A:256
 
 # Maximum number of ego-item types
 M:E:1131
@@ -60,5 +60,5 @@ M:N:20480
 
 # Size of the "fake" array for reading in the descriptions of monsters,
 # vaults, and the player-histories
-M:T:61440
+M:T:161440
 

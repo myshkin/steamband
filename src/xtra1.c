@@ -1783,6 +1783,7 @@ static void calc_bonuses(void)
 	p_ptr->aggravate = FALSE;
 	p_ptr->teleport = FALSE;
 	p_ptr->exp_drain = FALSE;
+	p_ptr->wraith_form = FALSE;
 	p_ptr->bless_blade = FALSE;
 	p_ptr->impact = FALSE;
 	p_ptr->see_inv = FALSE;
@@ -1877,6 +1878,7 @@ static void calc_bonuses(void)
 
 	/* Weird flags */
 	if (f3 & (TR3_BLESSED)) p_ptr->bless_blade = TRUE;
+	if (f3 & (TR3_WRAITH)) p_ptr->wraith_form = TRUE;
 
 	/* Bad flags */
 	if (f3 & (TR3_IMPACT)) p_ptr->impact = TRUE;
@@ -1983,11 +1985,11 @@ static void calc_bonuses(void)
 		if (f3 & (TR3_SH_FIRE)) p_ptr->sh_fire = TRUE;
 		if (f3 & (TR3_SH_ELEC)) p_ptr->sh_elec = TRUE;
 		if (f3 & (TR3_SPINES)) p_ptr->sh_spine = TRUE;
-		if (f3 & (TR3_WRAITH)) p_ptr->wraith_form = MAX(p_ptr->wraith_form, 20);
 
 
 		/* Weird flags */
 		if (f3 & (TR3_BLESSED)) p_ptr->bless_blade = TRUE;
+		if (f3 & (TR3_WRAITH)) p_ptr->wraith_form = TRUE;
 
 		/* Bad flags */
 		if (f3 & (TR3_IMPACT)) p_ptr->impact = TRUE;
@@ -2179,6 +2181,12 @@ static void calc_bonuses(void)
 	if (p_ptr->tim_invis)
 	{
 		p_ptr->see_inv = TRUE;
+	}
+	
+	if (p_ptr->tim_wraith)
+	{
+		p_ptr->to_a += 50;
+		p_ptr->dis_to_a += 50;
 	}
 
 	/* Temporary infravision boost */

@@ -274,10 +274,12 @@ static const byte convert_owner[24] =
 /*
  * Analyze pre-2.7.4 inventory slots
  */
+/*
 static s16b convert_slot(int old)
 {
+*/
 	/* Move slots */
-	switch (old)
+/*	switch (old)
 	{
 		case OLD_INVEN_WIELD: return (INVEN_WIELD);
 		case OLD_INVEN_HEAD: return (INVEN_HEAD);
@@ -290,15 +292,15 @@ static s16b convert_slot(int old)
 		case OLD_INVEN_FEET: return (INVEN_FEET);
 		case OLD_INVEN_OUTER: return (INVEN_OUTER);
 		case OLD_INVEN_LITE: return (INVEN_LITE);
-
+*/
 		/* Hack -- "hold" old aux items */
-		case OLD_INVEN_AUX: return (INVEN_WIELD - 1);
+/*		case OLD_INVEN_AUX: return (INVEN_WIELD - 1);
 	}
-
+*/
 	/* Default */
-	return (old);
+/*	return (old);
 }
-
+*/
 
 
 
@@ -1426,8 +1428,8 @@ static errr rd_extra(void)
 	rd_s16b(&p_ptr->oppose_acid);
 	rd_s16b(&p_ptr->oppose_elec);
 	rd_s16b(&p_ptr->oppose_pois);
+	rd_s16b(&p_ptr->tim_wraith);
 	rd_s16b(&p_ptr->tim_esp);
-	rd_s16b(&p_ptr->wraith_form);
 	rd_byte(&p_ptr->confusing);
 	rd_byte(&tmp8u);	/* oops */
 	rd_byte(&tmp8u);	/* oops */

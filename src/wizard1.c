@@ -2157,7 +2157,7 @@ static void spoil_mon_info(cptr fname)
 				case RBM_BEG:	p = "beg"; break;
 				case RBM_INSULT:	p = "insult"; break;
 				case RBM_MOAN:	p = "moan"; break;
-				case RBM_XXX5:	break;
+				case RBM_SPEAK:	p = "speak"; break;
 			}
 
 

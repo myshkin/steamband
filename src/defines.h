@@ -47,7 +47,7 @@
 /*
  * Current version string
  */
-#define VERSION_STRING	"0.2.1"
+#define VERSION_STRING	"0.2.2"
 
 
 /*
@@ -55,7 +55,7 @@
  */
 #define VERSION_MAJOR	0
 #define VERSION_MINOR	2
-#define VERSION_PATCH	1
+#define VERSION_PATCH	2
 #define VERSION_EXTRA	0
 
 
@@ -76,7 +76,6 @@
  * Probably hard-coded to 11, see "generate.c"
  */
 #define BLOCK_WID	11
-
 
 /*
  * Number of grids in each panel (vertically)
@@ -160,6 +159,10 @@
  */
 #define MAX_Q_IDX	4
 
+/*
+ * Hack -- Tab Columns for util.c
+ */
+#define TAB_COLUMNS   8
 
 /* Mutations */
 
@@ -491,6 +494,11 @@
 #define PET_AWAY_DIST				(-25)
 
 
+/*
+ * Speaking monster constants -CCC
+ */
+
+#define WHITE_RABBIT 			33
 
 /*
  * There is a 1/20 (5%) chance of inflating the requested object_level
@@ -511,7 +519,7 @@
  * during the creation of a monsters (see "get_mon_num()" in "monster.c").
  * Lower values yield harder monsters more often.
  */
-#define NASTY_MON	50		/* 1/chance of inflated monster level */
+#define NASTY_MON	45		/* 1/chance of inflated monster level */
 
 
 
@@ -531,24 +539,24 @@
 
 
 /*
- * There is a 1/160 chance per round of creating a new monster
+ * There is a 1/100 chance per round of creating a new monster
  */
-#define MAX_M_ALLOC_CHANCE	160
+#define MAX_M_ALLOC_CHANCE	100
 
 /*
  * Normal levels get at least 14 monsters
  */
-#define MIN_M_ALLOC_LEVEL	14
+#define MIN_M_ALLOC_LEVEL	20
 
 /*
  * The town starts out with 4 residents during the day
  */
-#define MIN_M_ALLOC_TD		4
+#define MIN_M_ALLOC_TD		2
 
 /*
  * The town starts out with 8 residents during the night
  */
-#define MIN_M_ALLOC_TN		8
+#define MIN_M_ALLOC_TN		4
 
 
 /*
@@ -1271,8 +1279,8 @@
 #define ART_MATERIALISMUS 		8
 #define ART_EDISON				9
 #define ART_TESLA_RING			10
-/*#define ART_NENYA				11
- *#define ART_VILYA				12
+#define ART_FIELD_GENERATION	11
+/*#define ART_VILYA				12
  *#define ART_POWER				13
  */
 
@@ -1285,6 +1293,11 @@
 #define ART_EDISON_SUIT 		21
 #define ART_TESLA_WAISTCOAT		22
 #define ART_FANTOMAS_VEST		23
+#define ART_LES_HABITS_NOIRS	24
+#define ART_COAL_SUIT_PHOSPHO	25
+#define ART_COAL_SUIT_ARTICA	26
+#define ART_COAL_SUIT_VOLTICA	27
+#define ART_COAL_SUIT_ANEMO		28
 
 /* Shields */
 /*#define ART_THORIN			30
@@ -1315,10 +1328,17 @@
 /* Gloves */
 #define ART_EDISON_GLOVES		95
 #define ART_TESLA_GLOVES		96
+#define ART_FOGG_SILK_GLOVES	97
+#define ART_SHADOW_GLOVES		98
+#define ART_GEOPHONIC_GLOVES	99
 
 /* Boots */
 #define ART_EDISON_BOOTS	   110
 #define ART_TESLA_BOOTS		   111
+#define ART_AREOSCOPE_TOE	   112
+#define ART_HYDROSCOPE_TOE	   113
+#define ART_PYROSCOPE_TOE	   114
+#define ART_SEISMOSCOPE_TOE	   115
 
 /* Weapons */
 #define ART_AXEL			   125
@@ -1630,7 +1650,7 @@
 #define SV_GLAIVE				13	/* 2d6 */
 #define SV_HALBERD				15	/* 3d4 */
 #define SV_SCYTHE				17	/* 5d3 */
-#define SV_PNEUMATIC_AXE 		20 	/*	   */	
+#define SV_PNEUMATIC_AXE 		20 	/* 3d8 */	
 #define SV_BATTLE_AXE			22	/* 2d8 */
 #define SV_GREAT_AXE			25	/* 4d4 */
 /* xxx Old Lochaber Axe xxx 	28		   */
@@ -1643,12 +1663,12 @@
 #define SV_MAIN_GAUCHE			5	/* 1d5 */
 #define SV_RAPIER				7	/* 1d6 */
 #define SV_SMALL_SWORD			8	/* 1d6 */
-#define SV_BILLY_CLUB			9
+#define SV_BILLY_CLUB			9	/* 1d3 */
 #define SV_SHORT_SWORD			10	/* 1d7 */
 #define SV_SABRE				11	/* 1d7 */
 #define SV_CUTLASS				12	/* 1d7 */
-#define SV_CANE_WSTICK			13
-#define SV_CANE_BLACK			14
+#define SV_CANE_WSTICK			13	/* 1d3 */
+#define SV_CANE_BLACK			14	/* 1d3 */
 #define SV_CANE					15	/* 2d4 */
 #define SV_BROAD_SWORD			16	/* 2d5 */
 #define SV_LONG_SWORD			17	/* 2d5 */
@@ -1672,6 +1692,7 @@
 #define SV_MASK					1
 #define SV_HARD_LEATHER_CAP		2
 #define SV_METAL_CAP			3
+#define SV_FEZ					4
 #define SV_WOOLEN_BEANIE		5 
 #define SV_TOP_HAT				6
 #define SV_DEERSTALKER			7
@@ -1696,6 +1717,8 @@
 /* The "sval" codes for TV_GLOVES */
 #define SV_SET_OF_LEATHER_GLOVES	1
 #define SV_SET_OF_SILK_GLOVES	    2
+#define SV_SET_OF_GLOVES			3
+#define SV_SET_OF_WORK_GLOVES		4
 #define SV_SET_OF_CESTI				5
 
 /* The "sval" codes for TV_SOFT_ARMOR */
@@ -1720,6 +1743,7 @@
 #define SV_PROFESSIONAL				8
 #define SV_CLAY_WORSTED				10
 #define SV_VICUNA_CHEVIOT			12
+#define SV_COAL_SUIT				16
 #define SV_PRINCE_ALBERT			20
 
 /* The "sval" codes for TV_DRAG_ARMOR */
@@ -1760,44 +1784,44 @@
 #define SV_AMULET_NEMO			12
 
 /* The sval codes for TV_RING */
-#define SV_RING_WOE				0
-#define SV_RING_AGGRAVATION		1
-#define SV_RING_WEAKNESS		2
-#define SV_RING_STUPIDITY		3
-#define SV_RING_TELEPORTATION	4
+#define SV_RING_WOE					0
+#define SV_RING_AGGRAVATION			1
+#define SV_RING_WEAKNESS			2
+#define SV_RING_STUPIDITY			3
+#define SV_RING_TELEPORTATION		4
 /* xxx */
-#define SV_RING_SLOW_DIGESTION	6
-#define SV_RING_FEATHER_FALL	7
-#define SV_RING_RESIST_FIRE		8
-#define SV_RING_RESIST_COLD		9
-#define SV_RING_SUSTAIN_STR		10
-#define SV_RING_SUSTAIN_INT		11
-#define SV_RING_SUSTAIN_WIS		12
-#define SV_RING_SUSTAIN_DEX		13
-#define SV_RING_SUSTAIN_CON		14
-#define SV_RING_SUSTAIN_CHR		15
-#define SV_RING_PROTECTION		16
-#define SV_RING_ACID			17
-#define SV_RING_FLAMES			18
-#define SV_RING_ICE				19
-#define SV_RING_RESIST_POIS		20
-#define SV_RING_FREE_ACTION		21
-#define SV_RING_SEE_INVIS		22
-#define SV_RING_SEARCHING		23
-#define SV_RING_STR				24
-#define SV_RING_INT				25
-#define SV_RING_DEX				26
-#define SV_RING_CON				27
-#define SV_RING_ACCURACY		28
-#define SV_RING_DAMAGE			29
-#define SV_RING_SLAYING			30
-#define SV_RING_SPEED			31
-#define SV_MATERIALISMUS 		32
-#define SV_EDISON				33
-#define SV_TESLA_RING			34
-/*#define SV_RING_NENYA			35
- *#define SV_RING_VILYA			36
- *#define SV_RING_POWER			37
+#define SV_RING_SLOW_DIGESTION		6
+#define SV_RING_FEATHER_FALL		7
+#define SV_RING_RESIST_FIRE			8
+#define SV_RING_RESIST_COLD			9
+#define SV_RING_SUSTAIN_STR			10
+#define SV_RING_SUSTAIN_INT			11
+#define SV_RING_SUSTAIN_WIS			12
+#define SV_RING_SUSTAIN_DEX			13
+#define SV_RING_SUSTAIN_CON			14
+#define SV_RING_SUSTAIN_CHR			15
+#define SV_RING_PROTECTION			16
+#define SV_RING_ACID				17
+#define SV_RING_FLAMES				18
+#define SV_RING_ICE					19
+#define SV_RING_RESIST_POIS			20
+#define SV_RING_FREE_ACTION			21
+#define SV_RING_SEE_INVIS			22
+#define SV_RING_SEARCHING			23
+#define SV_RING_STR					24
+#define SV_RING_INT					25
+#define SV_RING_DEX					26
+#define SV_RING_CON					27
+#define SV_RING_ACCURACY			28
+#define SV_RING_DAMAGE				29
+#define SV_RING_SLAYING				30
+#define SV_RING_SPEED				31
+#define SV_MATERIALISMUS 			32
+#define SV_EDISON					33
+#define SV_TESLA_RING				34
+#define SV_RING_FIELD_GENERATION	35
+/*#define SV_RING_VILYA				36
+ *#define SV_RING_POWER				37
  */
  
 /* The "sval" codes for TV_MECHA_TORSO Tval 46 */
@@ -2147,7 +2171,7 @@
 #define RBM_BEG		21
 #define RBM_INSULT	22
 #define RBM_MOAN	23
-#define RBM_XXX5	24
+#define RBM_SPEAK	24
 
 
 /*

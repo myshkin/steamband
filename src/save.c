@@ -1099,8 +1099,8 @@ static void wr_extra(void)
 	wr_s16b(p_ptr->oppose_acid);
 	wr_s16b(p_ptr->oppose_elec);
 	wr_s16b(p_ptr->oppose_pois);
+	wr_s16b(p_ptr->tim_wraith);
 	wr_s16b(p_ptr->tim_esp);
-	wr_s16b(p_ptr->wraith_form);
 	wr_byte(p_ptr->confusing);
 	wr_byte(0);	/* oops */
 	wr_byte(0);	/* oops */

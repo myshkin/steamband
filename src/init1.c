@@ -78,7 +78,7 @@ static cptr r_info_blow_method[] =
 	"BEG",
 	"INSULT",
 	"MOAN",
-	"XXX5",
+	"SPEAK",
 	NULL
 };
 
@@ -750,6 +750,7 @@ static u32b add_name(header *head, cptr buf)
 
 /*
  * Initialize the "z_info" structure, by parsing an ascii "template" file
+ * This is the limits info array
  */
 errr parse_z_info(char *buf, header *head)
 {
@@ -943,7 +944,8 @@ errr parse_z_info(char *buf, header *head)
 
 
 /*
- * Initialize the "v_info" array, by parsing an ascii "template" file
+ * Initialize the "v_info" array, by parsing an ascii "template" file 
+ * This is the Vault Information array CCC
  */
 errr parse_v_info(char *buf, header *head)
 {
@@ -1036,6 +1038,7 @@ errr parse_v_info(char *buf, header *head)
 
 /*
  * Initialize the "f_info" array, by parsing an ascii "template" file
+ * This is the terrain info array (where the hell did they get f_info?)
  */
 errr parse_f_info(char *buf, header *head)
 {
@@ -1181,6 +1184,7 @@ static errr grab_one_kind_flag(object_kind *k_ptr, cptr what)
 
 /*
  * Initialize the "k_info" array, by parsing an ascii "template" file
+ * This is the object info array
  */
 errr parse_k_info(char *buf, header *head)
 {
@@ -1435,6 +1439,7 @@ static errr grab_one_activation(artifact_type *a_ptr, cptr what)
 
 /*
  * Initialize the "a_info" array, by parsing an ascii "template" file
+ * This is the artifact info array 
  */
 errr parse_a_info(char *buf, header *head)
 {
@@ -1637,6 +1642,7 @@ static bool grab_one_ego_item_flag(ego_item_type *e_ptr, cptr what)
 
 /*
  * Initialize the "e_info" array, by parsing an ascii "template" file
+ * This is the ego item info array 
  */
 errr parse_e_info(char *buf, header *head)
 {
@@ -1856,6 +1862,7 @@ static errr grab_one_spell_flag(monster_race *r_ptr, cptr what)
 
 /*
  * Initialize the "r_info" array, by parsing an ascii "template" file
+ * This is the monster race info array
  */
 errr parse_r_info(char *buf, header *head)
 {
@@ -2188,6 +2195,7 @@ static errr grab_one_racial_flag(player_race *pr_ptr, cptr what)
 
 /*
  * Initialize the "p_info" array, by parsing an ascii "template" file
+ * This is the player_race info array
  */
 errr parse_p_info(char *buf, header *head)
 {
@@ -2445,6 +2453,7 @@ static errr grab_one_class_flag(player_class *pc_ptr, cptr what)
 
 /*
  * Initialize the "c_info" array, by parsing an ascii "template" file
+ * This is the player class info array
  */
 errr parse_c_info(char *buf, header *head)
 {
@@ -2769,6 +2778,7 @@ errr parse_c_info(char *buf, header *head)
 
 /*
  * Initialize the "h_info" array, by parsing an ascii "template" file
+ * This is the player history info array
  */
 errr parse_h_info(char *buf, header *head)
 {
@@ -2839,6 +2849,7 @@ errr parse_h_info(char *buf, header *head)
 
 /*
  * Initialize the "b_info" array, by parsing an ascii "template" file
+ * This is the shop owner info array
  */
 errr parse_b_info(char *buf, header *head)
 {
@@ -2938,6 +2949,7 @@ errr parse_b_info(char *buf, header *head)
 
 /*
  * Initialize the "g_info" array, by parsing an ascii "template" file
+ * This is the cost adjust info array
  */
 errr parse_g_info(char *buf, header *head)
 {

@@ -291,9 +291,6 @@
 
 void mindcraft_info(char *p, int use_mind, int power)
 {
-	cptr s_dam = "dam ";
-	cptr s_dur = "dur ";
-	cptr s_range = "range ";
 
 	int plev = p_ptr->lev;
 
@@ -568,6 +565,7 @@ void mindcraft_info(char *p, int use_mind, int power)
       int   plev = p_ptr->lev;
       int   chance;
       int   ask;
+      int   use_mind;
       char  choice;
       char  out_val[160];
       char  comment[80];
@@ -576,7 +574,7 @@ void mindcraft_info(char *p, int use_mind, int power)
       mind_type  spell;
       mind_power *mind_ptr;
       bool       flag, redraw;
-      int        use_mind;
+
       
     /* Insert if /if else statement here for classflag. */
     
@@ -830,7 +828,6 @@ void mindcraft_info(char *p, int use_mind, int power)
 static bool cast_officer_spell(int spell)
 {
 	/* this will vary based on the spells, and what they depend on */
-	int             b = 0;
 	int             plev = p_ptr->lev;
 	int				dir;
 	int 			time = randint(20) + 20;
@@ -908,7 +905,6 @@ static bool cast_officer_spell(int spell)
 static bool cast_aesthete_spell(int spell)
 {
 	/* this will vary based on the spells, and what they depend on */
-	int b = 0;
 	int plev = p_ptr->lev;
 	int py = p_ptr->py;
 	int px = p_ptr->px;
@@ -1450,8 +1446,6 @@ static bool cast_tourist_spell(int spell)
 static bool cast_hussar_spell(int spell)
 {
 	/* this will vary based on the spells, and what they depend on */
-	int             b = 0;
-	int             plev = p_ptr->lev;
 
 	/* spell code */
 	switch (spell)
@@ -1489,7 +1483,6 @@ static bool cast_hussar_spell(int spell)
 static bool cast_nature_spell(int spell)
 {
 	/* this will vary based on the spells, and what they depend on */
-	int             b = 0;
 	int             plev = p_ptr->lev;
 	int 			dir;
 	int 			px = p_ptr->px;
@@ -1633,7 +1626,6 @@ static bool cast_ninja_spell(int spell)
  void do_cmd_mind(void)
 {
 	int             n = 0;
-	int				b = 0;
 	int             chance;
 	int             minfail = 0;
 	int             plev = p_ptr->lev;

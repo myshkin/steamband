@@ -691,7 +691,7 @@ bool set_shadow(int v)
 	/* Open */
 	if (v)
 	{
-		if (!p_ptr->wraith_form)
+		if (!p_ptr->tim_wraith)
 		{
 			msg_print("You leave the physical world!");
 			notice = TRUE;
@@ -712,7 +712,7 @@ bool set_shadow(int v)
 	/* Shut */
 	else
 	{
-		if (p_ptr->wraith_form)
+		if (p_ptr->tim_wraith)
 		{
 			msg_print("You feel opaque.");
 			notice = TRUE;
@@ -731,7 +731,7 @@ bool set_shadow(int v)
 	}
 
 	/* Use the value */
-	p_ptr->wraith_form = v;
+	p_ptr->tim_wraith = v;
 
 	/* Nothing to notice */
 	if (!notice) return (FALSE);
@@ -2551,7 +2551,7 @@ cptr look_mon_desc(char *buf, int m_idx)
 	monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
 	bool living = TRUE;
-
+	int perc;
 
 	/* Determine if the monster is "living" (vs "undead") */
 	if (r_ptr->flags3 & (RF3_UNDEAD)) living = FALSE;
@@ -2568,7 +2568,7 @@ cptr look_mon_desc(char *buf, int m_idx)
 	else
 	{
 		/* Calculate a health "percentage" */
-		int perc = 100L * m_ptr->hp / m_ptr->maxhp;
+		perc = 100L * m_ptr->hp / m_ptr->maxhp;
 
 		if (perc >= 60)
 			strcpy(buf, (living ? "somewhat wounded" : "somewhat damaged"));
@@ -2585,6 +2585,7 @@ cptr look_mon_desc(char *buf, int m_idx)
 	if (m_ptr->monfear) strcat(buf, ", afraid");
 	if (m_ptr->stunned) strcat(buf, ", stunned");
 	
+	return buf;
 }
 
 

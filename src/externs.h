@@ -230,7 +230,7 @@ extern bool hack_mutation;
 extern bool can_save;
 extern int total_friends;
 extern s32b total_friend_levels;
-
+extern bool skip_msgs;
 
 
 /*
@@ -362,7 +362,7 @@ extern void show_book_number(int num);
 extern void do_cmd_rig_mechanism(void);
 extern void do_cmd_use_tool(void);
 extern void do_cmd_aim_ray(void);
-extern void do_cmd_zap_rod(void);
+extern void do_cmd_zap_apparatus(void);
 extern void do_cmd_activate(void);
 
 /* classpowers.c */
@@ -461,6 +461,9 @@ extern bool summon_specific(int y1, int x1, int lev, int type, bool friendly, bo
 extern bool multiply_monster(int m_idx, bool friendly, bool pet);
 extern void message_pain(int m_idx, int dam);
 extern void update_smart_learn(int m_idx, int what);
+
+/* mspells1.c */
+extern bool monst_spell_monst(int m_idx);
 
 /* mutation.c */
 extern bool gain_random_mutation(int choose_mut);
@@ -640,6 +643,7 @@ extern bool fire_ball(int typ, int dir, int dam, int rad);
 extern bool fire_bolt(int typ, int dir, int dam);
 extern bool fire_bolt_or_beam(int prob, int typ, int dir, int dam);
 extern bool fire_blast(int typ, int dir, int dd, int ds, int num, int dev);
+extern bool fire_barrage(int typ, int dir, int dd, int ds, int num, int dev);
 extern bool lite_line(int dir);
 extern bool drain_life(int dir, int dam);
 extern bool wall_to_mud(int dir);
@@ -775,6 +779,7 @@ extern bool set_hero(int v);
 extern bool set_shero(int v);
 extern bool set_protevil(int v);
 extern bool set_invuln(int v);
+extern bool set_shadow(int v);
 extern bool set_tim_esp(int v);
 extern bool set_tim_invis(int v);
 extern bool set_tim_infra(int v);
@@ -849,10 +854,21 @@ extern void show_floor(const int *floor_list, int floor_num);
 extern errr do_randart(u32b randart_seed, bool full);
 #endif /* GJW_RANDART */
 
-#if defined(MAC_MPW)
-	/* Globals needed */
-extern	u32b _ftype;
-extern	u32b _fcreator;
-extern	FILE *tempfff;
+#if defined(MAC_MPW) || defined(MACH_O_CARBON)
+/* main-mac.c, or it's carbonised derivation */
+extern u32b _fcreator;
+extern u32b _ftype;
+
+# ifdef MACH_O_CARBON
+/*
+ * gcc -  You have to write it by yourself... or File-Open and double-clicking
+ * on savefiles will never work.
+ */
+extern void fsetfileinfo(cptr path, u32b fcreator, u32b ftype)
+# endif
+# if defined(MAC_MPW) && defined(CARBON)    
+/* MPW - they chose to do something very brain-dead for pathnames :( */
+extern void convert_pathname(char *path);
+# endif
 #endif
 

@@ -51,7 +51,7 @@
 
 
 #if defined(MACINTOSH)
-# if !defined(MAC_MPW)
+# ifdef __MWERKS__
 #  include <unix.h>
 # endif
 #endif

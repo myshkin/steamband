@@ -65,7 +65,7 @@
 
 # Version stamp (required)
 
-V:0.2.1
+V:0.2.2
 
 
 N:0:Officer
@@ -101,13 +101,13 @@ A:4:35:2
 M:92:5:0:1:200
 E:35:2:0:1:3
 E:40:9:0:3:6
-E:36:5:0:1:3
+E:36:5:1:1:3
 E:32:6:0:1:3
 F:PSEUDO_ID_HEAVY | PSEUDO_ID_IMPROV | AESTHETE | ZERO_FAIL 
 T:Intellectual
 T:Dilettante
 T:Heir
-T:Philanthropist
+T:Philanthrop.
 T:Investor
 T:Capitalist
 T:Producer
@@ -197,12 +197,12 @@ F:PSEUDO_ID_HEAVY | PSEUDO_ID_IMPROV
 T:Constable
 T:Sergeant
 T:Inspector
-T:Chief Inspector
-T:Superintendent
-T:Chief Superintendent
+T:Ch. Inspector
+T:Superintend.
+T:Ch. Superint.
 T:Commander
-T:Asst. Commissioner
-T:Dpty. Commissioner
+T:Asst. Commish
+T:Dpty. Commish
 T:Commissioner
 # use some devices
 
@@ -290,13 +290,13 @@ F:PSEUDO_ID_HEAVY | PSEUDO_ID_IMPROV | ZERO_FAIL | BEAM | CHOOSE_SPELLS
 T:Jr. Engineer
 T:Engineer
 T:Sr. Engineer
-T:Chief Engineer
-T:Warrant Officer
+T:Ch. Engineer
+T:Warrant Off.
 T:Chief WO-1
 T:Chief WO-2
 T:Chief WO-3
 T:Chief WO-4
-T:Master Warrant Officer
+T:Master WO
 # Use all devices
 
 N:4:Explorer
@@ -312,13 +312,13 @@ E:30:3:0:1:1
 F:BRAVERY_30 | PSEUDO_ID_HEAVY | PSEUDO_ID_IMPROV | EXPLORER | ZERO_FAIL 
 T:Hiker
 T:Outdoorsman
-T:Rugged Outdoorsman
+T:Rugged ODman
 T:Frontiersman
 T:Trailblazer
 T:Green Explorer
 T:Explorer
-T:Veteran Explorer
-T:Master Explorer
+T:Vet. Explorer
+T:Mstr Explorer
 T:Lord Explorer
 # Needs some innate powers and benifits
 
@@ -360,7 +360,7 @@ T:Neophyte
 T:User
 T:Adv. User
 T:Programmer
-T:Adv. Programmer
+T:Adv. Progrmr
 T:Cracker
 T:Hacker
 T:Elite Hacker
@@ -453,12 +453,12 @@ T:Rebel
 T:Anarch
 T:Frondeur
 T:Insurgent
-T:Insurrectionist
+T:Chaosite
 T:Malcontent
 T:Mutineer
 T:Revolter
 T:Anarchist
-T:Master Anarchist
+T:Master Anarch
 #some devices and books, hmmm? possible? 
 
 
@@ -479,7 +479,7 @@ T:Captain
 T:Major
 T:Lt. Colonel
 T:Colonel
-T:Brigadier General
+T:Brig. General
 T:Major General
 T:Lt. General
 T:General
@@ -494,7 +494,7 @@ I:6:0:9000:40:10
 A:5:35:4
 M:0:0:0:0:0
 E:35:2:0:1:1
-E:36:5:0:1:1
+E:36:5:1:1:1
 E:31:2:0:1:1
 F:BRAVERY_30 | PSEUDO_ID_HEAVY | PSEUDO_ID_IMPROV
 T:Boy
@@ -683,13 +683,13 @@ F:BRAVERY_30 | PSEUDO_ID_HEAVY | PSEUDO_ID_IMPROV | ZERO_FAIL | CHOOSE_SPELLS
 T:Jr. Engineer
 T:Engineer
 T:Sr. Engineer
-T:Chief Engineer
-T:Warrant Officer
+T:Ch. Engineer
+T:Warrant Off.
 T:Chief WO-1
 T:Chief WO-2
 T:Chief WO-3
 T:Chief WO-4
-T:Master Warrant Officer
+T:Master WO
 # Some devices
 
 
@@ -708,9 +708,9 @@ T:Acolyte
 T:Farmer
 T:Grower
 T:Naturalist
-T:Superb Naturalist
+T:Sup. Natur.
 T:Ecologist
-T:Master Ecologist
+T:Mstr. Ecolog.
 T:Druid
 T:Master Druid
 T:Arch-Druid

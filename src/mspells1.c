@@ -1017,7 +1017,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a toxic bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges a toxic bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1058,7 +1058,7 @@ bool monst_spell_monst(int m_idx)
 						}
 						else
 						{
-							msg_format("%^s casts an acid ball at %s.", m_name, t_name);
+							msg_format("%^s discharges an acid ball at %s.", m_name, t_name);
 						}
 					}
 					else
@@ -1087,7 +1087,7 @@ bool monst_spell_monst(int m_idx)
 						}
 						else
 						{
-							msg_format("%^s casts a lightning ball at %s.", m_name, t_name);
+							msg_format("%^s discharges a lightning ball at %s.", m_name, t_name);
 						}
 					}
 					else
@@ -1116,7 +1116,7 @@ bool monst_spell_monst(int m_idx)
 						}
 						else
 						{
-							msg_format("%^s casts a fire ball at %s.", m_name, t_name);
+							msg_format("%^s discharges a fire ball at %s.", m_name, t_name);
 						}
 					}
 					else
@@ -1145,7 +1145,7 @@ bool monst_spell_monst(int m_idx)
 						}
 						else
 						{
-							msg_format("%^s casts a frost ball at %s.", m_name, t_name);
+							msg_format("%^s discharges a frost ball at %s.", m_name, t_name);
 						}
 					}
 					else
@@ -1174,7 +1174,7 @@ bool monst_spell_monst(int m_idx)
 						}
 						else
 						{
-							msg_format("%^s casts a stinking cloud at %s.", m_name, t_name);
+							msg_format("%^s discharges a stinking cloud at %s.", m_name, t_name);
 						}
 					}
 					else
@@ -1203,7 +1203,7 @@ bool monst_spell_monst(int m_idx)
 						}
 						else
 						{
-							msg_format("%^s casts a nether ball at %s.", m_name, t_name);
+							msg_format("%^s discharges a nether ball at %s.", m_name, t_name);
 						}
 					}
 					else
@@ -1558,7 +1558,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts an acid bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges an acid bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1579,7 +1579,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a lightning bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges a lightning bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1600,7 +1600,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a fire bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges a fire bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1621,7 +1621,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a frost bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges a frost bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1649,7 +1649,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a nether bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges a nether bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1670,7 +1670,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a water bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges a water bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1691,7 +1691,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a mana bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges a mana bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1712,7 +1712,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a plasma bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges a plasma bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1733,7 +1733,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts an ice bolt at %s.", m_name, t_name);
+						msg_format("%^s discharges an ice bolt at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1754,7 +1754,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a magic missile at %s.", m_name, t_name);
+						msg_format("%^s discharges a bullet of force at %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1775,7 +1775,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a fearful illusion in front of %s.", m_name, t_name);
+						msg_format("%^s discharges a fearful illusion in front of %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1810,7 +1810,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a spell, burning %s%s eyes.", m_name, t_name,
+						msg_format("%^s discharges a caustic spray, burning %s%s eyes.", m_name, t_name,
 									  (streq(t_name, "it") ? "s" : "'s"));
 					}
 					else
@@ -1847,7 +1847,7 @@ bool monst_spell_monst(int m_idx)
 				{
 					if (see_either)
 					{
-						msg_format("%^s casts a mesmerizing illusion in front of %s.", m_name, t_name);
+						msg_format("%^s produces a mesmerizing illusion in front of %s.", m_name, t_name);
 					}
 					else
 					{
@@ -1857,11 +1857,11 @@ bool monst_spell_monst(int m_idx)
 
 				if (tr_ptr->flags3 & RF3_NO_CONF)
 				{
-					if (see_t) msg_format("%^s disbelieves the feeble spell.", t_name);
+					if (see_t) msg_format("%^s disbelieves the feeble hologram.", t_name);
 				}
 				else if (tr_ptr->level > randint((rlev - 10) < 1 ? 1 : (rlev - 10)) + 10)
 				{
-					if (see_t) msg_format("%^s disbelieves the feeble spell.", t_name);
+					if (see_t) msg_format("%^s disbelieves the feeble hologram.", t_name);
 				}
 				else
 				{

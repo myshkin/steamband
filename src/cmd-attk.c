@@ -1170,13 +1170,14 @@ void touch_zap_player(monster_type *m_ptr)
 }
 
 
-static void natural_attack(s16b m_idx, int attack, bool *fear, bool *mdeath)
+static void natural_attack(s16b m_idx, int attack, bool *fear)
 {
 	int         k, bonus, chance;
 	int         n_weight = 0;
 	
-	monster_type *m_ptr = &m_list[m_idx];
-	monster_race *r_ptr = &r_info[m_ptr->r_idx];
+	monster_type *m_ptr;
+	monster_race *r_ptr;
+	monster_lore *l_ptr;
 	
 
 	char       	m_name[80];
@@ -1227,6 +1228,11 @@ static void natural_attack(s16b m_idx, int attack, bool *fear, bool *mdeath)
 	}
 
 
+	/* Get the monster */
+	m_ptr = &m_list[m_idx];
+	r_ptr = &r_info[m_ptr->r_idx];
+	l_ptr = &l_list[m_ptr->r_idx];
+
 	/* Extract monster name (or "it") */
 	monster_desc(m_name, m_ptr, 0);
 
@@ -1270,37 +1276,37 @@ static void natural_attack(s16b m_idx, int attack, bool *fear, bool *mdeath)
 			case MUT3_SCOR_TAIL:
 			{
 				project(0, 0, m_ptr->fx, m_ptr->fy, k, GF_POIS, PROJECT_KILL);
-				*mdeath = (m_ptr->r_idx == 0);
 				break;
 			}
 			case MUT3_HORNS:
 			{
-				*mdeath = mon_take_hit(m_idx, k, fear, NULL);
+				mon_take_hit(m_idx, k, fear, NULL);
 				break;
 			}
 			case MUT3_BEAK:
 			{
-				*mdeath = mon_take_hit(m_idx, k, fear, NULL);
+				mon_take_hit(m_idx, k, fear, NULL);
 				break;
 			}
 			case MUT3_TUSKS:
 			{
-				*mdeath = mon_take_hit(m_idx, k, fear, NULL);
+				mon_take_hit(m_idx, k, fear, NULL);
 				break;
 			}
 			case MUT3_CLAWS:
 			{
-				*mdeath = mon_take_hit(m_idx, k, fear, NULL);
+				mon_take_hit(m_idx, k, fear, NULL);
 				break;
 			}
 			case MUT3_TENTACLES:
 			{
 				project(0, 0, m_ptr->fx, m_ptr->fy, k, GF_INERTIA, PROJECT_KILL);
-				*mdeath = (m_ptr->r_idx == 0);
+				break;
 			}
 			default:
 			{
-				*mdeath = mon_take_hit(m_idx, k, fear, NULL);
+				mon_take_hit(m_idx, k, fear, NULL);
+				break;
 			}
 		}
 	
@@ -1336,11 +1342,8 @@ void py_attack(int y, int x)
 
 	char m_name[80];
 
-	bool fear = FALSE;
-	bool mdeath = FALSE;
-	
+	bool fear = FALSE;	
 	bool do_quake = FALSE;
-
 	bool no_extra = FALSE;
 
 	/* Get the monster */
@@ -1430,7 +1433,6 @@ void py_attack(int y, int x)
 			/* Damage the player from aura */
 			touch_zap_player(m_ptr);
 
-			
 			/* Confusion attack */
 			if (p_ptr->confusing)
 			{
@@ -1473,16 +1475,18 @@ void py_attack(int y, int x)
 	/* Mutations which yield extra 'natural' attacks */
 	if (!no_extra)
 	{
-		if ((p_ptr->muta3 & MUT3_HORNS) && !mdeath)
-			natural_attack(cave_m_idx[y][x], MUT3_HORNS, &fear, &mdeath);
-		if ((p_ptr->muta3 & MUT3_BEAK) && !mdeath)
-			natural_attack(cave_m_idx[y][x], MUT3_BEAK, &fear, &mdeath);
-		if ((p_ptr->muta3 & MUT3_SCOR_TAIL) && !mdeath)
-			natural_attack(cave_m_idx[y][x], MUT3_SCOR_TAIL, &fear, &mdeath);
-		if ((p_ptr->muta3 & MUT3_TUSKS) && !mdeath)
-			natural_attack(cave_m_idx[y][x], MUT3_TUSKS, &fear, &mdeath);
-		if ((p_ptr->muta3 & MUT3_TENTACLES) && !mdeath)
-			natural_attack(cave_m_idx[y][x], MUT3_TENTACLES, &fear, &mdeath);
+		if ((p_ptr->muta3 & MUT3_HORNS) && (m_ptr->hp > 0))
+			natural_attack(cave_m_idx[y][x], MUT3_HORNS, &fear);
+		if ((p_ptr->muta3 & MUT3_CLAWS) && (m_ptr->hp > 0))
+			natural_attack(cave_m_idx[y][x], MUT3_CLAWS, &fear);
+		if ((p_ptr->muta3 & MUT3_BEAK) && (m_ptr->hp > 0))
+			natural_attack(cave_m_idx[y][x], MUT3_BEAK, &fear);
+		if ((p_ptr->muta3 & MUT3_SCOR_TAIL) && (m_ptr->hp > 0))
+			natural_attack(cave_m_idx[y][x], MUT3_SCOR_TAIL, &fear);
+		if ((p_ptr->muta3 & MUT3_TUSKS) && (m_ptr->hp > 0))
+			natural_attack(cave_m_idx[y][x], MUT3_TUSKS, &fear);
+		if ((p_ptr->muta3 & MUT3_TENTACLES) && (m_ptr->hp > 0))
+			natural_attack(cave_m_idx[y][x], MUT3_TENTACLES, &fear);
 	}
 
 	/* Hack -- delay fear messages */
@@ -1524,7 +1528,7 @@ void move_player(int dir, int jumping)
 
 	/* Player can not walk through "walls"... */
 	/* unless in Shadow Form */
-	if ((p_ptr->wraith_form) || (p_ptr->prace == RACE_GHOST))
+	if ((p_ptr->wraith_form) || (p_ptr->tim_wraith))
 		p_can_pass_walls = TRUE;
 
 	if (((cave_feat[y][x]) >= FEAT_PERM_EXTRA) &&
@@ -1538,7 +1542,6 @@ void move_player(int dir, int jumping)
 	if (cave_m_idx[y][x] > 0)
 	{
 		monster_type *m_ptr = &m_list[cave_m_idx[y][x]];
-		monster_race *r_ptr = &r_info[m_ptr->r_idx];
 		char m_name[80];
 		monster_desc(m_name, m_ptr, 0);
 		/* careful here, just checking for pet, not friendly */
@@ -2439,7 +2442,7 @@ void run_step(int dir)
 	/* Take time */
 	p_ptr->energy_use = 100;
 
-	/* Move the player */
+   Move the player */
 	move_player(p_ptr->run_cur_dir, FALSE);
 }
 

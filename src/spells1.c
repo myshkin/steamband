@@ -2619,6 +2619,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 			if (seen) obvious = TRUE;
 			if ((r_ptr->flags3 & (RF3_UNDEAD)) ||
 			    (r_ptr->flags3 & (RF3_DEMON)) ||
+			    (r_ptr->flags3 & (RF3_AUTOMATA)) ||
 			    (strchr("Egv", r_ptr->d_char)))
 			{
 				if (r_ptr->flags3 & (RF3_UNDEAD))
@@ -2629,7 +2630,10 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 				{
 					if (seen) l_ptr->r_flags3 |= (RF3_DEMON);
 				}
-
+				if (r_ptr->flags3 & (RF3_AUTOMATA))
+				{
+					if (seen) l_ptr->r_flags3 |= (RF3_AUTOMATA);
+				}
 				note = " is unaffected!";
 				obvious = FALSE;
 				dam = 0;

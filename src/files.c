@@ -1241,13 +1241,21 @@ static void display_player_xtra_info(void)
 	int i, tmp;
 	int xthn, xthb, xfos, xsrh;
 	int xdis, xdev, xsav, xstl;
+	int muta_att = 0;
 
 	object_type *o_ptr;
 
 	cptr desc;
 
 	char buf[160];
-
+	
+	if (p_ptr->muta3 & MUT3_HORNS) muta_att++;
+	if (p_ptr->muta3 & MUT3_SCOR_TAIL) muta_att++;
+	if (p_ptr->muta3 & MUT3_BEAK) muta_att++;
+	if (p_ptr->muta3 & MUT3_TUSKS) muta_att++;
+	if (p_ptr->muta3 & MUT3_CLAWS) muta_att++;
+	if (p_ptr->muta3 & MUT3_TENTACLES) muta_att++;
+	
 
 	/* Upper middle */
 	col = 26;
@@ -1406,7 +1414,11 @@ static void display_player_xtra_info(void)
 
 
 	/* Blows */
-	sprintf(buf, "%d/turn", p_ptr->num_blow);
+	
+	if (!muta_att)
+		sprintf(buf, "%d/turn", p_ptr->num_blow);
+	else
+		sprintf(buf, "%d+%d/turn", p_ptr->num_blow, muta_att);
 	Term_putstr(col, 14, -1, TERM_WHITE, "Blows");
 	Term_putstr(col+5, 14, -1, TERM_L_BLUE, format("%13s", buf));
 

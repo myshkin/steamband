@@ -154,7 +154,7 @@ static cptr food_adj[MAX_SHROOM] =
 	"Dark Green", "Dark Red", "Yellow", "Furry", "Green",
 	"Grey", "Light Blue", "Light Green", "Violet", "Red",
 	"Slimy", "Tan", "White", "White Spotted", "Wrinkled",
-	"Flowering", "Crispy", "Smooth", "Dank", "Round"
+	"Flowering", "Crispy", "Smooth", "Dank", "Round", "Silky"
 };
 
 static byte food_col[MAX_SHROOM] =
@@ -163,7 +163,7 @@ static byte food_col[MAX_SHROOM] =
 	TERM_GREEN, TERM_RED, TERM_YELLOW, TERM_L_WHITE, TERM_GREEN,
 	TERM_SLATE, TERM_L_BLUE, TERM_L_GREEN, TERM_VIOLET, TERM_RED,
 	TERM_SLATE, TERM_L_UMBER, TERM_WHITE, TERM_WHITE, TERM_UMBER,
-	TERM_GREEN, TERM_UMBER, TERM_WHITE, TERM_L_DARK, TERM_VIOLET
+	TERM_GREEN, TERM_UMBER, TERM_WHITE, TERM_L_DARK, TERM_VIOLET, TERM_VIOLET,
 };
 
 
@@ -177,18 +177,30 @@ static byte food_col[MAX_SHROOM] =
 static cptr tonic_adj[MAX_COLORS] =
 {
 	"Clear", "Light Brown", "Icky Green", "xxx",
-	"Azure", "Blue", "Blue Speckled", "Black", "Brown", "Brown Speckled",
-	"Bubbling", "Chartreuse", "Cloudy", "Copper Speckled", "Crimson", "Cyan",
-	"Dark Blue", "Dark Green", "Dark Red", "Gold Speckled", "Green",
-	"Green Speckled", "Grey", "Grey Speckled", "Hazy", "Indigo",
-	"Light Blue", "Light Green", "Magenta", "Metallic Blue", "Metallic Red",
-	"Metallic Green", "Metallic Purple", "Misty", "Orange", "Orange Speckled",
-	"Pink", "Pink Speckled", "Puce", "Purple", "Purple Speckled",
-	"Red", "Red Speckled", "Silver Speckled", "Smoky", "Tangerine",
-	"Violet", "Vermilion", "White", "Yellow", "Violet Speckled",
-	"Pungent", "Clotted Red", "Viscous Pink", "Oily Yellow", "Gloopy Green",
-	"Shimmering", "Coagulated Crimson", "Yellow Speckled", "Gold",
-	"Light Azure", "Light Blue Speckled"
+	"Addington's Phos Ferrone Iron", "Althrop's Constitutional",
+	"Ambrecht's Coca Wine", "Angelica Bitter Tonic", "Dr. A. Armistead's Fameous Ague",
+	"Baldwin's Celery Pepsin & Dandelion", "Balyeat's Fig", 
+	"Bear Brand Wild Cherry", "Dr. Beard's Alterative", "Betula Beer",
+	"A. M. Bininger & Co. Wheat", "Bitter Apple",
+	"Dr. Blendigo's Celery", "Bock's Restorative",
+	"Brother Benjamin Great Herbalo", "Dr. Brooks' Antimalarial",
+	"Burk's Iron", "Cardui, The Women's", "S.S. Clark's Diamond Family",
+	"Cla-wood Malt", "Colden's Liquid Beef", "Corona Distemper Tonic",
+	"Dalton's Sarsaparilla and Nerve", "Davis's Morning Noon & Night",
+	"The Imperial King of all", "Eureka Pepsin - A Never Failing",
+	"Ferro China Milano", "Fletcher's Vege", "Goging's Wild Cherry",
+	"Gray's Sparkling Spray", "Happy Home Blood Purifier and Health",
+	"Highland's Bitters and Scotch", "Iowna Brain & Nerve", 
+	"W.M. Johnson's Pure Herb", "Ka No Blood & Nerve", 
+	"Keck's Lung & Liver", "Kress Fever",
+	"Dr Kurnitzki's Aromatic Wire Grass", "Leonardi's Chill Remedy & Iron", 
+	"Liebig's Malt", "Magors 1000 - Phosphor", "Malto Iron",
+	"Mexican Herb", "Morrison's Sure Cure", "Mull's Grape", 
+	"Old Sachem Bitters & Wigwam", "Owbridge's Lung",
+	"Parker's best", "C.G. Pendleton's", "Pepper's Quinine & Iron", 
+	"Primley's Iron & Wahoo", "Psychine", "Quin's Chill Tonic", 
+	"Ramon's Pepsin Chill", "Royal Pepsin", "Sano Rheumatic Cure & System",
+	"Vin-O-Sula Cuban", "Walt's Wild Cherry"
 };
 
 static byte tonic_col[MAX_COLORS] =
@@ -208,35 +220,6 @@ static byte tonic_col[MAX_COLORS] =
 	TERM_L_BLUE
 };
 
-
-/*
- * Syllables for mechanisms (must be 1-4 letters each).
- */
-/*
-static cptr syllables[MAX_SYLLABLES] =
-{
-	"a", "ab", "ag", "aks", "ala", "an", "ankh", "app",
-	"arg", "arze", "ash", "aus", "ban", "bar", "bat", "bek",
-	"bie", "bin", "bit", "bjor", "blu", "bot", "bu",
-	"byt", "comp", "con", "cos", "cre", "dalf", "dan",
-	"den", "der", "doe", "dok", "eep", "el", "eng", "er", "ere", "erk",
-	"esh", "evs", "fa", "fid", "flit", "for", "fri", "fu", "gan",
-	"gar", "glen", "gop", "gre", "ha", "he", "hyd", "i",
-	"ing", "ion", "ip", "ish", "it", "ite", "iv", "jo",
-	"kho", "kli", "klis", "la", "lech", "man", "mar",
-	"me", "mi", "mic", "mik", "mon", "mung", "mur", "nag", "nej",
-	"nelg", "nep", "ner", "nes", "nis", "nih", "nin", "o",
-	"od", "ood", "org", "orn", "ox", "oxy", "pay", "pet",
-	"ple", "plu", "po", "pot", "prok", "re", "rea", "rhov",
-	"ri", "ro", "rog", "rok", "rol", "sa", "san", "sat",
-	"see", "sef", "seh", "shu", "ski", "sna", "sne", "snik",
-	"sno", "so", "sol", "sri", "sta", "sun", "ta", "tab",
-	"tem", "ther", "ti", "tox", "trol", "tue", "turs", "u",
-	"ulk", "um", "un", "uni", "ur", "val", "viv", "vly",
-	"vom", "wah", "wed", "werg", "wex", "whon", "wun", "x",
-	"yerg", "yp", "zun", "tri", "blaa"
-};
-*/
 static cptr mech_adj[MAX_MECH_ADJ] =
 {
 	"Martian ", "Venusian ", "Alien ", "Analog ", "Electric ",
@@ -259,7 +242,7 @@ static cptr mech_noun1[MAX_MECH_NOUN1] =
 static cptr mech_noun2[MAX_MECH_NOUN2] =
 {
 	"graph", "meter", "phone", "scope", "ton", "pan", "com", "net",
-	"acid", "phonic", "dyne", "copter"
+	"cid", "phonic", "dyne", "copter"
 };
 
 /*

@@ -1032,8 +1032,14 @@ bool make_attack_spell(int m_idx)
 	if ((thrown_spell >= RF5_OFFSET) && (rand_int(100) < failrate))
 	{
 		/* Message */
-		msg_format("%^s tries to cast a spell, but fails.", m_name);
-
+		if ((r_ptr->flags3 & (RF3_AUTOMATA)))
+		{
+			msg_format("%^s tries to produce an effect, but fails.", m_name);
+		}
+		else 
+		{
+			msg_format("%^s tries to cast a spell, but fails.", m_name);
+		}
 		return (TRUE);
 	}
 #endif /* MONSTER_AI */
@@ -1359,7 +1365,7 @@ bool make_attack_spell(int m_idx)
 		{
 				disturb(1, 0);
 				if (blind) msg_format("%^s breathes.", m_name);
-				else msg_format("%^s casts a toxic bolt", m_name);
+				else msg_format("%^s discharges a toxic bolt", m_name);
 				bolt(m_idx, GF_MANA,
 				     randint(rlev * 7 / 2) + 50);
 				break;
@@ -1384,7 +1390,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts an acid ball.", m_name);
+			else msg_format("%^s discharges an acid ball.", m_name);
 			breath(m_idx, GF_ACID,
 			       randint(rlev * 3) + 15);
 			update_smart_learn(m_idx, DRS_RES_ACID);
@@ -1396,7 +1402,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a lightning ball.", m_name);
+			else msg_format("%^s discharges a lightning ball.", m_name);
 			breath(m_idx, GF_ELEC,
 			       randint(rlev * 3 / 2) + 8);
 			update_smart_learn(m_idx, DRS_RES_ELEC);
@@ -1408,7 +1414,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a fire ball.", m_name);
+			else msg_format("%^s discharges a fire ball.", m_name);
 			breath(m_idx, GF_FIRE,
 			       randint(rlev * 7 / 2) + 10);
 			update_smart_learn(m_idx, DRS_RES_FIRE);
@@ -1420,7 +1426,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a frost ball.", m_name);
+			else msg_format("%^s discharges a frost ball.", m_name);
 			breath(m_idx, GF_COLD,
 			       randint(rlev * 3 / 2) + 10);
 			update_smart_learn(m_idx, DRS_RES_COLD);
@@ -1432,7 +1438,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a stinking cloud.", m_name);
+			else msg_format("%^s discharges a stinking cloud.", m_name);
 			breath(m_idx, GF_POIS,
 			       damroll(12, 2));
 			update_smart_learn(m_idx, DRS_RES_POIS);
@@ -1444,7 +1450,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a nether ball.", m_name);
+			else msg_format("%^s discharges a nether ball.", m_name);
 			breath(m_idx, GF_NETHER,
 			       (50 + damroll(10, 10) + rlev));
 			update_smart_learn(m_idx, DRS_RES_NETHR);
@@ -1690,7 +1696,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a acid bolt.", m_name);
+			else msg_format("%^s discharges a acid bolt.", m_name);
 			bolt(m_idx, GF_ACID,
 			     damroll(7, 8) + (rlev / 3));
 			update_smart_learn(m_idx, DRS_RES_ACID);
@@ -1702,7 +1708,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a lightning bolt.", m_name);
+			else msg_format("%^s discharges a lightning bolt.", m_name);
 			bolt(m_idx, GF_ELEC,
 			     damroll(4, 8) + (rlev / 3));
 			update_smart_learn(m_idx, DRS_RES_ELEC);
@@ -1714,7 +1720,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a fire bolt.", m_name);
+			else msg_format("%^s discharges a fire bolt.", m_name);
 			bolt(m_idx, GF_FIRE,
 			     damroll(9, 8) + (rlev / 3));
 			update_smart_learn(m_idx, DRS_RES_FIRE);
@@ -1726,7 +1732,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a frost bolt.", m_name);
+			else msg_format("%^s discharges a frost bolt.", m_name);
 			bolt(m_idx, GF_COLD,
 			     damroll(6, 8) + (rlev / 3));
 			update_smart_learn(m_idx, DRS_RES_COLD);
@@ -1739,7 +1745,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a poison bolt.", m_name);
+			else msg_format("%^s discharges a poison bolt.", m_name);
 			bolt(m_idx, GF_POIS,
 			     damroll(6, 8) + (rlev / 3));
 			break;
@@ -1750,7 +1756,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a nether bolt.", m_name);
+			else msg_format("%^s discharges a nether bolt.", m_name);
 			bolt(m_idx, GF_NETHER,
 			     30 + damroll(5, 5) + (rlev * 3) / 2);
 			update_smart_learn(m_idx, DRS_RES_NETHR);
@@ -1762,7 +1768,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a water bolt.", m_name);
+			else msg_format("%^s discharges a water bolt.", m_name);
 			bolt(m_idx, GF_WATER,
 			     damroll(10, 10) + (rlev));
 			break;
@@ -1773,7 +1779,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a mana bolt.", m_name);
+			else msg_format("%^s discharges a mana bolt.", m_name);
 			bolt(m_idx, GF_MANA,
 			     randint(rlev * 7 / 2) + 50);
 			break;
@@ -1784,7 +1790,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a plasma bolt.", m_name);
+			else msg_format("%^s discharges a plasma bolt.", m_name);
 			bolt(m_idx, GF_PLASMA,
 			     10 + damroll(8, 7) + (rlev));
 			break;
@@ -1795,7 +1801,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts an ice bolt.", m_name);
+			else msg_format("%^s discharges an ice bolt.", m_name);
 			bolt(m_idx, GF_ICE,
 			     damroll(6, 6) + (rlev));
 			update_smart_learn(m_idx, DRS_RES_COLD);
@@ -1807,7 +1813,7 @@ bool make_attack_spell(int m_idx)
 		{
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a magic missile.", m_name);
+			else msg_format("%^s discharges a magic missile.", m_name);
 			bolt(m_idx, GF_MISSILE,
 			     damroll(2, 6) + (rlev / 3));
 			break;
@@ -1842,7 +1848,7 @@ bool make_attack_spell(int m_idx)
 			if (!direct) break;
 			disturb(1, 0);
 			if (blind) msg_format("%^s mumbles.", m_name);
-			else msg_format("%^s casts a spell, burning your eyes!", m_name);
+			else msg_format("%^s discharges a caustic spray, burning your eyes!", m_name);
 			if (p_ptr->resist_blind)
 			{
 				msg_print("You are unaffected!");
@@ -1868,11 +1874,11 @@ bool make_attack_spell(int m_idx)
 			else msg_format("%^s creates a mesmerising illusion.", m_name);
 			if (p_ptr->resist_confu)
 			{
-				msg_print("You disbelieve the feeble spell.");
+				msg_print("You disbelieve the feeble hologram.");
 			}
 			else if (rand_int(100) < p_ptr->skill_sav)
 			{
-				msg_print("You disbelieve the feeble spell.");
+				msg_print("You disbelieve the feeble hologram.");
 			}
 			else
 			{
@@ -3278,7 +3284,6 @@ static bool get_moves(int m_idx, int mm[5])
 	int x2 = px;
 
 	bool done = FALSE;
-	bool will_run = mon_will_run(m_idx);
 
 #ifdef MONSTER_FLOW
 
@@ -3660,7 +3665,6 @@ static bool monst_attack_monst(int m_idx, int t_idx)
 	char            m_name[80], t_name[80];
 	char            ddesc[80], temp[80];
 	bool            blinked = FALSE, touched = FALSE;
-	bool			fear = FALSE;
 	bool			heal_effect = FALSE;
 	byte            y_saver = t_ptr->fy;
 	byte            x_saver = t_ptr->fx;
@@ -3934,9 +3938,9 @@ static bool monst_attack_monst(int m_idx, int t_idx)
 					break;
 				}
 
-			case RBM_XXX5:
+			case RBM_SPEAK:
 				{
-					act = "sings to %s.";
+					act = "says to %s.";
 					touched = FALSE;
 					break;
 				}
@@ -4644,32 +4648,32 @@ static void process_monster(int m_idx)
 			if ((p_ptr->pet_follow_distance < 0) &&
 							  (m_ptr->cdis <= (0 - p_ptr->pet_follow_distance)))
 			{				  
-				bool avoid = TRUE;
+				avoid = TRUE;
 			}
 			else 
 			{
-				bool avoid = FALSE;
+				avoid = FALSE;
 			}
 			
 			
 			/* Do we want to find the player? */
 			if (!avoid && (m_ptr->cdis > p_ptr->pet_follow_distance))
 			{
-				bool lonely = TRUE;
+				lonely = TRUE;
 			}
 			else
 			{
-				bool lonely = FALSE;
+				lonely = FALSE;
 			}
 			
 			/* Should we find the player if we can't find a monster? */
 			if (m_ptr->cdis > PET_SEEK_DIST)
 			{
-				bool distant = TRUE;
+				distant = TRUE;
 			}
 			else
 			{
-				bool distant = FALSE;
+				distant = FALSE;
 			}
 			/* by default, move randomly */
 			mm[0] = mm[1] = mm[2] = mm[3] = 5;
@@ -4969,7 +4973,6 @@ static void process_monster(int m_idx)
 		/* A monster is in the way */
 		if (do_move && (cave_m_idx[ny][nx] > 0))
 		{
-			monster_race *z_prt = &r_info[y_ptr->r_idx];
 			monster_type *n_ptr = &m_list[cave_m_idx[ny][nx]];
 
 			/* Assume no movement */
@@ -4977,9 +4980,9 @@ static void process_monster(int m_idx)
 
 			/* Kill weaker monsters / Attack 'enemies' */
 			if ((r_ptr->flags2 & (RF2_KILL_BODY)) &&
-			    (compare_monsters(m_ptr, n_ptr) > 0) ||
+			    ((compare_monsters(m_ptr, n_ptr) > 0) ||
 				 are_enemies(m_ptr, n_ptr) || 
-				 (m_ptr->confused))
+				 (m_ptr->confused)))
 			{
 				do_move = FALSE;
 

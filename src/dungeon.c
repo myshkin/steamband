@@ -379,8 +379,6 @@ static void process_world(void)
 	int upkeep_factor = 0;
 	object_type *o_ptr;
 
-
-
 	/* Every 10 game turns */
 	if (turn % 10) return;
 
@@ -525,8 +523,8 @@ static void process_world(void)
 
 	if (!cave_floor_bold(p_ptr->py, p_ptr->px))
 	{
-		if (!(p_ptr->wraith_form) && ((p_ptr->chp) > ((p_ptr->lev)/5)) || 
-		(p_ptr->prace != RACE_GHOST))
+		if ((!(p_ptr->tim_wraith) && ((p_ptr->chp) > ((p_ptr->lev)/5))) || 
+		(p_ptr->wraith_form))
 		{
 			cptr dam_desc;
 
@@ -771,9 +769,14 @@ static void process_world(void)
 	}
 
 	/* Wraith form */
-	if (p_ptr->wraith_form)
+	/* OK, This here is working. However, it is counting down to zero */
+	/* when a weapon with wraithform is weilded - which it shouldn't */
+	/* be doing. . . Even if what I'm doing works, I should clean it up */
+	/* later. -CCC Great, Now I'm really confused.*/
+	
+	if (p_ptr->tim_wraith)
 	{
-		(void)set_shadow(p_ptr->wraith_form - 1);
+		(void)set_shadow(p_ptr->tim_wraith - 1);
 	}
 
 	/* Heroism */

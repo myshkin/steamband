@@ -29,10 +29,10 @@
 # NEW Chart progression by race
 #	British/French/
 #	Spaniards/German/
-#	Finnish/Americans		-->1-->2-->3-->4-->5-->6-->7
+#	Americans				-->1-->2-->3-->4-->5-->6-->7
 #	Asiatic					-->8-->9-->10-->11-->12-->13-->14
 #	African					-->15-->16-->17-->18-->19-->20-->21
-#	Russian					-->22-->23-->24-->25-->26-->27-->28
+#	Finnish/Russian			-->22-->23-->24-->25-->26-->27-->28
 #	Arabic					-->29-->30-->31-->32-->33-->34-->35
 #	Dwarf/brownie/
 #   Daoine Sidhe/
@@ -52,7 +52,7 @@
 
 # Version stamp (required)
 
-V:0.2.1
+V:0.2.2
 #	British/French/
 #	Spaniards/German/
 #	Finnish	
@@ -859,17 +859,17 @@ D:and large, sharp teeth.
 #old ones
 
 N:72:73:100:15
-D:You are an ancient Old One, 
+D:You are an ancient Old One, come to 
 
 N:73:74:100:0
-D:come to reclaim the earthly plane as your own.
+D:reclaim the earthly plane as your own. 
 
 N:74:75:20:20
 D:You are a terrible being. 
 N:74:75:80:55
 D:You are a horrific monstrocity. 
 N:74:75:100:60
-D:You are cause the minds of people to turn to mush.  
+D:You turn the minds of people to mush.  
 
 N:75:76:5:50
 D:You have 12 yellow eyes, 

@@ -611,10 +611,10 @@ static void roff_aux(int r_idx)
 	if (flags4 & (RF4_XXX2))		vp[vn++] = "do something";
 	if (flags4 & (RF4_XXX3))		vp[vn++] = "do something";
 	if (flags4 & (RF4_XXX4))		vp[vn++] = "do something";
-	if (flags4 & (RF4_ARROW_1))		vp[vn++] = "fire an arrow";
-	if (flags4 & (RF4_ARROW_2))		vp[vn++] = "fire arrows";
-	if (flags4 & (RF4_ARROW_3))		vp[vn++] = "fire a missile";
-	if (flags4 & (RF4_ARROW_4))		vp[vn++] = "fire missiles";
+	if (flags4 & (RF4_ARROW_1))		vp[vn++] = "fire an gun";
+	if (flags4 & (RF4_ARROW_2))		vp[vn++] = "fire bullets";
+	if (flags4 & (RF4_ARROW_3))		vp[vn++] = "fire a shotgun";
+	if (flags4 & (RF4_ARROW_4))		vp[vn++] = "fire shotgun blasts";
 
 	/* Describe inate attacks */
 	if (vn)
@@ -773,8 +773,15 @@ static void roff_aux(int r_idx)
 		}
 
 		/* Verb Phrase */
-		roff(" magical, casting spells");
-
+		if ((r_ptr->flags3 & (RF3_AUTOMATA)))
+		{
+			roff(" skillfully engineered, discharging");
+		}
+		else
+		{
+			roff(" magical, casting spells");
+		}
+		
 		/* Adverb */
 		if (flags2 & (RF2_SMART)) roff(" intelligently");
 
@@ -1230,7 +1237,7 @@ static void roff_aux(int r_idx)
 			case RBM_BEG:	p = "beg"; break;
 			case RBM_INSULT:	p = "insult"; break;
 			case RBM_MOAN:	p = "moan"; break;
-			case RBM_XXX5:	break;
+			case RBM_SPEAK:	p = "speak"; break;
 		}
 
 

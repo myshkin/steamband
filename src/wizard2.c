@@ -1236,7 +1236,7 @@ static void do_cmd_wiz_learn(void)
 /*
  * Hack -- Rerate Hitpoints
  */
-static void do_cmd_rerate(void)
+/* static void do_cmd_rerate(void)
 {
 	int min_value, max_value, i, percent;
 
@@ -1247,39 +1247,39 @@ static void do_cmd_rerate(void)
 	max_value += PY_MAX_LEVEL;
 
 	p_ptr->player_hp[0] = p_ptr->hitdie;
-
+*/
 	/* Rerate */
-	while (1)
+/*	while (1)
 	{
-		/* Collect values */
-		for (i = 1; i < PY_MAX_LEVEL; i++)
+*/		/* Collect values */
+/*		for (i = 1; i < PY_MAX_LEVEL; i++)
 		{
 			p_ptr->player_hp[i] = randint(p_ptr->hitdie);
 			p_ptr->player_hp[i] += p_ptr->player_hp[i - 1];
 		}
-
+*/
 		/* Legal values */
-		if ((p_ptr->player_hp[PY_MAX_LEVEL - 1] >= min_value) &&
+/*		if ((p_ptr->player_hp[PY_MAX_LEVEL - 1] >= min_value) &&
 		    (p_ptr->player_hp[PY_MAX_LEVEL - 1] <= max_value)) break;
 	}
 
 	percent = (int)(((long)p_ptr->player_hp[PY_MAX_LEVEL - 1] * 200L) /
 	                (p_ptr->hitdie + ((PY_MAX_LEVEL - 1) * p_ptr->hitdie)));
-
+*/
 	/* Update and redraw hitpoints */
-	p_ptr->update |= (PU_HP);
+/*	p_ptr->update |= (PU_HP);
 	p_ptr->redraw |= (PR_HP);
-
+*/
 	/* Window stuff */
-	p_ptr->window |= (PW_PLAYER_0 | PW_PLAYER_1);
-
+/*	p_ptr->window |= (PW_PLAYER_0 | PW_PLAYER_1);
+*/
 	/* Handle stuff */
-	handle_stuff();
-
+/*	handle_stuff();
+*/
 	/* Message */
-	msg_format("Current Life Rating is %d/100.", percent);
+/*	msg_format("Current Life Rating is %d/100.", percent);
 }
-
+*/
 
 /*
  * Summon some creatures

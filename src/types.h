@@ -699,10 +699,10 @@ struct player_race
 	byte b_age;			/* base age */
 	byte m_age;			/* mod age */
 
-	byte m_b_ht;		/* base height (males) */
-	byte m_m_ht;		/* mod height (males) */
-	byte m_b_wt;		/* base weight (males) */
-	byte m_m_wt;		/* mod weight (males) */
+	s16b m_b_ht;		/* base height (males) */
+	s16b m_m_ht;		/* mod height (males) */
+	s16b m_b_wt;		/* base weight (males) */
+	s16b m_m_wt;		/* mod weight (males) */
 
 	byte f_b_ht;		/* base height (females) */
 	byte f_m_ht;		/* mod height (females) */
@@ -897,6 +897,8 @@ struct player_type
 	s16b blessed;		/* Timed -- Blessed */
 	s16b tim_invis;		/* Timed -- See Invisible */
 	s16b tim_infra;		/* Timed -- Infra Vision */
+	s16b tim_wraith;	/* Timed -- Wraith Form */
+	s16b tim_esp;	    /* Timed ESP */
 
 	s16b oppose_acid;	/* Timed -- oppose acid */
 	s16b oppose_elec;	/* Timed -- oppose lightning */
@@ -904,8 +906,6 @@ struct player_type
 	s16b oppose_cold;	/* Timed -- oppose cold */
 	s16b oppose_pois;	/* Timed -- oppose poison */
 	
-	s16b tim_esp;	    /* Timed ESP */
-	s16b wraith_form;	/* Timed Wraithform */
 
 	u32b muta1;			/* Mutation flags 1 */
 	u32b muta2;			/* Mutation flags 2 */
@@ -1071,6 +1071,7 @@ struct player_type
 	bool see_inv;		/* See invisible */
 	bool free_act;		/* Free action */
 	bool hold_life;		/* Hold life */
+	bool wraith_form;	/* Wraithform */
 
 	bool sh_fire;		/* Fiery 'immolation' effect */
 	bool sh_elec;		/* Electric 'immolation' effect */

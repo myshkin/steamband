@@ -75,6 +75,40 @@ bool alchemy(void)
 			if (!get_check(out_val)) return FALSE;
 		}
 	}
+	
+	/* Artifacts cannot be converted to gold */
+	if (artifact_p(o_ptr))
+	{
+		/* Message */
+		msg_format("You cannot turn %s into gold!", o_name);
+
+		/* Don't mark id'ed objects */
+		if (object_known_p(o_ptr)) return (FALSE);
+
+		/* It has already been sensed */
+		if (o_ptr->ident & (IDENT_SENSE))
+		{
+			/* Already sensed objects always get improved feelings */
+			if (cursed_p(o_ptr) || broken_p(o_ptr))
+				o_ptr->discount = INSCRIP_TERRIBLE;
+			else
+				o_ptr->discount = INSCRIP_SPECIAL;
+		}
+		else
+		{
+			/* Mark the object as indestructible */
+			o_ptr->discount = INSCRIP_INDESTRUCTIBLE;
+		}
+
+		/* Combine the pack */
+		p_ptr->notice |= (PN_COMBINE);
+
+		/* Window stuff */
+		p_ptr->window |= (PW_INVEN | PW_EQUIP);
+
+		/* Done */
+		return (FALSE);
+	}
 
 	price = object_value(o_ptr);
 

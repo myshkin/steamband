@@ -241,22 +241,27 @@ errr path_parse(char *buf, int max, cptr file)
 
 #else /* SET_UID */
 
-
 /*
  * Extract a "parsed" path from an initial filename
- *
+ * 
  * This requires no special processing on simple machines,
  * except for verifying the size of the filename.
- */
+ */   
 errr path_parse(char *buf, int max, cptr file)
 {
-	/* Accept the filename */
-	strnfmt(buf, max, "%s", file);
+    /* Accept the filename */
+    strnfmt(buf, max, "%s", file);
 
-	/* Success */
-	return (0);
+#if defined(MAC_MPW) && defined(CARBON)    
+
+    /* Need to convert pathname according to operating system version :( */
+    convert_pathname(buf);
+
+#endif /* MAC_MPW && CARBON */
+
+    /* Success */
+    return (0);
 }
-
 
 #endif /* SET_UID */
 
@@ -343,25 +348,23 @@ FILE *my_fopen(cptr file, cptr mode)
 {
 	char buf[1024];
 
+	FILE *fff;
+	
 	/* Hack -- Try to parse the path */
 	if (path_parse(buf, 1024, file)) return (NULL);
 
-#if defined(MACINTOSH) && defined(MAC_MPW)
+	fff = fopen(buf, mode);
+	
+#if defined(MAC_MPW) || defined(MACH_O_CARBON)
 
- 	{
- 		/* setting file type/creator -- AR */
- 		FILE *s = fopen(buf, mode);
- 
- 		if (s != NULL) fsetfileinfo(buf, _fcreator, _ftype);
- 		return (s);
- 	}
+    /* Set file creator and type if fopen (for writing) was successful */
+    if (fff && strchr(mode, 'w')) fsetfileinfo(buf, _fcreator, _ftype);
 
-#else
+#endif /* MAC_MPW || MACH_O_CARBON */
 
-	/* Attempt to fopen the file anyway */
-	return (fopen(buf, mode));
 
-#endif /* MACINTOSH && MAC_MPW */
+    /* Return open file or NULL */
+    return (fff);
 }
 
 
@@ -416,64 +419,118 @@ FILE *my_fopen_temp(char *buf, int max)
 #endif /* HAVE_MKSTEMP */
 
 
+
 /*
- * Hack -- replacement for "fgets()"
+ * A more flexible my_fgets() replacement.
+ * It accepts EOF terminated last line often found on DOS/Windows as well as
+ * understands two different end-of-line characters currently in use for
+ * the Macintosh.
  *
- * Read a string, without a newline, to a file
- *
- * Process tabs, strip internal non-printables
+ * huge -> size_t in 3.0.1 or greater.
  */
 errr my_fgets(FILE *fff, char *buf, huge n)
 {
-	huge i = 0;
+    int i = 0;
+    int len;
+    char *s = buf;
 
-	char *s;
 
-	char tmp[1024];
+    /* Paranoia */
+    if (n <= 0) return (1);
 
-	/* Read a line */
-	if (fgets(tmp, 1024, fff))
-	{
-		/* Convert weirdness */
-		for (s = tmp; *s; s++)
-		{
-			/* Handle newline */
-			if (*s == '\n')
-			{
-				/* Terminate */
-				buf[i] = '\0';
+    /* Enforce historical upper bound */
+    if (n > 1024) n = 1024;
 
-				/* Success */
-				return (0);
-			}
+    /* Leave a byte for terminating null */
+    len = n - 1;
 
-			/* Handle tabs */
-			else if (*s == '\t')
-			{
-				/* Hack -- require room */
-				if (i + 8 >= n) break;
+    /* While there's room left in the buffer */
+    while (i < len)
+    {
+        int c;
 
-				/* Append 1-8 spaces */
-				do { buf[i++] = ' '; } while (i % 8);
-			}
+        /*
+         * Read next character - stdio buffers I/O, so there's no
+         * need for buffering it again using fgets.
+         */
+        c = fgetc(fff);
 
-			/* Handle printables */
-			else if (isprint(*s))
-			{
-				/* Copy */
-				buf[i++] = *s;
+        /* End of file */
+        if (c == EOF)
+        {
+            /* No characters read -- signal error */
+            if (i == 0) break;
 
-				/* Check length */
-				if (i >= n) break;
-			}
-		}
-	}
+            /*
+             * Be nice to DOS/Windows, where a last line of a file isn't
+             * always \n terminated.
+             */
+            *s = '\0';
 
-	/* Nothing */
-	buf[0] = '\0';
+            /* Success */
+            return (0);
+        }
 
-	/* Failure */
-	return (1);
+#if defined(MACINTOSH) || defined(MACH_O_CARBON)
+
+        /*
+         * Be nice to the Macintosh, where a file can have Mac or Unix
+
+         * end of line, especially since the introduction of OS X.
+         * MPW tools were also very tolerant to the Unix EOL.
+         */
+        if (c == '\r') c = '\n';
+
+#endif /* MACINTOSH || MACH_O_CARBON */
+
+        /* End of line */
+        if (c == '\n')
+        {
+            /* Null terminate */
+            *s = '\0';
+
+            /* Success */
+            return (0);
+        }
+
+        /* Expand a tab into spaces */
+        if (c == '\t')
+        {
+            int tabstop;
+
+            /* Next tab stop */
+            tabstop = ((i + TAB_COLUMNS) / TAB_COLUMNS) * TAB_COLUMNS;
+
+            /* Bounds check */
+            if (tabstop >= len) break;
+
+            /* Convert it to spaces */
+            while (i < tabstop)
+            {
+                /* Store space */
+                *s++ = ' ';
+
+                /* Count */
+                i++;
+            }
+        }
+
+        /* Ignore non-printables */
+        else if (isprint(c))
+        {
+            /* Store character in the buffer */
+            *s++ = c;
+
+            /* Count number of characters in the buffer */
+            i++;
+        }
+    }
+
+    /* Buffer overflow or EOF - return an empty string */
+    buf[0] = '\0';
+
+    /* Error */
+    return (1);
 }
 
 
@@ -590,37 +647,37 @@ errr fd_copy(cptr file, cptr what)
  */
 int fd_make(cptr file, int mode)
 {
-	char buf[1024];
+    char buf[1024];
 
-	/* Hack -- Try to parse the path */
-	if (path_parse(buf, 1024, file)) return (-1);
+    int fd;
+
+
+    /* Hack -- Try to parse the path */
+    if (path_parse(buf, 1024, file)) return (-1);
 
 #if defined(MACINTOSH)
 
-#if defined(MAC_MPW)
- 
- 	{
- 		/* setting file type and creator -- AR */
- 		int fd = open(buf, O_CREAT | O_EXCL | O_WRONLY | O_BINARY);
- 
- 		if (fd >= 0) fsetfileinfo(buf, _fcreator, _ftype);
- 		return (fd);
- 	}
- 	
-#else
-
-	/* Create the file, fail if exists, write-only, binary */
-	return (open(buf, O_CREAT | O_EXCL | O_WRONLY | O_BINARY));
-
-# endif
+    /* Create the file, fail if exists, write-only, binary */
+    fd = open(buf, O_CREAT | O_EXCL | O_WRONLY | O_BINARY);
 
 #else
 
-	/* Create the file, fail if exists, write-only, binary */
-	return (open(buf, O_CREAT | O_EXCL | O_WRONLY | O_BINARY, mode));
+    /* Create the file, fail if exists, write-only, binary */
+    fd = open(buf, O_CREAT | O_EXCL | O_WRONLY | O_BINARY, mode);
 
 #endif
 
+
+#if defined(MAC_MPW) || defined(MACH_O_CARBON)
+
+    /* Set file creator and type if the file is created successfully */
+    if (fd >= 0) fsetfileinfo(buf, _fcreator, _ftype);
+
+#endif /* MAC_MPW || MACH_O_CARBON */
+
+
+    /* Return the descriptor */
+    return (fd);
 }
 
 
@@ -638,21 +695,8 @@ int fd_open(cptr file, int flags)
 
 #if defined(MACINTOSH) || defined(WINDOWS)
  
-#ifdef MAC_MPW
- 
- 	{
- 		int fd = open(buf, flags | O_BINARY);
- 
- 		if (fd >= 0) fsetfileinfo(buf, _fcreator, _ftype);
- 		return (fd);
- 	}
- 
-#else
- 
  	/* Attempt to open the file */
  	return (open(buf, flags | O_BINARY));
- 
-#endif
  
 #else
  
@@ -836,7 +880,8 @@ errr fd_close(int fd)
 }
 
 
-#ifdef CHECK_MODIFICATION_TIME
+#if defined(CHECK_MODIFICATION_TIME) && !defined(MAC_MPW)
+
 # ifdef MACINTOSH
 #  include <stat.h>
 # else
@@ -848,11 +893,11 @@ errr fd_close(int fd)
 errr check_modification_date(int fd, cptr template_file)
 {
 	char buf[1024];
-
+	
 	struct stat txt_stat, raw_stat;
 
 	/* Build the filename */
-	path_build(buf, 1024, ANGBAND_DIR_EDIT, template_file);
+	path_build(buf, sizeof(buf), ANGBAND_DIR_EDIT, template_file);
 
 	/* Access stats on text file */
 	if (stat(buf, &txt_stat))
@@ -873,11 +918,10 @@ errr check_modification_date(int fd, cptr template_file)
 		/* Reprocess text file */
 		return (-1);
 	}
-
-	return (0);
+    return (0);
 }
 
-#endif /* CHECK_MODIFICATION_TIME */
+#endif /* CHECK_MODIFICATION_TIME && !MAC_MPW */
 
 #endif /* ACORN */
 
@@ -2484,21 +2528,29 @@ void move_cursor(int row, int col)
 static void msg_flush(int x)
 {
 	byte a = TERM_L_BLUE;
-
-	/* Pause for response */
-	Term_putstr(x, 0, -1, a, "-more-");
-
-	/* Get an acceptable keypress */
-	while (1)
+	
+	if ((skip_msgs == FALSE))
 	{
-		char ch;
-		ch = inkey();
-		if (quick_messages) break;
-		if ((ch == ESCAPE) || (ch == ' ')) break;
-		if ((ch == '\n') || (ch == '\r')) break;
-		bell("Illegal response to a 'more' prompt!");
-	}
+		/* Pause for response */
+		Term_putstr(x, 0, -1, a, "-more-");
 
+		/* Get an acceptable keypress */
+		while (1)
+		{
+			char ch;
+			ch = inkey();
+			if (ch == ESCAPE)
+			{
+				/* Skip all the prompts until player's turn */
+				skip_msgs = TRUE;
+				break;
+			}
+			if (ch == ' ') break;
+			if ((ch == '\n') || (ch == '\r')) break;
+			if (quick_messages) break;
+			bell("Illegal response to a 'more' prompt!");
+		}
+	}	
 	/* Clear the line */
 	Term_erase(0, 0, 255);
 }
@@ -2649,6 +2701,7 @@ static void msg_print_aux(u16b type, cptr msg)
 
 	/* Optional refresh */
 	if (fresh_after) Term_fresh();
+	
 }
 
 
@@ -3364,6 +3417,9 @@ void request_command(bool shopping)
 		{
 			/* Hack -- no flush needed */
 			msg_flag = FALSE;
+
+			/* Hack -- Reset command skip */
+			skip_msgs = FALSE;
 
 			/* Activate "command mode" */
 			inkey_flag = TRUE;

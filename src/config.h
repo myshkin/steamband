@@ -352,9 +352,9 @@
 /*
  * OPTION: Check the modification time of *_info.raw files
  */
-/*
+
 #define CHECK_MODIFICATION_TIME
-*/
+
 
 /*
  * OPTION: Enable the "smart_learn" and "smart_cheat" options.
@@ -526,13 +526,13 @@
 /*
  * Hack -- Special "ancient machine" versions
  */
-/*
+
 #if defined(USE_286) || defined(ANGBAND_LITE_MAC)
 # ifndef ANGBAND_LITE
 #  define ANGBAND_LITE
 # endif
 #endif
-*/
+
 
 /*
  * OPTION: Attempt to minimize the size of the game
