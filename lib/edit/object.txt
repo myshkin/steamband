@@ -56,7 +56,7 @@
 
 # Version stamp (required)
 
-V:0.1.1
+V:0.2.0
 
 
 ##### Non-kind (contains the "pile" picture) #####
@@ -601,13 +601,13 @@ A:15/1
 P:0:2d8:0:0:0
 F:SHOW_MODS
 
-#N:69:& Lochaber Axe~
-#G:/:D
-#I:22:28:0
-#W:45:0:250:750
-#A:45/1
-#P:0:3d8:0:0:0
-#F:SHOW_MODS
+N:69:& Pneumatic Axe~
+G:/:D
+I:22:20:1
+W:45:1:250:2750
+A:60/1
+P:0:3d8:0:0:0
+F:SHOW_MODS | BLOWS
 
 N:70:& Broad Axe~
 G:/:s
@@ -658,7 +658,7 @@ A:15/1
 F:SHOW_MODS
 
 N:76:& 16 Gague Shotgun~
-G:}:d
+G:}:D
 I:19:4:0
 W:30:0:500:800
 A:30/1
@@ -678,7 +678,7 @@ N:78:& Rifle bullet~
 G:{:U
 I:17:1:0
 W:7:0:1:10
-A:3/1:15/1
+A:3/0:15/0:35/0:55/0
 P:0:2d11:0:0:0
 F:SHOW_MODS
 
@@ -694,7 +694,7 @@ N:80:& Shotgun buckshot
 G:{:s
 I:18:1:0
 W:10:0:2:20
-A:3/1:25/1
+A:20/0:40/0:50/0:60/0
 P:0:4d11:0:0:0
 F:SHOW_MODS
 
@@ -710,7 +710,7 @@ N:82:& Pistol bullet~
 G:{:s
 I:16:0:0
 W:3:0:1:5
-A:0/1
+A:3/0:15/0:35/0:55/0
 P:0:1d11:0:0:0
 F:SHOW_MODS
 
@@ -1687,7 +1687,7 @@ W:40:0:5:250
 A:40/1
 F:EASY_KNOW
 
-##### Potions #####
+##### Tonics #####
 
 N:222:Slime Mold Juice
 G:!:d
@@ -1716,8 +1716,8 @@ F:EASY_KNOW
 N:225:Strength
 G:!:d
 I:75:48:0
-W:30:0:4:8000
-A:30/1
+W:30:3:4:8000
+A:30/4
 P:0:1d1:0:0:0
 F:EASY_KNOW
 
@@ -1740,8 +1740,8 @@ F:EASY_KNOW
 N:228:Intelligence
 G:!:d
 I:75:49:0
-W:30:0:4:8000
-A:30/1
+W:30:3:4:8000
+A:30/4
 P:0:1d1:0:0:0
 F:EASY_KNOW
 
@@ -1764,8 +1764,8 @@ F:EASY_KNOW
 N:231:Wisdom
 G:!:d
 I:75:50:0
-W:30:0:4:8000
-A:30/1
+W:30:3:4:8000
+A:30/4
 P:0:1d1:0:0:0
 F:EASY_KNOW
 
@@ -1788,8 +1788,8 @@ F:EASY_KNOW
 N:234:Charisma
 G:!:d
 I:75:53:0
-W:20:0:4:1000
-A:20/1
+W:20:3:4:1000
+A:20/4
 P:0:1d1:0:0:0
 F:EASY_KNOW
 
@@ -1860,8 +1860,8 @@ F:EASY_KNOW
 N:243:Constitution
 G:!:d
 I:75:52:0
-W:30:0:4:8000
-A:30/1
+W:30:3:4:8000
+A:30/4
 P:0:1d1:0:0:0
 F:EASY_KNOW
 
@@ -1924,8 +1924,8 @@ F:EASY_KNOW
 N:251:Dexterity
 G:!:d
 I:75:51:0
-W:30:0:4:8000
-A:30/1
+W:30:3:4:8000
+A:30/4
 P:0:1d1:0:0:0
 F:EASY_KNOW
 
@@ -3239,9 +3239,21 @@ A:70/4
 P:0:1d1:0:0:0
 F:EASY_KNOW
 
-## XXX 423 XXX ##
+N:423:Mutagen
+G:!:v
+I:75:8:0
+W:15:0:1:10000
+A:30/1:60/1
+P:0:2d12:0:0:0
+F:EASY_KNOW
 
-## XXX 424 XXX ##
+N:424:Mutagen Antidote
+G:!:v
+I:75:10:0
+W:15:0:1:10000
+A:30/1:60/1
+P:0:1d3:0:0:0
+F:EASY_KNOW
 
 
 ##### Items 425 to 439 unused #####
@@ -3530,12 +3542,12 @@ W:15:0:40:0
 A:20/1
 F:EASY_KNOW
 
-#N:517:a note home 5
-#G:?:o
-#I:71:5:0
-#W:5:0:40:0
-#A:5/1
-#F:EASY_KNOW
+N:517:Homoeopathy
+G:?:o
+I:71:5:0
+W:20:0:40:0
+A:5/1
+F:EASY_KNOW
 
 #N:518:a note home 6
 #G:?:o
@@ -3603,14 +3615,14 @@ W:0:0:10:1
 A:0/1:5/1:10/1
 F:EASY_KNOW
 
-N:528:& Onion~ 
+N:528:& Onion~
 G:,:w
 I:80:41:800
 W:0:0:10:1
 A:0/1:5/1:10/1
 F:EASY_KNOW
 
-N:529:& Potato~ 
+N:529:& Potato~
 G:,:U
 I:80:42:1200
 W:0:0:10:1
@@ -4130,5 +4142,21 @@ I:48:24:12
 W:40:10:40:450
 A:60/10:90/20
 P:50:1d2:0:0:0
-F:DEX | STEALTH 
+F:DEX | STEALTH
 
+## NEW WEAPONS
+N:596:& Pneumatic Sword~
+G:|:b
+I:23:31:2
+W:50:1:25:2400
+P:0:8d5:0:0:0
+A:85/2
+F:SHOW_MODS | BLOWS
+
+N:597:& Pneumatic Dagger~
+G:|:b
+I:23:32:4
+W:55:2:15:3000
+P:0:8d3:0:0:0
+A:85/2
+F:SHOW_MODS | BLOWS

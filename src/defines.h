@@ -47,15 +47,15 @@
 /*
  * Current version string
  */
-#define VERSION_STRING	"0.1.1"
+#define VERSION_STRING	"0.2.0"
 
 
 /*
  * Current version numbers
  */
 #define VERSION_MAJOR	0
-#define VERSION_MINOR	1
-#define VERSION_PATCH	1
+#define VERSION_MINOR	2
+#define VERSION_PATCH	0
 #define VERSION_EXTRA	0
 
 
@@ -160,6 +160,216 @@
  */
 #define MAX_Q_IDX	4
 
+
+/* Mutations */
+
+/* "Activatable" mutations must be in MUT1_* or MUT2_* */
+#define MUT1_SPIT_ACID                  0x00000001L
+#define MUT1_BR_FIRE                    0x00000002L
+#define MUT1_HYPN_GAZE                  0x00000004L
+#define MUT1_APPORTATION                0x00000008L /* Telekinesis - G */
+#define MUT1_VTELEPORT                  0x00000010L /* Voluntary teleport */
+#define MUT1_MIND_BLST                  0x00000020L
+#define MUT1_RADIATION                  0x00000040L
+#define MUT1_VAMPIRISM                  0x00000080L
+#define MUT1_SUMMON_M					0x00000100L
+#define MUT1_BLINK      	        	0x00000200L
+#define MUT1_EAT_ROCK  		        	0x00000400L
+#define MUT1_GRAV_BEAM					0x00000800L
+#define MUT1_SHRIEK             		0x00001000L
+#define MUT1_ILLUMINE           		0x00002000L
+#define MUT1_DET_CURSE          		0x00004000L
+#define MUT1_BERSERK            		0x00008000L
+#define MUT1_POLYMORPH          		0x00010000L
+#define MUT1_MIDAS_TCH          		0x00020000L
+#define MUT1_GROW_MOLD          		0x00040000L
+#define MUT1_RESIST             		0x00080000L
+#define MUT1_EARTHQUAKE         		0x00100000L
+#define MUT1_DAZZLE             		0x00200000L
+#define MUT1_RECALL             		0x00400000L
+#define MUT1_BANISH             		0x00800000L
+#define MUT1_COLD_TOUCH         		0x01000000L
+#define MUT1_MISSILE					0x02000000L
+#define MUT1_SHARD_BOLT					0x04000000L
+#define MUT1_SHARD_BLAST				0x08000000L
+#define MUT1_DSHARD_BLAST				0x10000000L
+#define MUT1_CHAIN_SHARDS				0x20000000L
+#define MUT1_ROCKET						0x40000000L
+#define MUT1_XXX1  						0x80000000L /* Old grav beam - Non functioning */
+													/* when I had grav beam here it */
+													/* it didn't work. -ccc */
+
+#define MUT2_XXX1	        	        0x00000001L
+#define MUT2_XXX2              	        0x00000002L
+#define MUT2_XXX3                   	0x00000004L
+#define MUT2_XXX4                		0x00000008L /* Telekinesis - G */
+#define MUT2_XXX5                	    0x00000010L /* Voluntary teleport */
+#define MUT2_XXX6                	    0x00000020L
+#define MUT2_XXX7                   	0x00000040L
+#define MUT2_XXX8                   	0x00000080L
+#define MUT2_XXX9 						0x00000100L
+#define MUT2_XXX10      	        	0x00000200L
+#define MUT2_XXX11  		        	0x00000400L
+#define MUT2_XXX12						0x00000800L
+#define MUT2_XXX13          			0x00001000L
+#define MUT2_XXX14            			0x00002000L
+#define MUT2_XXX15           			0x00004000L
+#define MUT2_XXX16             			0x00008000L
+#define MUT2_XXX17           			0x00010000L
+#define MUT2_XXX18          			0x00020000L
+#define MUT2_XXX19           			0x00040000L
+#define MUT2_XXX20            			0x00080000L
+#define MUT2_XXX21          			0x00100000L
+#define MUT2_XXX22             			0x00200000L
+#define MUT2_XXX23              		0x00400000L
+#define MUT2_XXX24             			0x00800000L
+#define MUT2_XXX25         				0x01000000L
+#define MUT2_XXX26 						0x02000000L
+#define MUT2_XXX27 						0x04000000L
+#define MUT2_XXX28 						0x08000000L
+#define MUT2_XXX29 						0x10000000L
+#define MUT2_XXX30 						0x20000000L
+#define MUT2_XXX31 						0x40000000L
+#define MUT2_XXX32 						0x80000000L
+
+
+/* Randomly activating mutations must be MUT3_* */
+#define MUT3_BERS_RAGE					0x00000001L
+#define MUT3_COWARDICE					0x00000002L
+#define MUT3_RTELEPORT					0x00000004L /* Random teleport, instability */
+#define MUT3_ALCOHOL					0x00000008L
+#define MUT3_HALLU						0x00000010L
+#define MUT3_FLATULENT					0x00000020L
+#define MUT3_SCOR_TAIL					0x00000040L
+#define MUT3_HORNS						0x00000080L
+#define MUT3_BEAK						0x00000100L
+#define MUT3_TUSKS						0x00000200L
+#define MUT3_CLAWS						0x00000400L
+#define MUT3_ATT_DEMON					0x00000800L
+#define MUT3_PROD_MANA					0x00001000L
+#define MUT3_WOUND						0x00002000L
+#define MUT3_DISPEL_ALL   		    	0x00004000L
+#define MUT3_EAT_LIGHT    		   		0x00008000L
+#define MUT3_ATT_ANIMAL   		    	0x00010000L
+#define MUT3_RAW_CHAOS    		    	0x00020000L
+#define MUT3_WRAITH             		0x00040000L
+#define MUT3_POLY_WOUND         		0x00080000L
+#define MUT3_WASTING            		0x00100000L
+#define MUT3_ATT_DRAGON         		0x00200000L
+#define MUT3_WEIRD_MIND        			0x00400000L
+#define MUT3_NAUSEA             		0x00800000L
+#define MUT3_CHAOS_GIFT         		0x01000000L
+#define MUT3_WALK_SHAD          		0x02000000L
+#define MUT3_WARNING            		0x04000000L
+#define MUT3_INVULN             		0x08000000L
+#define MUT3_SP_TO_HP           		0x10000000L
+#define MUT3_HP_TO_SP           		0x20000000L
+#define MUT3_DISARM             		0x40000000L
+#define MUT3_TENTACLES					0x80000000L
+
+#define MUT4_XXX1						0x00000001L
+#define MUT4_XXX2						0x00000002L
+#define MUT4_XXX3						0x00000004L /* Random teleport, instability */
+#define MUT4_XXX4						0x00000008L
+#define MUT4_XXX5						0x00000010L
+#define MUT4_XXX6						0x00000020L
+#define MUT4_XXX7						0x00000040L
+#define MUT4_XXX8						0x00000080L
+#define MUT4_XXX9						0x00000100L
+#define MUT4_XXX10						0x00000200L
+#define MUT4_XXX11						0x00000400L
+#define MUT4_XXX12						0x00000800L
+#define MUT4_XXX13						0x00001000L
+#define MUT4_XXX14						0x00002000L
+#define MUT4_XXX15 		    			0x00004000L
+#define MUT4_XXX16    			   		0x00008000L
+#define MUT4_XXX17 		    			0x00010000L
+#define MUT4_XXX18 		    			0x00020000L
+#define MUT4_XXX19            	 		0x00040000L
+#define MUT4_XXX20         				0x00080000L
+#define MUT4_XXX21         				0x00100000L
+#define MUT4_XXX22         				0x00200000L
+#define MUT4_XXX23     					0x00400000L
+#define MUT4_XXX24         				0x00800000L
+#define MUT4_XXX25     					0x01000000L
+#define MUT4_XXX26         				0x02000000L
+#define MUT4_XXX27         				0x04000000L
+#define MUT4_XXX28         				0x08000000L
+#define MUT4_XXX29         				0x10000000L
+#define MUT4_XXX30         				0x20000000L
+#define MUT4_XXX31         				0x40000000L
+#define MUT4_XXX32						0x80000000L
+
+
+/* Other mutations will be mainly in MUT5_* */
+#define MUT5_HYPER_STR                  0x00000001L
+#define MUT5_PUNY                       0x00000002L
+#define MUT5_HYPER_INT                  0x00000004L
+#define MUT5_MORONIC                    0x00000008L
+#define MUT5_RESILIENT                  0x00000010L
+#define MUT5_XTRA_FAT                   0x00000020L
+#define MUT5_ALBINO                     0x00000040L
+#define MUT5_FLESH_ROT                  0x00000080L
+#define MUT5_SILLY_VOI                  0x00000100L
+#define MUT5_BLANK_FAC                  0x00000200L
+#define MUT5_ILL_NORM                   0x00000400L
+#define MUT5_XTRA_EYES                  0x00000800L
+#define MUT5_MAGIC_RES                  0x00001000L
+#define MUT5_XTRA_NOIS                  0x00002000L
+#define MUT5_INFRAVIS                   0x00004000L
+#define MUT5_XTRA_LEGS                  0x00008000L
+#define MUT5_SHORT_LEG                  0x00010000L
+#define MUT5_ELEC_TOUC                  0x00020000L
+#define MUT5_FIRE_BODY                  0x00040000L
+#define MUT5_WART_SKIN                  0x00080000L
+#define MUT5_SCALES                     0x00100000L
+#define MUT5_IRON_SKIN                  0x00200000L
+#define MUT5_WINGS                      0x00400000L
+#define MUT5_FEARLESS                   0x00800000L
+#define MUT5_REGEN                      0x01000000L
+#define MUT5_ESP                        0x02000000L
+#define MUT5_TWISTED					0x04000000L
+#define MUT5_SPINES						0x08000000L
+#define MUT5_LIMBER     	    	    0x10000000L
+#define MUT5_ARTHRITIS  	    	    0x20000000L
+#define MUT5_VULN_ELEM  	    	    0x40000000L
+#define MUT5_GLOW						0x80000000L
+
+
+#define MUT6_XXX1     		            0x00000001L
+#define MUT6_XXX2              	        0x00000002L
+#define MUT6_XXX3              		    0x00000004L
+#define MUT6_XXX4               	    0x00000008L
+#define MUT6_XXX5               		0x00000010L
+#define MUT6_XXX6                   	0x00000020L
+#define MUT6_XXX7                   	0x00000040L
+#define MUT6_XXX8                  		0x00000080L
+#define MUT6_XXX9                  		0x00000100L
+#define MUT6_XXX10                 		0x00000200L
+#define MUT6_XXX11                  	0x00000400L
+#define MUT6_XXX12                		0x00000800L
+#define MUT6_XXX13                		0x00001000L
+#define MUT6_XXX14                 		0x00002000L
+#define MUT6_XXX15                		0x00004000L
+#define MUT6_XXX16                 		0x00008000L
+#define MUT6_XXX17                 		0x00010000L
+#define MUT6_XXX18                 		0x00020000L
+#define MUT6_XXX19                		0x00040000L
+#define MUT6_XXX20                 		0x00080000L
+#define MUT6_XXX21                  	0x00100000L
+#define MUT6_XXX22                  	0x00200000L
+#define MUT6_XXX23                      0x00400000L
+#define MUT6_XXX24                  	0x00800000L
+#define MUT6_XXX25                  	0x01000000L
+#define MUT6_XXX26                      0x02000000L
+#define MUT6_XXX27						0x04000000L
+#define MUT6_XXX28						0x08000000L
+#define MUT6_XXX29    	    	    	0x10000000L
+#define MUT6_XXX30  	    	    	0x20000000L
+#define MUT6_XXX31  	    	    	0x40000000L
+#define MUT5_XXX32						0x80000000L
+
+
 /*
  * Maximum number of high scores in the high score file
  */
@@ -253,6 +463,34 @@
 #define MON_SUMMON_ADJ	2		/* Adjust level of summoned creatures */
 #define MON_DRAIN_LIFE	2		/* Percent of player exp drained per hit */
 #define USE_DEVICE      3		/* x> Harder devices x< Easier devices */
+
+
+/*** Pet constants ***/
+
+
+/*
+ * Commands
+ */
+#define PET_DISMISS					1
+#define PET_STAY_CLOSE				2
+#define PET_FOLLOW_ME				3
+#define PET_SEEK_AND_DESTROY		4
+#define PET_ALLOW_SPACE				5
+#define PET_STAY_AWAY				6
+#define PET_OPEN_DOORS       	    7
+#define PET_TAKE_ITEMS				8
+
+/*
+ * Follow distances
+ */
+#define PET_CLOSE_DIST				1
+#define PET_FOLLOW_DIST				6
+#define PET_SEEK_DIST				10
+#define PET_DESTROY_DIST			255
+#define PET_SPACE_DIST				(-10)
+#define PET_AWAY_DIST				(-25)
+
+
 
 /*
  * There is a 1/20 (5%) chance of inflating the requested object_level
@@ -722,6 +960,35 @@
 #define SEX_FEMALE		0
 #define SEX_MALE		1
 
+/* 
+ * Player race constants (hard-coded by save-files, arrays, etc.)
+ */
+
+#define RACE_BRITISH		0
+#define RACE_ASIATIC		1
+#define RACE_AMERICAN   	2
+#define RACE_AFRICAN		3
+#define RACE_FRENCH			4
+#define RACE_SPANISH		5
+#define RACE_GERMAN			6
+#define RACE_RUSSIAN		7
+#define RACE_FINNISH		8
+#define RACE_ARABIC			9
+#define RACE_DWARF			10
+#define RACE_BROWNIE		11
+#define RACE_DAOINE_SIDHE	12
+#define RACE_SEELIE_FAE		13
+#define RACE_UNSEELIE_FAE	14
+#define RACE_AUTOMATA		15
+#define RACE_STEAM_MECHA	16
+#define RACE_DJINN			17
+#define RACE_RAKSHASA		18
+#define RACE_GIANT			19
+#define RACE_OGRE			20
+#define RACE_TROLL			21
+#define RACE_GHOST			22
+#define RACE_GOBLIN			23
+#define RACE_OLD_ONE		24
 
 /*** Screen Locations ***/
 
@@ -812,20 +1079,21 @@
 
 /*
  * Legal restrictions for "summon_specific()"
+ * Son of a bitch, I have to change this.
  */
-#define SUMMON_ANT			11
+#define SUMMON_AUTOMATA		11
 #define SUMMON_SPIDER		12
 #define SUMMON_HOUND		13
-#define SUMMON_HYDRA		14
-#define SUMMON_ANGEL		15
+#define SUMMON_MONKEY		14
+#define SUMMON_ALIEN		15
 #define SUMMON_DEMON		16
 #define SUMMON_UNDEAD		17
 #define SUMMON_DRAGON		18
-/* xxx */
+/* #define SUMMON_BEASTMAN		19 */
 #define SUMMON_HI_DEMON		26
 #define SUMMON_HI_UNDEAD	27
 #define SUMMON_HI_DRAGON	28
-/* xxx */
+/*#define SUMMON_ALIEN		29 */
 #define SUMMON_WRAITH		31
 #define SUMMON_UNIQUE		32
 #define SUMMON_KIN			33
@@ -834,65 +1102,65 @@
 /*
  * Spell types used by project(), and related functions.
  */
-#define GF_STUN			1
-#define GF_ARROW        2
-#define GF_MISSILE      3
-#define GF_MANA         4
-#define GF_HOLY_ORB     5
-#define GF_LITE_WEAK	6
-#define GF_DARK_WEAK	7
-#define GF_WATER        8
-#define GF_PLASMA       9
-#define GF_METEOR       10
-#define GF_ICE          11
-#define GF_GRAVITY      12
-#define GF_INERTIA      13
-#define GF_FORCE        14
-#define GF_TIME         15
-#define GF_ACID         16
-#define GF_ELEC         17
-#define GF_FIRE         18
-#define GF_COLD         19
-#define GF_POIS         20
-#define GF_XXX2			21
-#define GF_LITE         22
-#define GF_DARK         23
-#define GF_XXX3			24
-#define GF_CONFUSION    25
-#define GF_SOUND        26
-#define GF_SHARD        27
-#define GF_NEXUS        28
-#define GF_NETHER       29
-#define GF_CHAOS        30
-#define GF_DISENCHANT   31
-#define GF_XXX4			32
-#define GF_KILL_WALL	33
-#define GF_KILL_DOOR	34
-#define GF_KILL_TRAP	35
-#define GF_MAKE_WALL	36
-#define GF_MAKE_DOOR	37
-#define GF_MAKE_TRAP	38
-#define GF_XXX5			39
-#define GF_XXX6			40
-#define GF_AWAY_UNDEAD	41
-#define GF_AWAY_EVIL	42
-#define GF_AWAY_ALL		43
-#define GF_TURN_UNDEAD	44
-#define GF_TURN_EVIL	45
-#define GF_TURN_ALL		46
-#define GF_DISP_UNDEAD	47
-#define GF_DISP_EVIL	48
-#define GF_DISP_ALL		49
-#define GF_XXX7			50
-#define GF_OLD_CLONE	51
-#define GF_OLD_POLY		52
-#define GF_OLD_HEAL		53
-#define GF_OLD_SPEED	54
-#define GF_OLD_SLOW		55
-#define GF_OLD_CONF		56
-#define GF_OLD_SLEEP	57
-#define GF_OLD_DRAIN	58
-#define GF_PSI		    59
+#define GF_STUN				1
+#define GF_ARROW        	2
+#define GF_MISSILE      	3
+#define GF_MANA         	4
+#define GF_HOLY_ORB     	5
+#define GF_LITE_WEAK		6
+#define GF_DARK_WEAK		7
+#define GF_WATER        	8
+#define GF_PLASMA       	9
+#define GF_METEOR       	10
+#define GF_ICE          	11
+#define GF_GRAVITY      	12
+#define GF_INERTIA      	13
+#define GF_FORCE        	14
+#define GF_TIME         	15
+#define GF_ACID         	16
+#define GF_ELEC         	17
+#define GF_FIRE         	18
+#define GF_COLD         	19
+#define GF_POIS         	20
+#define GF_CHARM			21
+#define GF_LITE         	22
+#define GF_DARK         	23
+#define GF_CONTROL_ANIMAL	24
+#define GF_CONFUSION    	25
+#define GF_SOUND        	26
+#define GF_SHARD        	27
+#define GF_NEXUS        	28
+#define GF_NETHER       	29
+#define GF_CHAOS        	30
+#define GF_DISENCHANT   	31
+#define GF_DISINTEGRATE		32
+#define GF_KILL_WALL		33
+#define GF_KILL_DOOR		34
+#define GF_KILL_TRAP		35
+#define GF_MAKE_WALL		36
+#define GF_MAKE_DOOR		37
+#define GF_MAKE_TRAP		38
+#define GF_DOMINATION		39
+#define GF_NUKE				40
+#define GF_AWAY_UNDEAD		41
+#define GF_AWAY_EVIL		42
+#define GF_AWAY_ALL			43
+#define GF_TURN_UNDEAD		44
+#define GF_TURN_EVIL		45
+#define GF_TURN_ALL			46
+#define GF_DISP_UNDEAD		47
+#define GF_DISP_EVIL		48
+#define GF_DISP_ALL			49
+#define GF_XXX7				50
+#define GF_OLD_CLONE		51
+#define GF_OLD_POLY			52
+#define GF_OLD_HEAL			53
+#define GF_OLD_SPEED		54
+#define GF_OLD_SLOW			55
+#define GF_OLD_CONF			56
+#define GF_OLD_SLEEP		57
+#define GF_OLD_DRAIN		58
+#define GF_PSI		    	59
 
 
 /*
@@ -1068,11 +1336,16 @@
 #define	ART_TESLA_GREAT_AXE	   137
 #define ART_JAGUAR_WHIP		   138
 #define ART_JAGUAR_RAPIER	   139
+#define ART_VIRIDIGEN_SWORD	   140
+#define ART_VIRIDIGEN_DAGGER   141
+#define ART_VIRIDIGEN_AXE	   142
 
 /* Need to replace artifact's with guns */
-#define ART_HOLMES_PISTOL	200
-#define ART_BARNES_RIFLE	201
-#define ART_CARTER_PISTOL	202
+#define ART_HOLMES_PISTOL		200
+#define ART_BARNES_RIFLE		201
+#define ART_CARTER_PISTOL		202
+#define ART_PISTOL_QUATERMAIN 	203
+#define ART_SHOTGUN_BOOMSTICK	204
 
 
 
@@ -1728,9 +2001,9 @@
 #define SV_TONIC_SALT_WATER		5
 #define SV_TONIC_POISON			6
 #define SV_TONIC_BLINDNESS			7
-/* xxx */
+#define SV_TONIC_MUTAGEN			8
 #define SV_TONIC_CONFUSION			9
-/* xxx */
+#define SV_TONIC_MUTAGEN_ANTIDOTE	10
 #define SV_TONIC_SLEEP				11
 /* xxx */
 #define SV_TONIC_LOSE_MEMORIES		13
@@ -2141,8 +2414,8 @@
 #define SM_OPP_COLD		0x00000008
 #define SM_OPP_POIS		0x00000010
 #define SM_OPP_XXX1		0x00000020
-#define SM_OPP_XXX2		0x00000040
-#define SM_OPP_XXX3		0x00000080
+#define SM_PET			0x00000040
+#define SM_FRIENDLY		0x00000080
 #define SM_IMM_XXX5		0x00000100
 #define SM_IMM_XXX6		0x00000200
 #define SM_IMM_FREE		0x00000400
@@ -2264,9 +2537,9 @@ Beast-men
 #define TR3_SEE_INVIS		0x00000020L	/* See Invis */
 #define TR3_FREE_ACT		0x00000040L	/* Free action */
 #define TR3_HOLD_LIFE		0x00000080L	/* Hold life */
-#define TR3_XXX1			0x00000100L
-#define TR3_XXX2			0x00000200L
-#define TR3_XXX3			0x00000400L
+#define TR3_SH_FIRE			0x00000100L /* Fire Aura */
+#define TR3_SH_ELEC			0x00000200L /* Electricty Aura */
+#define TR3_SPINES			0x00000400L /* Spines */
 #define TR3_AUTOMATA		0x00000800L /* Equip Mecha items */
 #define TR3_IMPACT			0x00001000L	/* Earthquake blows */
 #define TR3_TELEPORT		0x00002000L	/* Random teleportation */
@@ -2276,8 +2549,8 @@ Beast-men
 #define TR3_IGNORE_ELEC		0x00020000L	/* Item ignores Elec Damage */
 #define TR3_IGNORE_FIRE		0x00040000L	/* Item ignores Fire Damage */
 #define TR3_IGNORE_COLD		0x00080000L	/* Item ignores Cold Damage */
-#define TR3_XXX5			0x00100000L	/* (reserved) */
-#define TR3_XXX6			0x00200000L	/* (reserved) */
+#define TR3_WRAITH			0x00100000L	/* Wraithform */
+#define TR3_MUTABLE			0x00200000L	/* Causes Mutation on level gain */
 #define TR3_BLESSED			0x00400000L	/* Item has been blessed */
 #define TR3_ACTIVATE		0x00800000L	/* Item can be activated */
 #define TR3_INSTA_ART		0x01000000L	/* Item makes an artifact */
@@ -2359,8 +2632,8 @@ Beast-men
 #define CF_HUSSAR			0x00020000L /* Use special combat techniques */
 #define CF_NATURE			0x00040000L /* use Nature powers */
 #define CF_NINJA			0x00080000L /* Use Ninjitsu */
-#define CF_XXX21			0x00100000L
-#define CF_XXX22			0x00200000L
+#define CF_ANARCHIST		0x00100000L /* Mutate on Level gain */
+#define CF_MUTABLE			0x00200000L /* Mutate less often */
 #define CF_XXX23			0x00400000L
 #define CF_XXX24			0x00800000L
 #define CF_XXX25			0x01000000L
@@ -2437,7 +2710,7 @@ Beast-men
 #define RF1_DROP_CHOSEN		0x80000000	/* Drop "chosen" items */
 
 /*
- * New monster race bit flags
+ * New monster race bit flags ****MUST REMEMBER TO ADD AURAS TO NORMAL MONSTER ATTACKS***
  */
 #define RF2_STUPID			0x00000001	/* Monster is stupid */
 #define RF2_SMART			0x00000002	/* Monster is smart */
@@ -2452,9 +2725,9 @@ Beast-men
 #define RF2_XXX3			0x00000400	/* (?) */
 #define RF2_XXX4			0x00000800	/* (?) */
 #define RF2_POWERFUL		0x00001000	/* Monster has strong breath */
-#define RF2_XXX5			0x00002000	/* (?) */
-#define RF2_XXX7			0x00004000	/* (?) */
-#define RF2_XXX6			0x00008000	/* (?) */
+#define RF2_AURA_FIRE		0x00002000	/* Fire aura */
+#define RF2_AURA_COLD		0x00004000	/* Cold aura */
+#define RF2_AURA_ELEC		0x00008000	/* Elec aura */
 #define RF2_OPEN_DOOR		0x00010000	/* Monster can open doors */
 #define RF2_BASH_DOOR		0x00020000	/* Monster can bash doors */
 #define RF2_PASS_WALL		0x00040000	/* Monster can pass walls */
@@ -2485,7 +2758,7 @@ Beast-men
 #define RF3_ANIMAL			0x00000080	/* Animal */
 #define RF3_ALIEN			0x00000100	/* Alien */
 #define RF3_BEASTMAN		0x00000200	/* Beastman */
-#define RF3_XXX3			0x00000400	/* Non-Vocal (?) */
+#define RF3_HOSTILE			0x00000400	/* Likes to attack */
 #define RF3_XXX4			0x00000800	/* Non-Living (?) */
 #define RF3_HURT_LITE		0x00001000	/* Hurt by lite */
 #define RF3_HURT_ROCK		0x00002000	/* Hurt by rock remover */
@@ -2539,8 +2812,8 @@ Beast-men
 #define RF4_BR_PLAS			0x02000000	/* Breathe Plasma */
 #define RF4_BR_WALL			0x04000000	/* Breathe Force */
 #define RF4_BR_MANA			0x08000000	/* Breathe Mana */
-#define RF4_XXX5			0x10000000
-#define RF4_XXX6			0x20000000
+#define RF4_BR_NUKE			0x10000000  /* Breathe Radiation */
+#define RF4_BO_NUKE			0x20000000  /* Radiation Bolt */
 #define RF4_XXX7			0x40000000
 #define RF4_XXX8			0x80000000
 
@@ -2603,11 +2876,11 @@ Beast-men
 #define RF6_S_HI_DEMON		0x00020000	/* Summon Greater Demons */
 #define RF6_S_MONSTER		0x00040000	/* Summon Monster */
 #define RF6_S_MONSTERS		0x00080000	/* Summon Monsters */
-#define RF6_S_ANT			0x00100000	/* Summon Ants */
+#define RF6_S_AUTOMATA		0x00100000	/* Summon Automata */
 #define RF6_S_SPIDER		0x00200000	/* Summon Spiders */
 #define RF6_S_HOUND			0x00400000	/* Summon Hounds */
-#define RF6_S_HYDRA			0x00800000	/* Summon Hydras */
-#define RF6_S_ANGEL			0x01000000	/* Summon Angel */
+#define RF6_S_MONKEY		0x00800000	/* Summon Monkey */
+#define RF6_S_ALIEN			0x01000000	/* Summon Angel */
 #define RF6_S_DEMON			0x02000000	/* Summon Demon */
 #define RF6_S_UNDEAD		0x04000000	/* Summon Undead */
 #define RF6_S_DRAGON		0x08000000	/* Summon Dragon */
@@ -2616,6 +2889,42 @@ Beast-men
 #define RF6_S_WRAITH		0x40000000	/* Summon Unique Wraith */
 #define RF6_S_UNIQUE		0x80000000	/* Summon Unique Monster */
 
+
+/*
+ * New monster race bit flags
+ */
+#define RF7_FRIENDLY        0x00000001  /* Monster is friendly */
+#define RF7_XXX7X2			0x00000002	/* (?) */
+#define RF7_XXX7X3			0x00000004	/* (?) */
+#define RF7_XXX7X4			0x00000008	/* (?) */
+#define RF7_XXX7X5			0x00000010	/* (?) */
+#define RF7_XXX7X6			0x00000020	/* (?) */
+#define RF7_XXX7X7			0x00000040	/* (?) */
+#define RF7_XXX7X8			0x00000080	/* (?) */
+#define RF7_XXX7X9			0x00000100	/* (?) */
+#define RF7_XXX7X10			0x00000200	/* (?)  etc*/
+#define RF7_XXX7X11			0x00000400	/* Breathe Fire */
+#define RF7_XXX7X12			0x00000800	/* Breathe Cold */
+#define RF7_XXX7X13			0x00001000	/* Breathe Poison */
+#define RF7_XXX7X14			0x00002000	/* Breathe Nether */
+#define RF7_XXX7X15			0x00004000	/* Breathe Lite */
+#define RF7_XXX7X16			0x00008000	/* Breathe Dark */
+#define RF7_XXX7X17			0x00010000	/* Breathe Confusion */
+#define RF7_XXX7X18			0x00020000	/* Breathe Sound */
+#define RF7_XXX7X19			0x00040000	/* Breathe Chaos */
+#define RF7_XXX7X20			0x00080000	/* Breathe Disenchant */
+#define RF7_XXX7X21			0x00100000	/* Breathe Nexus */
+#define RF7_XXX7X22			0x00200000	/* Breathe Time */
+#define RF7_XXX7X23			0x00400000	/* Breathe Inertia */
+#define RF7_XXX7X24			0x00800000	/* Breathe Gravity */
+#define RF7_XXX7X25			0x01000000	/* Breathe Shards */
+#define RF7_XXX7X26			0x02000000	/* Breathe Plasma */
+#define RF7_XXX7X27			0x04000000	/* Breathe Force */
+#define RF7_XXX7X28  		0x08000000	/* Breathe Mana */
+#define RF7_XXX7X29			0x10000000
+#define RF7_XXX7X30			0x20000000
+#define RF7_XXX7X31			0x40000000
+#define RF7_XXX7X32			0x80000000
 
 
 /*
@@ -2636,8 +2945,8 @@ Beast-men
 	(RF6_BLINK |  RF6_TPORT | RF6_TELE_LEVEL | RF6_TELE_AWAY | \
 	 RF6_HEAL | RF6_HASTE | RF6_TRAPS | \
 	 RF6_S_KIN | RF6_S_MONSTER | RF6_S_MONSTERS | \
-	 RF6_S_ANT | RF6_S_SPIDER | RF6_S_HOUND | RF6_S_HYDRA | \
-	 RF6_S_ANGEL | RF6_S_DRAGON | RF6_S_UNDEAD | RF6_S_DEMON | \
+	 RF6_S_AUTOMATA | RF6_S_SPIDER | RF6_S_HOUND | RF6_S_MONKEY | \
+	 RF6_S_ALIEN | RF6_S_DRAGON | RF6_S_UNDEAD | RF6_S_DEMON | \
 	 RF6_S_HI_DRAGON | RF6_S_HI_UNDEAD | RF6_S_HI_DEMON | \
 	 RF6_S_WRAITH | RF6_S_UNIQUE)
 
@@ -2646,7 +2955,8 @@ Beast-men
  * "Bolt" spells that may hurt fellow monsters
  */
 #define RF4_BOLT_MASK \
-	(RF4_ARROW_1 | RF4_ARROW_2 | RF4_ARROW_3 | RF4_ARROW_4)
+	(RF4_ARROW_1 | RF4_ARROW_2 | RF4_ARROW_3 | RF4_ARROW_4 | \
+	 RF4_BO_NUKE)
 
 #define RF5_BOLT_MASK \
 	(RF5_BO_ACID | RF5_BO_ELEC | RF5_BO_FIRE | RF5_BO_COLD | \
@@ -2677,7 +2987,8 @@ Beast-men
 	 RF4_BR_ACID | RF4_BR_ELEC | RF4_BR_FIRE | RF4_BR_COLD | RF4_BR_POIS | \
 	 RF4_BR_NETH | RF4_BR_LITE | RF4_BR_DARK | RF4_BR_CONF | RF4_BR_SOUN | \
 	 RF4_BR_CHAO | RF4_BR_DISE | RF4_BR_NEXU | RF4_BR_TIME | RF4_BR_INER | \
-	 RF4_BR_GRAV | RF4_BR_SHAR | RF4_BR_PLAS | RF4_BR_WALL | RF4_BR_MANA)
+	 RF4_BR_GRAV | RF4_BR_SHAR | RF4_BR_PLAS | RF4_BR_WALL | RF4_BR_MANA | \
+	 RF4_BR_NUKE | RF4_BO_NUKE)
 
 #define RF5_ATTACK_MASK \
 	(RF5_BA_ACID | RF5_BA_ELEC | RF5_BA_FIRE | RF5_BA_COLD | RF5_BA_POIS | \
@@ -2701,8 +3012,8 @@ Beast-men
 	(0L)
 
 #define RF6_SUMMON_MASK \
-	(RF6_S_KIN | RF6_S_MONSTER | RF6_S_MONSTERS | RF6_S_ANT | \
-	 RF6_S_SPIDER | RF6_S_HOUND | RF6_S_HYDRA | RF6_S_ANGEL | \
+	(RF6_S_KIN | RF6_S_MONSTER | RF6_S_MONSTERS | RF6_S_AUTOMATA | \
+	 RF6_S_SPIDER | RF6_S_HOUND | RF6_S_MONKEY | RF6_S_ALIEN | \
 	 RF6_S_DEMON | RF6_S_UNDEAD | RF6_S_DRAGON | RF6_S_HI_UNDEAD | \
 	 RF6_S_HI_DEMON | RF6_S_HI_DRAGON | RF6_S_WRAITH | RF6_S_UNIQUE)
 
@@ -2768,7 +3079,8 @@ Beast-men
 	 RF4_BR_ACID | RF4_BR_ELEC | RF4_BR_FIRE | RF4_BR_COLD | RF4_BR_POIS | \
 	 RF4_BR_NETH | RF4_BR_LITE | RF4_BR_DARK | RF4_BR_CONF | RF4_BR_SOUN | \
 	 RF4_BR_CHAO | RF4_BR_DISE | RF4_BR_NEXU | RF4_BR_TIME | RF4_BR_INER | \
-	 RF4_BR_GRAV | RF4_BR_SHAR | RF4_BR_PLAS | RF4_BR_WALL | RF4_BR_MANA)
+	 RF4_BR_GRAV | RF4_BR_SHAR | RF4_BR_PLAS | RF4_BR_WALL | RF4_BR_MANA | \
+	 RF4_BR_NUKE)
 
 #define RF5_INNATE_MASK \
 	(0L)

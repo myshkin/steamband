@@ -114,6 +114,9 @@ s16b o_cnt = 0;			/* Number of live objects */
 s16b m_max = 1;			/* Number of allocated monsters */
 s16b m_cnt = 0;			/* Number of live monsters */
 
+int total_friends = 0;
+s32b total_friend_levels = 0;
+
 
 /*
  * TRUE if process_command() is a repeated call.
@@ -675,3 +678,5 @@ bool use_transparency = FALSE;
  * Game can be saved
  */
 bool can_save = TRUE;
+
+bool hack_mutation = FALSE;

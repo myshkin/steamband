@@ -348,15 +348,20 @@ FILE *my_fopen(cptr file, cptr mode)
 
 #if defined(MACINTOSH) && defined(MAC_MPW)
 
-	/* setting file type/creator -- AR */
-	tempfff = fopen(buf, mode);
-	fsetfileinfo(file, _fcreator, _ftype);
-	fclose(tempfff);	
+ 	{
+ 		/* setting file type/creator -- AR */
+ 		FILE *s = fopen(buf, mode);
+ 
+ 		if (s != NULL) fsetfileinfo(buf, _fcreator, _ftype);
+ 		return (s);
+ 	}
 
-#endif
+#else
 
 	/* Attempt to fopen the file anyway */
 	return (fopen(buf, mode));
+
+#endif /* MACINTOSH && MAC_MPW */
 }
 
 
@@ -592,14 +597,17 @@ int fd_make(cptr file, int mode)
 
 #if defined(MACINTOSH)
 
-# if defined(MACINTOSH) && defined(MAC_MPW)
-
-	/* setting file type and creator -- AR */
-	errr_tmp = open(buf, O_CREAT | O_EXCL | O_WRONLY | O_BINARY);
-	fsetfileinfo(file, _fcreator, _ftype);
-	return(errr_tmp);
-	
-# else
+#if defined(MAC_MPW)
+ 
+ 	{
+ 		/* setting file type and creator -- AR */
+ 		int fd = open(buf, O_CREAT | O_EXCL | O_WRONLY | O_BINARY);
+ 
+ 		if (fd >= 0) fsetfileinfo(buf, _fcreator, _ftype);
+ 		return (fd);
+ 	}
+ 	
+#else
 
 	/* Create the file, fail if exists, write-only, binary */
 	return (open(buf, O_CREAT | O_EXCL | O_WRONLY | O_BINARY));
@@ -629,15 +637,28 @@ int fd_open(cptr file, int flags)
 	if (path_parse(buf, 1024, file)) return (-1);
 
 #if defined(MACINTOSH) || defined(WINDOWS)
-
-	/* Attempt to open the file */
-	return (open(buf, flags | O_BINARY));
-
+ 
+#ifdef MAC_MPW
+ 
+ 	{
+ 		int fd = open(buf, flags | O_BINARY);
+ 
+ 		if (fd >= 0) fsetfileinfo(buf, _fcreator, _ftype);
+ 		return (fd);
+ 	}
+ 
 #else
-
-	/* Attempt to open the file */
-	return (open(buf, flags | O_BINARY, 0));
-
+ 
+ 	/* Attempt to open the file */
+ 	return (open(buf, flags | O_BINARY));
+ 
+#endif
+ 
+#else
+ 
+ 	/* Attempt to open the file */
+ 	return (open(buf, flags | O_BINARY, 0));
+ 
 #endif
 
 }
@@ -2021,6 +2042,11 @@ static char *message__buf;
  */
 static u16b *message__type;
 
+/*
+ * The array[MESSAGE_MAX] of u16b for the count of messages
+ */
+static u16b *message__count;
+
 
 /*
  * Table of colors associated to message-types
@@ -2029,12 +2055,21 @@ static byte message__color[MSG_MAX];
 
 
 /*
+ * Calculate the index of a message
+ */
+static s16b message_age2idx(int age)
+{
+	return ((message__next + MESSAGE_MAX - (age + 1)) % MESSAGE_MAX);
+}
+
+
+/*
  * How many messages are "available"?
  */
 s16b message_num(void)
 {
 	/* Determine how many messages are "available" */
-	return (message__next + MESSAGE_MAX - message__last) % MESSAGE_MAX;
+	return (message_age2idx(message__last - 1));
 }
 
 
@@ -2044,21 +2079,29 @@ s16b message_num(void)
  */
 cptr message_str(s16b age)
 {
+	static char buf[1024];
 	s16b x;
-	s16b o;
+	u16b o;
 	cptr s;
 
 	/* Forgotten messages have no text */
 	if ((age < 0) || (age >= message_num())) return ("");
 
 	/* Get the "logical" index */
-	x = (message__next + MESSAGE_MAX - (age + 1)) % MESSAGE_MAX;
+	x = message_age2idx(age);
 
 	/* Get the "offset" for the message */
 	o = message__ptr[x];
 
 	/* Get the message text */
 	s = &message__buf[o];
+
+	/* HACK - Handle repeated messages */
+	if (message__count[x] > 1)
+	{
+		strnfmt(buf, sizeof(buf), "%s <%dx>", s, message__count[x]);
+		s = buf;
+	}
 
 	/* Return the message text */
 	return (s);
@@ -2072,14 +2115,30 @@ u16b message_type(s16b age)
 {
 	s16b x;
 
-	/* Forgotten messages have no special color */
-	if ((age < 0) || (age >= message_num())) return (TERM_WHITE);
+	/* Paranoia */
+	if (!message__type) return (MSG_GENERIC);
+
+	/* Forgotten messages are generic */
+	if ((age < 0) || (age >= message_num())) return (MSG_GENERIC);
 
 	/* Get the "logical" index */
-	x = (message__next + MESSAGE_MAX - (age + 1)) % MESSAGE_MAX;
+	x = message_age2idx(age);
 
 	/* Return the message type */
 	return (message__type[x]);
+}
+
+
+/*
+ * Recall the "color" of a message type
+ */
+static byte message_type_color(u16b type)
+{
+	byte color = message__color[type];
+
+	if (color == TERM_DARK) color = TERM_WHITE;
+
+	return (color);
 }
 
 
@@ -2088,7 +2147,7 @@ u16b message_type(s16b age)
  */
 byte message_color(s16b age)
 {
-	return message__color[message_type(age)];
+	return message_type_color(message_type(age));
 }
 
 
@@ -2121,10 +2180,11 @@ errr message_color_define(u16b type, byte color)
  */
 void message_add(cptr str, u16b type)
 {
-	int n, k, i, x, o;
+	int k, i, x, o;
+	size_t n;
 
 	cptr s;
-	cptr t;
+
 	cptr u;
 	char *v;
 
@@ -2142,6 +2202,27 @@ void message_add(cptr str, u16b type)
 
 
 	/*** Step 2 -- Attempt to optimize ***/
+
+	/* Get the "logical" last index */
+	x = message_age2idx(0);
+
+	/* Get the "offset" for the last message */
+	o = message__ptr[x];
+
+	/* Get the message text */
+	s = &message__buf[o];
+
+	/* Last message repeated? */
+	if (streq(str, s))
+	{
+		/* Increase the message count */
+		message__count[x]++;
+
+		/* Success */
+		return;
+	}
+
+	/*** Step 3 -- Attempt to optimize ***/
 
 	/* Limit number of messages to check */
 	k = message_num() / 4;
@@ -2177,11 +2258,8 @@ void message_add(cptr str, u16b type)
 		/* Get the old string */
 		old = &message__buf[o];
 
-		/* Inline 'streq(str, old)' */
-		for (s = str, t = old; (*s == *t) && *s; ++s, ++t) /* loop */ ;
-
 		/* Continue if not equal */
-		if (*s) continue;
+		if (!streq(str, old)) continue;
 
 		/* Get the next available message index */
 		x = message__next;
@@ -2202,12 +2280,14 @@ void message_add(cptr str, u16b type)
 		/* Store the message type */
 		message__type[x] = type;
 
+		/* Store the message count */
+		message__count[x] = 1;
+
 		/* Success */
 		return;
 	}
 
-
-	/*** Step 3 -- Ensure space before end of buffer ***/
+	/*** Step 4 -- Ensure space before end of buffer ***/
 
 	/* Kill messages, and wrap, if needed */
 	if (message__head + (n + 1) >= MESSAGE_BUF)
@@ -2240,7 +2320,7 @@ void message_add(cptr str, u16b type)
 	}
 
 
-	/*** Step 4 -- Ensure space for actual characters ***/
+	/*** Step 5 -- Ensure space for actual characters ***/
 
 	/* Kill messages, if needed */
 	if (message__head + (n + 1) > message__tail)
@@ -2270,7 +2350,7 @@ void message_add(cptr str, u16b type)
 	}
 
 
-	/*** Step 5 -- Grab a new message index ***/
+	/*** Step 6 -- Grab a new message index ***/
 
 	/* Get the next available message index */
 	x = message__next;
@@ -2286,7 +2366,7 @@ void message_add(cptr str, u16b type)
 	}
 
 
-	/*** Step 6 -- Insert the message text ***/
+	/*** Step 7 -- Insert the message text ***/
 
 	/* Assign the starting address */
 	message__ptr[x] = message__head;
@@ -2301,6 +2381,9 @@ void message_add(cptr str, u16b type)
 
 	/* Store the message type */
 	message__type[x] = type;
+
+	/* Store the message count */
+	message__count[x] = 1;
 }
 
 
@@ -2313,6 +2396,7 @@ errr messages_init(void)
 	C_MAKE(message__ptr, MESSAGE_MAX, u16b);
 	C_MAKE(message__buf, MESSAGE_BUF, char);
 	C_MAKE(message__type, MESSAGE_MAX, u16b);
+	C_MAKE(message__count, MESSAGE_MAX, u16b);
 
 	/* Init the message colors to white */
 	(void)C_BSET(message__color, TERM_WHITE, MSG_MAX, byte);
@@ -2334,6 +2418,7 @@ void messages_free(void)
 	C_FREE(message__ptr, MESSAGE_MAX, u16b);
 	C_FREE(message__buf, MESSAGE_BUF, char);
 	C_FREE(message__type, MESSAGE_MAX, u16b);
+	C_FREE(message__count, MESSAGE_MAX, u16b);
 }
 
 
@@ -2452,8 +2537,12 @@ static void msg_print_aux(u16b type, cptr msg)
 	int n;
 	char *t;
 	char buf[1024];
-	byte color = TERM_WHITE;
+	byte color;
+	int w, h;
 
+
+	/* Obtain the size */
+	(void)Term_get_size(&w, &h);
 
 	/* Hack -- Reset */
 	if (!msg_flag) message_column = 0;
@@ -2462,7 +2551,7 @@ static void msg_print_aux(u16b type, cptr msg)
 	n = (msg ? strlen(msg) : 0);
 
 	/* Hack -- flush when requested or needed */
-	if (message_column && (!msg || ((message_column + n) > 72)))
+	if (message_column && (!msg || ((message_column + n) > (w - 8))))
 	{
 		/* Flush */
 		msg_flush(message_column);
@@ -2502,30 +2591,26 @@ static void msg_print_aux(u16b type, cptr msg)
 
 
 	/* Copy it */
-	strcpy(buf, msg);
+	my_strcpy(buf, msg, sizeof(buf));
 
 	/* Analyze the buffer */
 	t = buf;
 
-	/* Get the color of the message (if legal) */
-	if (message__color)
-		color = message__color[type];
-
-	/* HACK -- no "black" messages */
-	if (color == TERM_DARK) color = TERM_WHITE;
+	/* Get the color of the message */
+	color = message_type_color(type);
 
 	/* Split message */
-	while (n > 72)
+	while (n > (w - 8))
 	{
 		char oops;
 
 		int check, split;
 
 		/* Default split */
-		split = 72;
+		split = (w - 8);
 
 		/* Find the "best" split point */
-		for (check = 40; check < 72; check++)
+		for (check = (w / 2); check < (w - 8); check++)
 		{
 			/* Found a valid split point */
 			if (t[check] == ' ') split = check;
@@ -2589,7 +2674,7 @@ void msg_format(cptr fmt, ...)
 	va_start(vp, fmt);
 
 	/* Format the args, save the length */
-	(void)vstrnfmt(buf, 1024, fmt, vp);
+	(void)vstrnfmt(buf, sizeof(buf), fmt, vp);
 
 	/* End the Varargs Stuff */
 	va_end(vp);
@@ -2631,7 +2716,7 @@ void message_format(u16b message_type, s16b extra, cptr fmt, ...)
 	va_start(vp, fmt);
 
 	/* Format the args, save the length */
-	(void)vstrnfmt(buf, 1024, fmt, vp);
+	(void)vstrnfmt(buf, sizeof(buf), fmt, vp);
 
 	/* End the Varargs Stuff */
 	va_end(vp);
@@ -2753,8 +2838,6 @@ void prt(cptr str, int row, int col)
 	/* Spawn */
 	c_prt(TERM_WHITE, str, row, col);
 }
-
-
 
 
 /*

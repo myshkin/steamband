@@ -52,7 +52,7 @@
 
 # Version stamp (required)
 
-V:0.1.1
+V:0.2.0
 #	British/French/
 #	Spaniards/German/
 #	Finnish	

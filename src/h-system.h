@@ -51,14 +51,12 @@
 
 
 #if defined(MACINTOSH)
-# if defined(MAC_MPW)
-#  ifdef __STDC__
-#   undef __STDC__
-#  endif
-# else
+# if !defined(MAC_MPW)
 #  include <unix.h>
 # endif
 #endif
+
+
 #if defined(WINDOWS) || defined(MSDOS) || defined(USE_EMX)
 # include <io.h>
 #endif

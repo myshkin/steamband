@@ -124,6 +124,7 @@ static void roff_aux(int r_idx)
 	u32b flags4;
 	u32b flags5;
 	u32b flags6;
+	u32b flags7;
 
 	int vn;
 	cptr vp[64];
@@ -204,6 +205,8 @@ static void roff_aux(int r_idx)
 		l_ptr->r_flags4 = r_ptr->flags4;
 		l_ptr->r_flags5 = r_ptr->flags5;
 		l_ptr->r_flags6 = r_ptr->flags6;
+		l_ptr->r_flags7 = r_ptr->flags7;
+
 	}
 
 
@@ -219,6 +222,7 @@ static void roff_aux(int r_idx)
 	flags4 = (r_ptr->flags4 & l_ptr->r_flags4);
 	flags5 = (r_ptr->flags5 & l_ptr->r_flags5);
 	flags6 = (r_ptr->flags6 & l_ptr->r_flags6);
+	flags7 = (r_ptr->flags7 & l_ptr->r_flags7);
 
 
 	/* Assume some "obvious" flags */
@@ -657,8 +661,8 @@ static void roff_aux(int r_idx)
 	if (flags4 & (RF4_BR_PLAS))		vp[vn++] = "plasma";
 	if (flags4 & (RF4_BR_WALL))		vp[vn++] = "force";
 	if (flags4 & (RF4_BR_MANA))		vp[vn++] = "mana";
-	if (flags4 & (RF4_XXX5))		vp[vn++] = "something";
-	if (flags4 & (RF4_XXX6))		vp[vn++] = "something";
+	if (flags4 & (RF4_BR_NUKE))		vp[vn++] = "radiation";
+	if (flags4 & (RF4_BO_NUKE))		vp[vn++] = "radiation";
 	if (flags4 & (RF4_XXX7))		vp[vn++] = "something";
 	if (flags4 & (RF4_XXX8))		vp[vn++] = "something";
 
@@ -738,11 +742,11 @@ static void roff_aux(int r_idx)
 	if (flags6 & (RF6_S_KIN))		vp[vn++] = "summon similar monsters";
 	if (flags6 & (RF6_S_MONSTER))		vp[vn++] = "summon a monster";
 	if (flags6 & (RF6_S_MONSTERS))	vp[vn++] = "summon monsters";
-	if (flags6 & (RF6_S_ANT))		vp[vn++] = "summon ants";
+	if (flags6 & (RF6_S_AUTOMATA))		vp[vn++] = "summon automata";
 	if (flags6 & (RF6_S_SPIDER))		vp[vn++] = "summon spiders";
 	if (flags6 & (RF6_S_HOUND))		vp[vn++] = "summon hounds";
-	if (flags6 & (RF6_S_HYDRA))		vp[vn++] = "summon hydras";
-	if (flags6 & (RF6_S_ANGEL))		vp[vn++] = "summon an angel";
+	if (flags6 & (RF6_S_MONKEY))		vp[vn++] = "summon monkeys";
+	if (flags6 & (RF6_S_ALIEN))		vp[vn++] = "summon an alien";
 	if (flags6 & (RF6_S_DEMON))		vp[vn++] = "summon a demon";
 	if (flags6 & (RF6_S_UNDEAD))		vp[vn++] = "summon an undead";
 	if (flags6 & (RF6_S_DRAGON))		vp[vn++] = "summon a dragon";

@@ -56,7 +56,7 @@
 
 # Version stamp (required)
 
-V:0.1.1
+V:0.2.0
 
 ##########################
 ###   Lights & Phials  ###
@@ -899,7 +899,7 @@ A:LIGHTNING_BOLT:50:50
 
 N:138:of Lady Jaguar
 I:21:2:2
-W:30:30:200:100000
+W:30:20:200:100000
 P:0:1d6:13:17:0
 F:DEX | HIDE_TYPE | 
 F:SLAY_EVIL | FREE_ACT | SLOW_DIGEST | REGEN | SHOW_MODS
@@ -909,7 +909,7 @@ F:SLAY_EVIL | FREE_ACT | SLOW_DIGEST | REGEN | SHOW_MODS
 
 N:139:of Lady Jaguar
 I:23:7:4
-W:30:180:250:200000
+W:30:90:250:200000
 P:0:1d6:19:40:0
 F:STR | CHR | DEX | INFRA | HIDE_TYPE | 
 F:SLAY_ANIMAL | SLAY_EVIL | BRAND_FIRE | 
@@ -918,37 +918,31 @@ F:RES_CONFU |
 F:RES_FIRE | RES_CHAOS | FREE_ACT | SEE_INVIS | AGGRAVATE | SHOW_MODS
 
 
-## The Two-Handed Sword 'Mormegil'
-#
-#N:78:'Mormegil'
-#I:23:25:-10
-#W:30:15:250:0
-#P:0:4d6:-40:-60:-50
-#F:SPEED | 
-#F:AGGRAVATE | LIGHT_CURSE | HEAVY_CURSE | SHOW_MODS
-#
-#
-## The Cutlass 'Gondricam'
-#
-#N:79:'Gondricam'
-#I:23:12:3
-#W:20:8:110:28000
-#P:0:1d7:10:11:0
-#F:DEX | STEALTH | HIDE_TYPE | 
-#F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | FEATHER | 
-#F:SEE_INVIS | REGEN | SHOW_MODS
-#
-#
-## The Executioner's Sword 'Crisdurian'
-#
-#N:80:'Crisdurian'
-#I:23:28:0
-#W:40:15:260:100000
-#P:0:4d5:18:19:0
-#F:SLAY_DRAGON | SLAY_EVIL | SLAY_UNDEAD | SLAY_TROLL | SLAY_GIANT | 
-#F:SLAY_ORC | SEE_INVIS | SHOW_MODS
-#
-#
+## The Pneumatic 'Viridigen' Sword
+
+N:140:of 'Viridigen'
+I:23:31:4
+W:40:15:25:112500
+P:0:8d5:14:25:0
+F:SHOW_MODS | BLOWS | 
+
+## The Pneumatic dagger 'viridigen
+
+N:141:of 'Viridigen'
+I:23:32:9
+W:60:28:10:28000
+P:0:8d3:10:21:0
+F:SHOW_MODS | BLOWS
+
+
+## The Pneumatic Axe 'viridigen
+
+N:142:of 'Viridigen'
+I:23:28:6
+W:50:18:260:100000
+P:0:3d8:18:43:0
+F:SHOW_MODS | BLOWS
+
 ## The Katana 'Aglarang'
 #
 #N:81:'Aglarang'
@@ -1449,16 +1443,17 @@ F:DEX | MIGHT | HIDE_TYPE | SLAY_ALIEN | BRAND_FIRE |
 F:FREE_ACT | SHOW_MODS
 
 
-## The Light Crossbow 'Cubragol'
-#
-#N:126:'Cubragol'
-#I:19:23:10
-#W:50:25:110:50000
-#P:0:0d0:10:14:0
-#F:SPEED | 
-#F:RES_FIRE | ACTIVATE | SHOW_MODS
-#A:FIREBRAND:999:0
-#
-#
+## The Shotgun 'boomstick'
+
+N:204:'BOOMstick'
+I:19:4:10
+W:60:25:110:50000
+P:0:0d0:30:24:0
+F:MIGHT | 
+F:RES_CHAOS | SLAY_EVIL | SLAY_DEMON | SLAY_ALIEN | 
+F:SLAY_AUTOMATA | ACTIVATE | SHOW_MODS
+A:PHASE:5:2
+
+
 ## Artifact 127 is unused
 

@@ -2009,6 +2009,7 @@ static void display_player_sust_info(void)
  *
  * Mode 0 = standard display with skills/history
  * Mode 1 = special display with equipment flags
+ * Mode 2 = mutations
  */
 void display_player(int mode)
 {
@@ -2042,6 +2043,7 @@ void display_player(int mode)
 		display_player_xtra_info();
 	}
 }
+
 
 
 

@@ -166,7 +166,7 @@
 
 # Version stamp (required)
 
-V:0.1.1
+V:0.2.0
 
 
 ##### Non-race (contains the "player" picture) #####
@@ -380,7 +380,7 @@ F:WEIRD_MIND |
 F:ANIMAL
 D:It is about four feet long and carnivorous. It's sharp jagged mandibles look 
 D:like they could cause some serious damage. Like they did to that goblin stuck in 
-D:them
+D:them.
 
 N:18:Giant white centipede
 G:c:w
@@ -507,7 +507,7 @@ W:1:1:0:3
 B:BITE:HURT:1d1
 F:ANIMAL
 D:It is a small prehistoric lizard with a hardened hide. It is about a half-
-D:foot long, and wants to fill it's small stomach with your hand. looks hungry.
+D:foot long, and wants to fill it's small stomach with your hand. It looks hungry.
 
 N:29:Jackal
 G:Z:U
@@ -541,6 +541,14 @@ D:in its way down to it's component elements. As you approach you see it
 D:constructing another automata to help it remove a large rock. You begin 
 D:to pray that it will pay no attention to you.
 
+N:32:Chicken
+G:k:w
+I:110:1d2:1:1:1
+W:1:1:0:1
+B:BITE:HURT:1d1
+F:FRIENDS | RAND_50 | HOSTILE | EMPTY_MIND | ANIMAL 
+D:Oh, God. Chickens. 
+
 ### 32-35 Unused ###
 ##########################
 ##### Level 2 (100') #####
@@ -552,7 +560,7 @@ W:2:1:0:1
 F:FORCE_SLEEP | NEVER_MOVE | NEVER_BLOW | 
 F:STUPID | EMPTY_MIND | 
 F:IM_POIS | 
-F:NO_CONF | NO_SLEEP | NO_FEAR
+F:NO_CONF | NO_SLEEP | NO_FEAR 
 S:1_IN_4 | 
 S:SHRIEK
 D:Yum!  These look quite tasty. And loud.
@@ -726,6 +734,8 @@ D:Half-dog, half-wolf. With large white fangs, this beast moves
 D:intelligently towards you. He sees you approach, and seems 
 D:to prepare. He bristled and showed his teeth, his eyes 
 D:vigilant, his whole body wary and prepared for anything.
+D:You remember reading a serial about this creature 
+D:in "The Outing Magazine" (1906)
 
 N:51:Green worm mass
 G:w:g
@@ -1414,24 +1424,12 @@ F:ANIMAL | IM_POIS
 D:It is recognized by the hard-scaled end of its body that is often rattled 
 D:to frighten its prey.
 
-N:129:M-A Production Unit Mark V
-G:a:o
-I:120:12d10:5:18:10
-W:5:2:0:130
-B:HIT:HURT:5d5
-F:NEVER_MOVE | UNIQUE | FORCE_MAXHP |
-F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP |  EMPTY_MIND
-S:1_IN_3 |
-S:S_KIN | SHRIEK
-D:A giant machine in the center of the room is producing large numbers 
-D:of Maintenance automata! It looks large and dangerous, this 
-D:must be where Maintenance automata are coming from. Hopefully once 
-D:destroyed this will help the situation.
+#129 Not used
 
 N:130:Patrol Automata Type I
 G:a:R
 I:110:5d5:30:25:40
-W:5:1:0:10
+W:6:1:0:10
 B:SHOCK:HURT:1d5
 F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP |  EMPTY_MIND
 S:1_IN_3 |
@@ -1479,7 +1477,7 @@ S:DRAIN_MANA
 D:A crystal globe filled with light that shoots out. 
 
 N:144:Pink snake-woman
-G:n:R
+G:B:R
 I:110:11d8:20:40:120
 W:7:2:0:40
 B:CRUSH:HURT:1d10
@@ -1566,7 +1564,7 @@ S:1_IN_3 |
 S:BO_POIS
 D:A shapeshifting martian from outer space. You've heard of these martians 
 D:in The Germ Growers (1892), which was written by Robert Potter, 
-D:an Australian clergyman. Him and his martian cohorts are planning on invading 
+D:an Australian clergyman. He and his martian cohorts are planning on invading 
 D:the earth!  Six years before Wells' martians invaded, these creatures attempted it; 
 D:they are "Evil incarnate". His plan is to destroy the planet with 
 D:plague germs, which are grown in ordinary gardens and are 
@@ -1819,7 +1817,7 @@ F:ANIMAL | EVIL
 D:A woman's face on the body of a vicious black bird.
 
 N:185:Solarion, the beautiful
-G:C:o
+G:Z:o
 I:110:24d10:20:25:20
 W:9:2:0:100
 B:BITE:HURT:6d8
@@ -1829,12 +1827,12 @@ F:BASH_DOOR
 D:Rodney Stafford, a brilliant American scientist, is given the life work of 
 D:one Conrad Klotz, who was studying "experimental evolution," that is, 
 D:the enhancement of intelligence by electrical means. After Klotz's death Stafford 
-D:takes his work over and creates Solarion. Solarion is a beautiful, philosophical, 
+D:takes over his work and creates Solarion. Solarion is a beautiful, philosophical, 
 D:moral dog with an insightful bent.  He is a golden retriever as intelligent 
 D:as an adult male human. Stafford gave Solarion to Cecilia Effingham, a cold woman that 
 D:he loves. Solarion tells Stafford about Cecilia.  Unfortunately, Solarion, comes to 
 D:love Cecilia, and refuses to give Stafford any information about her. Stafford 
-D:is outraged at this, and pained by Cecilia's supurning goes to Cecilia's house. 
+D:is outraged at this, and pained by Cecilia's spurning goes to Cecilia's house. 
 D:He confronts Solarion and orders him home, but Solarion refuses. Now after disfiguring 
 D:his master he seeks the world looking for vengance an meaning. (Edgar Fawcett (1847-1904) 
 D:in the September 1889 issue of Lippincott's Magazine, and in Solarion: A Romance (1889))
@@ -1886,7 +1884,7 @@ D:It is an animated corpse of a Man-bat.  Flesh falls off in large chunks as it
 D:shambles forward.
 
 N:190:Automata - Type II
-G:C:D
+G:a:D
 I:110:12d20:20:36:20
 W:9:2:0:40
 B:HIT:HURT:2d8
@@ -1939,8 +1937,21 @@ D:A chimpanzee is standing in the hallway looking at you like
 D:you were a banana. Someday you'll be somewhere everyone doesn't look 
 D:at you like dinner. Or at least that's what you keep saying to yourself.
 
-##194-200 Unused ##
+N:194:M-A Production Unit Mark V
+G:a:o
+I:120:12d10:5:18:10
+W:9:3:0:130
+B:HIT:HURT:5d5
+F:NEVER_MOVE | UNIQUE | FORCE_MAXHP |
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP |  EMPTY_MIND
+S:1_IN_3 |
+S:S_KIN | SHRIEK
+D:A giant machine in the center of the room is producing large numbers 
+D:of Maintenance automata! It looks large and dangerous, this 
+D:must be where Maintenance automata are coming from. Hopefully once 
+D:destroyed this will help the situation.
 
+##194-200 Unused ##
 ###########################
 ##### Level 10 (500') #####
 ###########################
@@ -1972,7 +1983,7 @@ F:SMART | OPEN_DOOR | BASH_DOOR |
 F:EVIL
 D:You've heard of this russian temptress before! She's a thief, pickpocket, 
 D:murderess, bootlegger, adventuress, and one who's not afraid to use her 
-D:body to help her get what she wants. Vlas Doroshevich, a russian jounalist 
+D:body to help her get what she wants. Vlas Doroshevich, a Russian jounalist, 
 D:brought her stories to the people.
 
 N:202:Clear mushroom patch
@@ -2032,7 +2043,7 @@ S:DRAIN_MANA
 D:It is a strange glowing growth on the dungeon floor.
 
 N:206:Wolf
-G:C:u
+G:Z:u
 I:120:6d6:30:30:20
 W:10:1:0:30
 B:BITE:HURT:1d6
@@ -2110,7 +2121,7 @@ W:10:1:0:8
 B:HIT:HURT:1d2
 F:ALIEN | WEIRD_MIND | REGENERATE
 S:1_IN_2 |
-S:CONF | SLOW | HOLD | BLINK | S_KIN
+S:CONF | SLOW | BLINK | S_KIN
 D:A strange globular being marches towards you, 
 D:flailing it's many limbs.
 
@@ -3009,9 +3020,9 @@ G:a:v
 I:130:50d20:50:70:30
 W:17:4:0:340
 B:SHOCK:HURT:2d6
+F:FORCE_MAXHP | UNIQUE | NEVER_MOVE 
 F:FRIEND | DROP_2D2 | BASH_DOOR | KILL_WALL | KILL_BODY | MOVE_BODY | DROP_GOOD |
-F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP |  EMPTY_MIND
-D:FORCE_MAXHP | UNIQUE | NEVER_MOVE 
+F:AUTOMATA | IM_POIS | NO_FEAR | COLD_BLOOD | NO_CONF | NO_SLEEP | EMPTY_MIND
 S:1_IN_3 |
 S:S_KIN | SHRIEK
 D:A large production unit sits in the middle of the floor. You see automata 
@@ -3311,7 +3322,7 @@ F:ANIMAL | IM_COLD
 D:A tall shaggy, furry humanoid, it could call the yeti brother.
 
 N:349:Werewolf
-G:C:D
+G:Z:D
 I:110:20d22:15:30:70
 W:20:1:0:150
 B:BITE:HURT:1d6
@@ -3957,7 +3968,8 @@ I:110:20d10:10:72:30
 W:25:1:0:230
 B:PUNCH:LOSE_STR:5d5
 B:PUNCH:LOSE_STR:5d5
-F:ALIEN | DROP_2D2 | DROP_GOOD | POWERFUL | REGENERATE | WEIRD_MIND | COLD_BLOOD
+F:ALIEN | DROP_2D2 | DROP_GOOD | POWERFUL | REGENERATE | WEIRD_MIND |
+F:COLD_BLOOD |
 F:OPEN_DOOR | EVIL | IM_POIS | FRIENDS
 S:1_IN_2 |
 S:BR_FIRE | ARROW_4
@@ -3970,7 +3982,26 @@ D:round, large, and blocky, having sixteen slender tentacles and
 D:glistening skin that looks like wet leather. They build 
 D:mechanical structures according to their needs.
 
-# 418-420
+N:418:Martian Walker
+G:A:r
+I:110:30d10:10:72:30
+W:25:1:0:280
+B:HIT:HURT:7d5
+B:HIT:HURT:7d5
+B:GAZE:FIRE:2d3
+F:ALIEN | DROP_2D2 | DROP_GOOD | POWERFUL | REGENERATE | WEIRD_MIND |
+F:COLD_BLOOD |
+F:OPEN_DOOR | EVIL | IM_POIS | 
+S:1_IN_3 |
+S:BR_FIRE 
+D:This bizzare alien came from the red planet Mars. Wells wrote 
+D:about them in the "War of the Worlds". They in ages past may 
+D:have looked like humans, but over time they have changed 
+D:the essential nature of themselves until their bodies are 
+D:nothing but giant cases for their brains. This Martian walks towards 
+D:you in a strange metal contraption designed 
+
+# 419-420
 ############################
 ##### Level 28 (1400') #####
 ############################
@@ -4132,7 +4163,7 @@ D:unsuspecting adventurers within reach of its venomous claws.
 
 N:433:Medium
 G:p:B
-I:210:30d20:20:50:90
+I:110:30d20:20:50:90
 W:29:1:0:180
 B:HIT:HURT:3d4
 F:DROP_1D2 | SMART | OPEN_DOOR | TAKE_ITEM | 
@@ -4143,7 +4174,7 @@ D:spirits of the dead.
 
 N:434:Reckoner
 G:p:R
-I:210:30d20:20:50:90
+I:110:30d20:20:50:90
 W:29:1:0:180
 B:HIT:HURT:3d4
 F:DROP_1D2 | SMART | OPEN_DOOR | TAKE_ITEM | 
@@ -4154,7 +4185,7 @@ D:powers of hacking the universe.
 
 N:435:Sportsman
 G:p:U
-I:210:50d20:20:50:90
+I:110:50d20:20:50:90
 W:29:1:0:180
 B:HIT:HURT:3d12
 B:HIT:HURT:3d12
@@ -4167,7 +4198,7 @@ D:his rifle. It looks like he knows hou to use it well.
 
 N:436:Oculus Dei
 G:p:w
-I:210:30d20:20:50:90
+I:110:30d20:20:50:90
 W:29:1:0:180
 B:HIT:HURT:3d4
 F:DROP_1D2 | SMART | OPEN_DOOR | TAKE_ITEM | 
@@ -4176,6 +4207,31 @@ S:SCARE | BLIND | CONF | SLOW | HEAL | BLINK | CAUSE_3
 D:A robed individual walks towards you threatening you with the 
 D:power of god.
 
+N:437:Aballino
+G:p:b
+I:110:40d20:50:85:90
+W:28:2:0:550
+B:HIT:HURT:8d4
+B:HIT:HURT:8d4
+F:MALE | UNIQUE | FORCE_MAXHP | FORCE_SLEEP |
+F:DROP_1D2 | SMART | OPEN_DOOR | TAKE_ITEM | REGENERATE | HOSTILE |
+F:IM_FIRE | IM_COLD | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
+S:1_IN_8 |
+S:HEAL | TRAPS
+D:A man named Aballino Storms towards you. He was created by 
+D:Heinrich Daniel Zschokke, and he is known as Aballino the 
+D:Great bandit (1794). His real name is Neapolitan Count Rosalvo, 
+D:whe desires to rid Venice of all assassins, thugs, and conspirators 
+D:He takes two different identies to accomplish this task. Flodoardo 
+D:virtuous and handsome - and Aballino, a gigantic terrifying outlaw 
+D:with a horrifying visiage. Aballino is told to kill Rosabella, 
+D:his love, the neice of the Doge, to prove his worth to a 
+D:underworld gang of thugs. Instead of killing her he kisses her. 
+D:The Doge then hires Flodardo with the promise that he can have 
+D:Rosabellas hand in marrarige if he captures Aballino.
+D:The Count does so. He calls all the outlaws together, and allows 
+D:himself to be captured along with all of them - only to reveal himself 
+D:as Flodardo.
 
 # 437-438
 ############################
@@ -4265,7 +4321,29 @@ S:ARROW_1 | BO_FIRE | BO_ELEC | BO_ACID | BO_COLD | SCARE | HASTE | BLINK
 D:A strange man walks towards you. He appears to be wearing 
 D:many strange devices.
 
-# 444 -448
+N:445:The Black Dwarf
+G:p:D
+I:110:50d10:40:80:40
+W:30:3:0:500
+B:HIT:HURT:30d20
+F:UNIQUE | MALE | FORCE_MAXHP | FORCE_SLEEP |
+F:DROP_2D2 | DROP_3D2 | DROP_GOOD | DROP_GREAT |
+F:REGENERATE | HURT_LITE | IM_COLD | RES_NETH | RES_DISE | 
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | 
+D:Sir Walter Scott wrote about this strange person in 1816. 
+D:Scott is the creator of a genre of historical fiction. 
+D:The Black Dwarf is about Sir Edward Manley (or Mauley).
+D:He is an honored British nobleman. Sadly he is terribly 
+D:deformed. A hideously ugly four foot dwarf. He is, because 
+D:of his condition, stripped of everything that is his right. 
+D:He flees to Northumbria, and when the opportunity occurs tries 
+D:to help people. They of course do not trust him. "Canny Elshie 
+D:the Black Dwarf," a terrible figure of nightmare.
+D:His true nature is that of a poet who longs to belong, but 
+D:fate has dealt him a bad hand. He appears to have lost his mind.
+D:He stumbles towards you with a look of madness on his face.
+
+# 446 -448
 ############################
 ##### Level 31 (1550') #####
 ############################
@@ -4297,7 +4375,7 @@ D:It is a giant beetle that produces a chilling sound.
 
 N:451:Oculus Dei
 G:p:w
-I:210:30d20:20:50:90
+I:110:30d20:20:50:90
 W:31:1:0:180
 B:HIT:HURT:3d4 
 F:DROP_1D2 | SMART | OPEN_DOOR | TAKE_ITEM | FRIENDS
@@ -4308,7 +4386,7 @@ D:power of god.
 
 N:452:Sportsman
 G:p:U
-I:210:50d20:20:50:90
+I:110:50d20:20:50:90
 W:31:1:0:180
 B:HIT:HURT:3d12
 B:HIT:HURT:3d12
@@ -4320,6 +4398,36 @@ D:A robed individual walks towards you threatening you with
 D:his rifle. It looks like he knows hou to use it well.
 
 
+N:453:Victor Frankenstein's Monster
+G:C:g
+I:100:80d30:10:120:10
+W:32:2:0:600
+B:HIT:HURT:3d12
+B:HIT:HURT:3d12
+B:CRUSH:HURT:20d5
+F:UNIQUE | FORCE_MAXHP | FORCE_SLEEP | RAND_25 | 
+F:DROP_2D2 | DROP_GOOD | SMART | WEIRD_MIND | 
+F:AURA_COLD | BASH_DOOR | MOVE_BODY | KILL_BODY | 
+F:TAKE_ITEM | KILL_ITEM | HOSTILE | HURT_FIRE |
+F:IM_ACID | IM_COLD | IM_POIS | IM_ELEC | RES_NETH |
+F:RES_WATE | RES_PLAS | RES_NEXU | RES_DISE | NO_FEAR |
+F:NO_STUN | NO_CONF | NO_SLEEP | 
+D:Mary Shelley wrote about Victor and his monster(1818). The book 
+D:Takes place on an expidition to the North Pole where Robert 
+D:Walton wanted to visit "a part of the world never before visited, 
+D:and ...tread a land never before imprinted by the foot of man" 
+D:(Letters, I, 116). When he runs into Victor Frankenstein, and 
+D:hears a morbid tale about his terrifying experiement with the 
+D:unknown. After creating a hideous monster in his lab, he is 
+D:so overcome with remorse that he flees leaving the monster 
+D:to fend for himself. While relating his story to Robert, 
+D:the monster approaches and demands an audience. Eloquent, and 
+D:well educated, he demands tha Victor make him a bride to give 
+D:him a place in the world, or he will kill everyone that Victor 
+D:knows. Victor returns and attempts this, but is overcome with 
+D:guilt with evil that he has already commited, and cannot finish.
+D:He destroys this new monstrosity, and flees to meet his fiance. 
+D:On his way he hears her dying scream as the monster kills her.
 # 453-457
 ############################
 ##### Level 32 (1600') #####
@@ -4353,7 +4461,7 @@ D:before.
 
 N:460:Reckoner
 G:p:R
-I:210:30d20:20:50:90
+I:110:30d20:20:50:90
 W:32:1:0:180
 B:HIT:HURT:3d4
 F:DROP_1D2 | SMART | OPEN_DOOR | TAKE_ITEM | FRIENDS
@@ -4363,6 +4471,20 @@ D:A robed individual walks towards you threatening you with the
 D:powers of hacking the universe.
 
 
+N:461:Byakhee, the Star-Steeds
+G:u:y
+I:120:10d20:30:50:30
+W:32:1:0:100
+B:CLAW:HURT:2d6
+B:CLAW:HURT:2d6
+B:BITE:EXP_40:1d3
+B:BITE:LOSE_STR:1d3
+F:FRIENDS | RAND_25 | DROP_60 | DROP_GREAT | COLD_BLOOD | WEIRD_MIND |
+F:DEMON | EVIL | NO_FEAR 
+D:"There flapped rhythmically a horde of tame, trained, hybrid winged 
+D:things. . . not altogether crows, nor moles, nor buzzards, nor ants, 
+D:nor decomposed human beings, but something I cannot and must not 
+D:recall." - H.P. Lovecraft, "The Festival"
 
 # 461-467
 ############################
@@ -4469,7 +4591,7 @@ D:It is a towering tempest of water.
 
 N:474:Oculus Dei
 G:p:w
-I:210:30d20:20:50:90
+I:110:30d20:20:50:90
 W:33:1:0:180
 B:HIT:HURT:3d4
 F:DROP_1D2 | SMART | OPEN_DOOR | TAKE_ITEM | FRIENDS
@@ -4606,7 +4728,7 @@ D:It is a towering tornado of winds.
 ############################
 
 N:489:Hell hound
-G:C:r
+G:Z:r
 I:120:40d10:25:80:0
 W:35:3:0:600
 B:BITE:FIRE:3d12
@@ -5944,6 +6066,26 @@ D: spikes.
 ############################
 ##### Level 70 (3500') #####
 ############################
+
+N:805:Chthonians
+G:U:s
+I:110:20d100:20:40:10
+W:70:1:0:10000
+B:STING:EXP_10:8d6
+B:STING:LOSE_STR:8d6
+B:CRUSH:HURT:20d20
+B:CRUSH:SHATTER:8d10
+F:DROP_60 | WEIRD_MIND | REGENERATE | BASH_DOOR | KILL_WALL |
+F:KILL_BODY | KILL_ITEM | DEMON | HOSTILE | HURT_COLD | NO_FEAR | 
+F:NO_CONF | NO_SLEEP | IM_FIRE
+S:1_IN_12 |
+S:BR_SOUN 
+D:"Flowing tentacles and pulpy grey-black, elongated sack of a body 
+D:. . . no distinguising features at all other than the reaching, 
+D:groping tentacles. Or was there - yes - a lump in the upper body 
+D:of the thing. . . a container of sorts for the brain, ganglia, or 
+D:whichever diseased organ governed this horror's loathsome life!" 
+D:- Brian Lumley, The Burrowers Beneath
 # 805-809
 
 ############################
@@ -6307,7 +6449,7 @@ D:glowing eyes burning with hatred.
 ##### Level 83 (4150') #####
 ############################
 N:862:Hell hound
-G:C:r
+G:Z:r
 I:120:48d10:25:80:30
 W:83:4:0:600
 B:BITE:FIRE:3d12
@@ -6577,7 +6719,30 @@ D:that oppose him
 ############################
 ##### Level 98 (4900') #####
 ############################
-# 897-899 Unused
+N:897:King Kong
+G:M:U
+I:120:120d120:100:100:100
+W:98:1:0:45000
+B:PUNCH:HURT:30d20
+B:PUNCH:HURT:30d20
+B:BUTT:TERRIFY:12d20
+B:CRUSH:SHATTER:40d30
+F:UNIQUE | MALE |
+F:FORCE_SLEEP | FORCE_MAXHP |
+F:ESCORTS | DROP_2D2 | DROP_4D2 | DROP_GOOD | DROP_GREAT |
+F:SMART | REGENERATE | BASH_DOOR | KILL_BODY | KILL_ITEM | KILL_WALL |
+F:GIANT | ANIMAL | HOSTILE | IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS |
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP 
+D:This terrible 20' gorilla storms towards you. You recognize him 
+D:as Kong. A group of film makers traveled to an unknown island, 
+D:where they planned to make a motion picture using a mysterious 
+D:island god found there. The god is the giant gorilla named Kong. 
+D:The explorers capture Kong and bring him to New York as a public 
+D:exhibit. Kong escapes his captors in New York and is killed atop 
+D:the Empire State Building. 1933 King Kong by Merian C. Cooper and 
+D:Ernest B. Schoedsack
+
+# 898-899 Unused
 
 ############################
 ##### Level 99 (4950') #####
