@@ -1,6 +1,6 @@
 
    ************************************************************************
-   **   Steamband 0.2.0   **   The Journey from the Centre of the Earth  **
+   **   Steamband 0.2.1   **   The Journey from the Centre of the Earth  **
    ************************************************************************
 
            Based on Moria:   Copyright (c) 1985 Robert Alan Koeneke

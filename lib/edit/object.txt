@@ -56,7 +56,7 @@
 
 # Version stamp (required)
 
-V:0.2.0
+V:0.2.1
 
 
 ##### Non-kind (contains the "pile" picture) #####
@@ -4147,7 +4147,7 @@ F:DEX | STEALTH
 ## NEW WEAPONS
 N:596:& Pneumatic Sword~
 G:|:b
-I:23:31:2
+I:23:32:2
 W:50:1:25:2400
 P:0:8d5:0:0:0
 A:85/2
@@ -4155,8 +4155,9 @@ F:SHOW_MODS | BLOWS
 
 N:597:& Pneumatic Dagger~
 G:|:b
-I:23:32:4
+I:23:34:4
 W:55:2:15:3000
 P:0:8d3:0:0:0
 A:85/2
 F:SHOW_MODS | BLOWS
+

@@ -166,7 +166,7 @@
 
 # Version stamp (required)
 
-V:0.2.0
+V:0.2.1
 
 
 ##### Non-race (contains the "player" picture) #####
@@ -2724,7 +2724,7 @@ S:BLINK | SLOW | SCARE | DARKNESS
 D:Yum!  It looks quite tasty.  It seems to glow with an unusual light.
 
 N:295:Guardian Snake-Woman
-G:n:B
+G:B:B
 I:110:24d11:20:65:120
 W:15:2:0:80
 B:CRUSH:HURT:2d8
@@ -2985,7 +2985,7 @@ D:the soul within; the nose, broad and aquiline, indicating
 D:strength of purpose; the firm mouth hidden beneath the dark mustache, 
 D:the crisp and well-trimmed beard cut to a point; 
 D:the shapely head, covered with wavy brown hair, poised firmly 
-D:on the shoulders—all these went to make up an effect at once pleasing 
+D:on the shoulders-all these went to make up an effect at once pleasing 
 D:to the eye and impressive to the imagination of the beholder. 
 D:Yet it was not these, or any one of these, that arrested the 
 D:immediate attention of the most casual observer. It was the air 
@@ -3633,7 +3633,7 @@ S:1_IN_15 |
 S:TPORT | DRAIN_MANA
 D:It is a ghostly woman's form that wails mournfully.
 
-N:386:Martian Slave 
+N:386:Martian Slave
 G:A:w
 I:120:4d8:80:10:80
 W:24:1:0:55
@@ -3999,14 +3999,15 @@ D:about them in the "War of the Worlds". They in ages past may
 D:have looked like humans, but over time they have changed 
 D:the essential nature of themselves until their bodies are 
 D:nothing but giant cases for their brains. This Martian walks towards 
-D:you in a strange metal contraption designed 
+D:you in a strange metal contraption designed to move it's 
+D:disgusting body along.
 
 # 419-420
 ############################
 ##### Level 28 (1400') #####
 ############################
 N:421:Spirit snake-woman
-G:n:w
+G:B:w
 I:110:30d15:20:75:120
 W:28:2:0:60
 B:CRUSH:HURT:4d8

@@ -81,22 +81,22 @@ void level_reward(void)
 		/* Display the stats on screen */
 			   prt("  Which stat do you want to raise?", 2, 10);
 			   prt(" ___________________________________", 3, 14);
-			   prt(" |         ** STAT GAIN **         |", 4, 14);
+			   prt(" |{{{{{{{{{** STAT GAIN **}}}}}}}}}|", 4, 14);
 			   prt(" ____~~~~~~~~~~~~~~~~~~~~~~~~~~~____", 5, 14);
 		cnv_stat(p_ptr->stat_max[0], tmp);
-		prt(format(" |²³|    a) Str (cur %s)    |²³|", tmp), 6, 14);
+		prt(format(" |^^|    a) Str (cur %s)    |^^|", tmp), 6, 14);
 		cnv_stat(p_ptr->stat_max[1], tmp);
-		prt(format(" |ÄÄ|    b) Int (cur %s)    |ÄÄ|", tmp), 7, 14);
+		prt(format(" ||||    b) Int (cur %s)    ||||", tmp), 7, 14);
 		cnv_stat(p_ptr->stat_max[2], tmp);
-		prt(format(" |ÄÄ|    c) Wis (cur %s)    |ÄÄ|", tmp), 8, 14);
+		prt(format(" ||||    c) Wis (cur %s)    ||||", tmp), 8, 14);
 		cnv_stat(p_ptr->stat_max[3], tmp);
-		prt(format(" |ÄÄ|    d) Dex (cur %s)    |ÄÄ|", tmp), 9, 14);
+		prt(format(" ||||    d) Dex (cur %s)    ||||", tmp), 9, 14);
 		cnv_stat(p_ptr->stat_max[4], tmp);
-		prt(format(" |ÄÄ|    e) Con (cur %s)    |ÄÄ|", tmp), 10, 14);
+		prt(format(" ||||    e) Con (cur %s)    ||||", tmp), 10, 14);
 		cnv_stat(p_ptr->stat_max[5], tmp);
-		prt(format(" |²³|    f) Chr (cur %s)    |²³|", tmp), 11, 14);
+		prt(format(" |^^|    f) Chr (cur %s)    |^^|", tmp), 11, 14);
 			   prt(" ___________________________________", 12, 14);
-			   prt(" _                                 _", 13, 14);
+			   prt(" _+++++++++++++++++++++++++++++++++_", 13, 14);
 			   prt(" ___________________________________", 14, 14);
 		prt("", 15, 14);
 		

@@ -2164,6 +2164,7 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 	int tmp;
 
 	monster_type *m_ptr;
+	monster_type *n_ptr;
 	monster_race *r_ptr;
 	monster_lore *l_ptr;
 	s32b div, new_exp, new_exp_frac;
@@ -2224,8 +2225,11 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 
 	/* Obtain monster info */
 	m_ptr = &m_list[cave_m_idx[y][x]];
+	n_ptr = &m_list[who];
 	r_ptr = &r_info[m_ptr->r_idx];
 	l_ptr = &l_list[m_ptr->r_idx];
+	
+	
 	name = (r_name + r_ptr->name);
 	if (m_ptr->ml) seen = TRUE;
 
@@ -3546,31 +3550,33 @@ static bool project_m(int who, int r, int y, int x, int dam, int typ)
 
 			if (is_pet(m_ptr) && !(m_ptr->ml))
 				sad = TRUE;
-
-			/* Player level */
-			div = p_ptr->lev;
-	
-			/* Give some experience for the kill */
-			new_exp = ((long)r_ptr->mexp * r_ptr->level) / div;
-	
-			/* Handle fractional experience */
-			new_exp_frac = ((((long)r_ptr->mexp * r_ptr->level) % div)
-			                * 0x10000L / div) + p_ptr->exp_frac;
-	
-			/* Keep track of experience */
-			if (new_exp_frac >= 0x10000L)
+			/* give experience if a pet kills a monster */
+			if (is_pet(n_ptr))
 			{
-				new_exp++;
-				p_ptr->exp_frac = (u16b)(new_exp_frac - 0x10000L);
+				/* Player level */
+				div = p_ptr->lev;
+		
+				/* Give some experience for the kill */
+				new_exp = ((long)r_ptr->mexp * r_ptr->level) / div;
+		
+				/* Handle fractional experience */
+				new_exp_frac = ((((long)r_ptr->mexp * r_ptr->level) % div)
+				                * 0x10000L / div) + p_ptr->exp_frac;
+		
+				/* Keep track of experience */
+				if (new_exp_frac >= 0x10000L)
+				{
+					new_exp++;
+					p_ptr->exp_frac = (u16b)(new_exp_frac - 0x10000L);
+				}
+				else
+				{
+					p_ptr->exp_frac = (u16b)new_exp_frac;
+				}
+		
+				/* Gain experience */
+				gain_exp(new_exp);
 			}
-			else
-			{
-				p_ptr->exp_frac = (u16b)new_exp_frac;
-			}
-	
-			/* Gain experience */
-			gain_exp(new_exp);
-
 
 			/* Generate treasure, etc */
 			monster_death(cave_m_idx[y][x]);

@@ -1,0 +1,96 @@
+Steamband 0.2.1
+----------------
+Minor bugfix update
+Russian Race crash fixed.
+Fixed level reward to use ASCII Chars
+Fixed Explorer's spell info
+Fixed Explorer's casting weight
+Fixed Various monster.txt problems
+Fixed Artifact being wrong base item bug
+Fixed Pneumatic item type
+
+Steamband 0.2.0
+----------------
+Flowing through code looking to both become more familar with and correct anything that needs to be changed. . . (1/11/03)
+I didn't change anything from above, but I'm adding mutations. (1/13/02)
+Mutations involves adding lots of different things - auras, wraithform and
+ghosts, other new functions and pets. Which is what I'm about to add now. (1/16/03)
+fixed the monster.txt file problem. yay. Much thanks to konijn. (1/17/03)
+Finished implimenting pets, and Fixed several bugs causing the game to crash with an access fault (1/18/03)
+Pets implimented somewhat (The are not very bright. Sometimes they will hit you. Sometimes they will hit each other. And you don't get experience for the kills.) (1/19/03)
+added druid and officer powers! Officers are very cool. Druids are thefted from Z. (Thanks Z dev team! /me waves!) (1/20/03)
+New attack types added. GF_CHARM, GF_DISINTAGRATE, GF_DOMINATION, and GF_ANIMAL_CHARM. Maybe one or two more. (1/20/03)
+Added anarchist and mutate flags. Now when gaining levels certain races and classes will gain mutations. (1/20/03)
+added Rakshasa powers. There were three of them and it took me a moment to figure out how to work them. (1/20/03) 
+Fixed the text file end characters problem (1/20/03)
+HACKED in the message compression routine. Made it painfully obvious after this release I'm going to have to diff to 3.0.2[v] :-/ (go bigscreen though.) (1/21/03)
+Started with the first B-Movie monster. King kong.  (1/21/03)
+Finished coding in monster auras. Auras should work correctly now for both player and monster (1/21/03)
+Fixed shards so that it's now a player type of damage (1/21/03)
+Added steam mecha abilities. (gun/rocket/drill(thanks Konijn)/Artillery barrage) (1/21/03)
+very pretty stat gain on level added (1/21/03)
+Increased the rarity of stat potions (1/21/03)
+Added more race powers suggested by Stephen (lastname?) (1/21/03) Thanks!
+Fixed some coding problems that pelpel made me aware of (1/23/03)
+Fixed pets to not attack player and have (slightly) more tolerable behavior (1/23/03)
+Fixed pets to get 'pushed out of way' by player (1/23/03)
+Fixed pets to give experience to player when killing other moneters (1/23/03)
+Fixed pets so that players have the correct mana regeneration rate (1/23/03)
+Fixed a bug that allowed non automata to wear mecha parts (1/23/03)
+Added 3 new uniques
+
+
+Steamband 0.1.1
+----------------
+Fixed a bug in Brith.c that caused the point buy system to not look nice and to stop at 11 points spent. (1/10/03)
+Fixed a bug in cmd-item, that would cause the next command to be limited to item_tester_hook_tonic if you were an automata, and tried to drink. (1/10/03)
+The honorable and esteemed KUSUNOSE Toru <kusunose@hcn.zaq.ne.jp> was generous enought to send in a patch for a _HUGE_ bug after character creation, and diffs to make it eaiser to compile for windows out of the box. His help and patch are much appreaceated. (1/10/03)
+Made #define Macintosh, defined in the compiler and not the source. (1/10/03)
+Fixed the height error that nemo mentioned. (we're just going over a bound there was all, I hope! (1/10/03)
+
+Steamband 0.1.0
+-----------------
+
+Changed birth message 	(5/27/02)
+Changed the version number, and name.  (5/27/02)
+Finished first stat revision of the races (beta) (5/28/02)
+Prototyped the class types, and filled in basic data (beta) (5/28/02)
+Changed over the first monster list revision (7/11/02)
+Changed all potions to elixirs (9/20/02)
+Added all classes as available to all races (9/20/02 Compiled 12/15/02)
+Changed over slings to pistols, bows to rifles, xbows to shotguns, and the ammunition (12/16/02)
+Removed extra armor types (12/16/02)
+Finished changeing extra armor types SV codes (12/16/02)
+Activated Parchments (12/17/02)
+Created 12 parchments (12/17/02)
+Changed names of cmd files to be more representative of context (12/17/02)
+Added Etherial cloaks, pneumatic shovels and picks, and fur cloaks (12/17/02)
+Activated Class Powers (12/21/02)
+Changed over Rods to apparatuses, Staves to tools, and Wands to ray guns. (12/22/02)
+Changed scrolls and mushrooms to mechanisms and aodynes. (12/~18/02)
+Added the first four engineering devices (12/23/02)
+Added two more engineering devices (12/25/02)
+Added all the mage books (12/25/02)
+Started changing over the text files to support the new books (12/25/02)
+hacked the message "you can learn x new spells" so that it doesn't pop up for classes that don't use books (12/25/02)
+Updated Player Class text file to use the new books and devices (12/25/02)
+Removed all artificats to be replaced with in theme artifacts (12/25/02)
+Started Replacing Artifacts through D(12/26/02)
+Finished rewriting player history (12/27/02)
+Added stem mecha inventory (12/28/02)
+Changed elixirs to tonics (12/28/02)
+Rewrote Birth.c for a different format (12/28/02)
+Fixed choice to be s16b so it would hold more than eight class entries for each race (12/29/02)
+Fixed bug introduced by randart removeal (mismatched save/load) (12/29/02)
+Added Aesthete, & Medium powers. (medium still needs some fixin) (12/29/02)
+Fixed max weight and other minor modifictions to playerclass .txt (12/29/02)
+Cleaned up the medium, and astethe spells. compeleted adding new GF_flags (12/31/02)
+Added new items (12/31/02)
+Numerous small changes the last day or so. Fixed tourist, and other class powers. Small revision of the monster list. (1/1/03)
+fixed up the shops to be different, now I'm dicking around with item colors (1/1/03)
+fixed new tval text colors (1/1/03)
+Working around with the monster file, fixed some gun code, assorted other minor fixes and changes (1/4/03)
+Further revisions to the monster file. Added back in the demons, and cuthulu mythos. (1/5/03)
+Added in more arts, and fixed the quickbirth bug. (1/6/03)
+Added a few more monsters, and changed some of the help files. Also cleaned up a few minor bugs (quickstart gold not being saved, some nested comments, a small bug with astheste powers) (1/9/03)
+

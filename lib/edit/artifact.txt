@@ -56,7 +56,7 @@
 
 # Version stamp (required)
 
-V:0.2.0
+V:0.2.1
 
 ##########################
 ###   Lights & Phials  ###
@@ -877,7 +877,7 @@ A:LIGHTNING_BOLT:50:50
 ## The Cavalry Saber of Tesla
 
 N:136:of Tesla
-I:23:16:2
+I:23:25:2
 W:20:30:150:45000
 P:0:3d6:12:16:0
 F:CHR | CON | BLOWS | SLAY_EVIL | SLAY_AUTOMATA | BRAND_ELEC | ACTIVATE
@@ -921,7 +921,7 @@ F:RES_FIRE | RES_CHAOS | FREE_ACT | SEE_INVIS | AGGRAVATE | SHOW_MODS
 ## The Pneumatic 'Viridigen' Sword
 
 N:140:of 'Viridigen'
-I:23:31:4
+I:23:32:4
 W:40:15:25:112500
 P:0:8d5:14:25:0
 F:SHOW_MODS | BLOWS | 
@@ -929,7 +929,7 @@ F:SHOW_MODS | BLOWS |
 ## The Pneumatic dagger 'viridigen
 
 N:141:of 'Viridigen'
-I:23:32:9
+I:23:34:9
 W:60:28:10:28000
 P:0:8d3:10:21:0
 F:SHOW_MODS | BLOWS
@@ -938,9 +938,9 @@ F:SHOW_MODS | BLOWS
 ## The Pneumatic Axe 'viridigen
 
 N:142:of 'Viridigen'
-I:23:28:6
+I:22:20:6
 W:50:18:260:100000
-P:0:3d8:18:43:0
+P:0:5d8:18:43:0
 F:SHOW_MODS | BLOWS
 
 ## The Katana 'Aglarang'

@@ -47,7 +47,7 @@
 /*
  * Current version string
  */
-#define VERSION_STRING	"0.2.0"
+#define VERSION_STRING	"0.2.1"
 
 
 /*
@@ -55,7 +55,7 @@
  */
 #define VERSION_MAJOR	0
 #define VERSION_MINOR	2
-#define VERSION_PATCH	0
+#define VERSION_PATCH	1
 #define VERSION_EXTRA	0
 
 
@@ -1630,7 +1630,7 @@
 #define SV_GLAIVE				13	/* 2d6 */
 #define SV_HALBERD				15	/* 3d4 */
 #define SV_SCYTHE				17	/* 5d3 */
-/* xxx Old lance xxx 			20 		   */	
+#define SV_PNEUMATIC_AXE 		20 	/*	   */	
 #define SV_BATTLE_AXE			22	/* 2d8 */
 #define SV_GREAT_AXE			25	/* 4d4 */
 /* xxx Old Lochaber Axe xxx 	28		   */
@@ -1658,6 +1658,8 @@
 #define SV_CAVALRY_SABER		25	/* 3d6 */
 #define SV_SWORD_CANE			28	/* 4d5 */
 #define SV_BLADE_OF_CHAOS		30	/* 6d5 */
+#define SV_PNEUMATIC_SWORD		32  /* 8d5 */
+#define SV_PNEUMATIC_DAGGER		34	/* 8d3 */
 
 /* The "sval" codes for TV_SHIELD */
 #define SV_SMALL_LEATHER_SHIELD		2
